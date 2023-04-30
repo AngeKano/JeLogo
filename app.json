@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "jelogo",
+    "slug": "jelogo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/playstore.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/playstore.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0372C1"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/playstore.png",
+        "backgroundColor": "#0372C1"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7405a835-0b28-4a35-b64c-5e16bf855106"
+      }
+    }
+  }
+}
