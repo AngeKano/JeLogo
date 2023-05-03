@@ -58,7 +58,7 @@ const MbSrvItem = (props) => {
       renderItem={({ item }) => (
         <Pressable
           onPress={() => {
-            props.navigate("Opr1", {
+            props.navigate("Opr2", {
               label: item.nom,
               img: item.text,
             });

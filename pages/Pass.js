@@ -22,7 +22,7 @@ const Pass = ({ route, navigation: { navigate } }) => {
     "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
   });
 
-  const { label } = route.params;
+  const { label, txt } = route.params;
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -37,7 +37,7 @@ const Pass = ({ route, navigation: { navigate } }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={styles.container}>
         <View onLayout={onLayoutRootView}>
-          <Text style={styles.textCont}>Payement de facture et service</Text>
+          <Text style={styles.textCont}>{txt}</Text>
           <View style={styles.items}>
             <PassItems navigate={navigate}/>
           </View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   textCont: {
     fontSize: 20,
-    fontFamily: "Nunito-Medium",
+    fontFamily: "Nunito-Bold",
     textAlign: "left",
     marginVertical: 35,
     marginHorizontal: 20,

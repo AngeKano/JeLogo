@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
+import { AntDesign } from '@expo/vector-icons';
 import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
@@ -47,10 +48,7 @@ const HistTrns = (props) => {
         <Text style={styles.txt2}>20h 30mn</Text>
       </View>
       <Text style={styles.txt3}>10 000 FCFA</Text>
-      <Image
-        source={require("../assets/icons/right.png")}
-        style={{ width: 7, height: 15.62 }}
-      />
+      <AntDesign name="right" size={16} color="black" />
     </View>
   );
 };

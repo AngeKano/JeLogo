@@ -40,6 +40,7 @@ const Opr1 = ({ route, navigation: { navigate } }) => {
         >
           <Text style={styles.BtnPrincTxt}>Depot</Text>
         </Pressable>
+        
         <Pressable
           style={[
             styles.BtnPrinc,

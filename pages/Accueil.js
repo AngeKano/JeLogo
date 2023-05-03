@@ -23,7 +23,7 @@ const Accueil = ({ route, navigation: { navigate } }) => {
     "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
   });
 
-  const { label } = route.params;
+  const { label,txt } = route.params;
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -37,7 +37,7 @@ const Accueil = ({ route, navigation: { navigate } }) => {
   return (
     <ScrollView style={styles.container}>
       <View onLayout={onLayoutRootView}>
-        <Text style={styles.textCont}>Operateur mobile {label}</Text>
+        <Text style={styles.textCont}>{txt}</Text>
         <View style={styles.items}>
           <MbSrvItem navigate={navigate} label={label} />
         </View>

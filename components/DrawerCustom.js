@@ -11,6 +11,7 @@ import React, { useCallback, useState } from "react";
 import ShareItems from "./ShareItems";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { AntDesign } from '@expo/vector-icons';
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 
 SplashScreen.preventAutoHideAsync();
@@ -118,10 +119,7 @@ const CustomDrawerContent = (props) => {
               props.navigation.navigate("historique");
             }}
             icon={() => (
-              <Image
-                source={require("../assets/icons/Group40.png")}
-                style={{ width: 17, height: 17 }}
-              />
+              <AntDesign name="calendar" size={17} color="black" />
             )}
             style={{
               paddingHorizontal: 40,
@@ -136,10 +134,7 @@ const CustomDrawerContent = (props) => {
               props.navigation.navigate("compte");
             }}
             icon={() => (
-              <Image
-                source={require("../assets/icons/Group192.png")}
-                style={{ width: 17, height: 17 }}
-              />
+              <AntDesign name="bells" size={17} color="black" />
             )}
             style={{ paddingHorizontal: 40 }}
           />

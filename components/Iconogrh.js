@@ -7,30 +7,35 @@ SplashScreen.preventAutoHideAsync();
 const DATA = [
   {
     label: "Depot",
+    txt: "Effectuer une transaction",
     img: require("../assets/icons/iconographie/depot.png"),
     width: 58,
     height: 46,
   },
   {
-    label: "Retait",
+    label: "Retrait",
+    txt: "Retirer votre argent en toute securité",
     img: require("../assets/icons/iconographie/cash.png"),
     width: 52,
     height: 45,
   },
   {
     label: "Recharger mon solde",
+    txt: "Racherger votre solde depuis votre operateur",
     img: require("../assets/icons/iconographie/money.png"),
     width: 50,
     height: 50,
   },
   {
-    label: "Achat de pass",
+    label: "Tranfert et achat de Pass",
+    txt: "Tranfert d'unités et achat de Pass",
     img: require("../assets/icons/iconographie/pass.png"),
     width: 45,
     height: 67,
   },
   {
-    label: "Factures",
+    label: "Paiements des fadctures",
+    txt: "Paiements des factures et services",
     img: require("../assets/icons/iconographie/facture.png"),
     width: 46,
     height: 42,
@@ -73,14 +78,16 @@ const Iconogrh = (props) => {
         renderItem={({ item, index }) => (
           <Pressable
             onPress={() => {
-              item.label == "Achat de pass"
+              item.label == "Tranfert et achat de Pass"
                 ? props.navigate("Pass", {
                     label: item.label,
+                    txt: item.txt,
                   })
                 : item.label == "Historique"
                 ? props.navigate("historique")
                 : props.navigate("Accueil", {
                     label: item.label,
+                    txt: item.txt,
                   });
             }}
             style={[{ marginRight: 7, flex: 1, alignItems: "center" }]}

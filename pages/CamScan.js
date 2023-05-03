@@ -14,7 +14,7 @@ import { set } from "react-native-reanimated";
 
 const CamScan = () => {
   let cameraRef = useRef();
-  const [hasCameraPermission, setHasCameraPermission] = useState();
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
   const [photo, setPhoto] = useState();
 
@@ -33,7 +33,7 @@ const CamScan = () => {
   } else if (!hasCameraPermission) {
     return (
       <Text>
-        Permission for camera not granted. Please change this in settings.{" "}
+        Permission for camera not granted. Please change this in settings.
       </Text>
     );
   }

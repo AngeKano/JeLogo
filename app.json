@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ange002.jelogo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/playstore.png",
         "backgroundColor": "#0372C1"
-      }
+      },
+      "package": "com.ange002.jelogov2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
