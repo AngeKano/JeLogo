@@ -26,8 +26,10 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Text style={styles.text}>{label}</Text>
-      <Image source={img} style={{ width: 154, height: 154 }} />
+      <Image
+        source={img}
+        style={{ width: 154, height: 154, marginVertical: 40 }}
+      />
       <View style={{ gap: 23, marginVertical: 40 }}>
         <TextInput
           style={styles.TextInput}

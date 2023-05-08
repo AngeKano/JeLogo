@@ -41,18 +41,18 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
       >
         <Pressable
           onPress={() =>
-            navigate("Accueil", {
+            navigate("Princ", {
               label: label,
               img: img,
             })
           }
           style={styles.BtnPrinc}
         >
-          <Text style={styles.BtnPrincTxt}>A un amis</Text>
+          <Text style={styles.BtnPrincTxt}>A un ami</Text>
         </Pressable>
         <Pressable
           onPress={() =>
-            navigate("Accueil", {
+            navigate("Princ", {
               label: label,
               img: img,
             })

@@ -11,7 +11,7 @@ import React, { useCallback, useState } from "react";
 import ShareItems from "./ShareItems";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 
 SplashScreen.preventAutoHideAsync();
@@ -118,43 +118,24 @@ const CustomDrawerContent = (props) => {
             onPress={() => {
               props.navigation.navigate("historique");
             }}
-            icon={() => (
-              <AntDesign name="calendar" size={17} color="black" />
-            )}
+            icon={() => <AntDesign name="calendar" size={17} color="black" />}
             style={{
               paddingHorizontal: 40,
             }}
           />
         </View>
-        <View style={styles.drawerItem}>
+        <View style={[styles.drawerItem, { marginBottom: 60 }]}>
           <DrawerItem
             label="Notification"
             labelStyle={{ fontFamily: "Nunito-Regular" }}
             onPress={() => {
               props.navigation.navigate("compte");
             }}
-            icon={() => (
-              <AntDesign name="bells" size={17} color="black" />
-            )}
+            icon={() => <AntDesign name="bells" size={17} color="black" />}
             style={{ paddingHorizontal: 40 }}
           />
         </View>
-        <View style={[styles.drawerItem, { marginBottom: 40 }]}>
-          <DrawerItem
-            label="Historique"
-            labelStyle={{ fontFamily: "Nunito-Regular" }}
-            onPress={() => {
-              props.navigation.navigate("historique");
-            }}
-            icon={() => (
-              <Image
-                source={require("../assets/icons/Group40.png")}
-                style={{ width: 17, height: 17 }}
-              />
-            )}
-            style={{ paddingHorizontal: 40 }}
-          />
-        </View>
+     
         <View style={{ flex: 1, gap: 19, marginHorizontal: 40 }}>
           <Pressable
             onPress={() => {

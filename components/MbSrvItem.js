@@ -32,6 +32,9 @@ const Data1 = [
   {
     nom: "Canal +",
     text: require("../assets/icons/factureItems/canal.png"),
+    options:{
+      
+    }
   },
   {
     nom: "CIE",
@@ -53,7 +56,7 @@ const Data1 = [
 const MbSrvItem = (props) => {
   return (
     <FlatList
-      data={props.label == "Factures" ? Data1 : Data}
+      data={props.label == "Paiements des factures" ? Data1 : Data}
       numColumns={2}
       renderItem={({ item }) => (
         <Pressable
@@ -61,6 +64,8 @@ const MbSrvItem = (props) => {
             props.navigate("Opr2", {
               label: item.nom,
               img: item.text,
+
+
             });
           }}
         >

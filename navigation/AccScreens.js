@@ -9,6 +9,7 @@ import Opr2 from "../pages/Opr2";
 import Opr3 from "../pages/Opr3";
 import Opr4 from "../pages/Opr4";
 import Opr5 from "../pages/Opr5";
+import Scan from "../pages/Scan";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ const AccScreens = () => {
       <Stack.Screen name="Princ" component={Princ} />
       <Stack.Screen name="Accueil" component={Accueil} />
       <Stack.Screen name="Pass" component={Pass} />
+      <Stack.Screen name="Scan" component={Scan} />
       <Stack.Screen name="Opr1" component={Opr1} />
       <Stack.Screen name="Opr2" component={Opr2} />
       <Stack.Screen name="Opr3" component={Opr3} />

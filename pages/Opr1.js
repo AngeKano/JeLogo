@@ -25,8 +25,10 @@ const Opr1 = ({ route, navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Text style={styles.text}>{label}</Text>
-      <Image source={img} style={{ width: 154, height: 154 }} />
+      <Image
+        source={img}
+        style={{ width: 154, height: 154, marginVertical: 40 }}
+      />
       <Text style={styles.text2}>Choisissez votre opertion</Text>
       <View style={{ gap: 19 }}>
         <Pressable
@@ -40,7 +42,7 @@ const Opr1 = ({ route, navigation: { navigate } }) => {
         >
           <Text style={styles.BtnPrincTxt}>Depot</Text>
         </Pressable>
-        
+
         <Pressable
           style={[
             styles.BtnPrinc,
@@ -70,7 +72,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "Nunito-Bold",
     fontSize: 30,
-    marginVertical: 40,
   },
   text2: {
     fontFamily: "Nunito-Regular",

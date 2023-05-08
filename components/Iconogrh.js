@@ -21,7 +21,7 @@ const DATA = [
   },
   {
     label: "Recharger mon solde",
-    txt: "Racherger votre solde depuis votre operateur",
+    txt: "Recharger votre solde depuis votre operateur",
     img: require("../assets/icons/iconographie/money.png"),
     width: 50,
     height: 50,
@@ -34,7 +34,7 @@ const DATA = [
     height: 67,
   },
   {
-    label: "Paiements des fadctures",
+    label: "Paiements des factures",
     txt: "Paiements des factures et services",
     img: require("../assets/icons/iconographie/facture.png"),
     width: 46,
@@ -85,6 +85,8 @@ const Iconogrh = (props) => {
                   })
                 : item.label == "Historique"
                 ? props.navigate("historique")
+                : item.label == "Retrait"
+                ? props.navigate("Scan")
                 : props.navigate("Accueil", {
                     label: item.label,
                     txt: item.txt,
