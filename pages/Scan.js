@@ -34,10 +34,8 @@ export default function App({ navigation: { navigate } }) {
         style={StyleSheet.absoluteFillObject}
         onBarCodeScanned={scanData ? undefined : handleBarCodeScanned}
       />
-      {scanData &&
-        navigate(
-          "Princ"
-        )
+      {
+        scanData && navigate("Princ")
         // <Button title="Scan Again?" onPress={() => setScanData(undefined)} />
       }
       <View style={styles.scan}></View>

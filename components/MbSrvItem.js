@@ -1,74 +1,32 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-  Pressable,
-  Button,
-} from "react-native";
+import { StyleSheet, Image, FlatList, Pressable, Text } from "react-native";
 import React from "react";
-// source={require("../assets/playstore.png")}
+import DataMen from "./Data";
 
-const Data = [
-  {
-    nom: "Orange Money",
-    text: require("../assets/icons/Mobileservices.png"),
-  },
-  {
-    nom: "Moov Money",
-    text: require("../assets/icons/Group12.png"),
-  },
-  {
-    nom: "MTN Money",
-    text: require("../assets/icons/Group13.png"),
-  },
-  {
-    nom: "Wave",
-    text: require("../assets/icons/Group14.png"),
-  },
-];
-const Data1 = [
-  {
-    nom: "Canal +",
-    text: require("../assets/icons/factureItems/canal.png"),
-    options:{
-      
-    }
-  },
-  {
-    nom: "CIE",
-    text: require("../assets/icons/factureItems/cie.png"),
-  },
-  {
-    nom: "SODECI",
-    text: require("../assets/icons/factureItems/sodeci.png"),
-  },
-  {
-    nom: "pont HKB",
-    text: require("../assets/icons/factureItems/hkb.png"),
-  },
-  {
-    nom: "StarTimes",
-    text: require("../assets/icons/factureItems/startimes.png"),
-  },
-];
 const MbSrvItem = (props) => {
+  const { Data_Factures, Data_Pass, Data_Transaction } = DataMen;
+  console.log(props.label);
   return (
     <FlatList
-      data={props.label == "Paiements des factures" ? Data1 : Data}
+      data={
+        props.label == "Paiements des factures"
+          ? Data_Factures
+          : props.label == "Tranfert et achat de Pass"
+          ? Data_Pass
+          : Data_Transaction
+      }
       numColumns={2}
       renderItem={({ item }) => (
         <Pressable
           onPress={() => {
-            props.navigate("Opr2", {
-              label: item.nom,
-              img: item.text,
-
-
-            });
+            item.option
+              ? props.navigate("Forfait", { option: item.option })
+              : props.navigate("Opr2", {
+                  label: item.nom,
+                  img: item.text,
+                });
           }}
         >
+          {console.log(item.option)}
           <Image
             source={item.text}
             style={{

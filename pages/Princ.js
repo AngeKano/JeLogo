@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
   },
   cash: {
     flexDirection: "row",
-    gap: 35,
     marginTop: 40,
     alignItems: "center",
     justifyContent: "center",

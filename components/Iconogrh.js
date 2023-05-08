@@ -74,16 +74,13 @@ const Iconogrh = (props) => {
               height: 30,
             }}
           />
+          
         )}
         renderItem={({ item, index }) => (
           <Pressable
             onPress={() => {
-              item.label == "Tranfert et achat de Pass"
-                ? props.navigate("Pass", {
-                    label: item.label,
-                    txt: item.txt,
-                  })
-                : item.label == "Historique"
+              
+                item.label == "Historique"
                 ? props.navigate("historique")
                 : item.label == "Retrait"
                 ? props.navigate("Scan")
