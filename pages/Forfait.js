@@ -8,7 +8,7 @@ const Forfait = ({ route, navigation: { navigate } }) => {
       <Text>Test</Text>
       <View>
 
-      <ForItems data={route.params.option}/>
+      <ForItems data={route.params.option} navigate = {navigate}/>
       </View>
     </View>
   );

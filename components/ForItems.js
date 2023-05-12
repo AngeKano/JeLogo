@@ -1,8 +1,29 @@
-import { StyleSheet, Text, FlatList, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  FlatList,
+  View,
+  Button,
+  Pressable,
+} from "react-native";
 import React, { useState } from "react";
 import Data from "./Data";
 
 const Test = Data.Test;
+
+const renderItem = (item) => {
+  return (
+    <>
+      <Pressable
+        style={{ paddingVertical: 10 }}
+        onPress={() => teex(item.enfant)}
+      >
+        <Text> Parent {item.nom}</Text>
+      </Pressable>
+      {/* <View>{Rc(item.enfant)}</View> */}
+    </>
+  );
+};
 
 function Rc(donne) {
   console.log("Les données sont : " + donne);
@@ -12,13 +33,7 @@ function Rc(donne) {
       data={donne}
       renderItem={({ item }) =>
         Object.keys(item).length == 2 ? (
-          <>
-            <Text> Parent {item.nom}</Text>
-            <Button
-              title="Voir plus"
-            />
-            <View style={styles.visible}>{Rc(item.enfant)}</View>
-          </>
+          renderItem(item)
         ) : (
           <View
             style={{
@@ -41,6 +56,19 @@ function Rc(donne) {
           </View>
         )
       }
+    />
+  );
+}
+function teex(item) {
+  console.log(item)
+  return (
+    <FlatList
+    data={item}
+    renderItem={({item})=>(
+      <View>
+        <Text>{item.nom}</Text>
+      </View>
+    )}
     />
   );
 }
@@ -86,7 +114,12 @@ function Rc(donne) {
 
 const ForItems = () => {
   const Dta = [{ mon: 1 }, { mon: 66 }];
-  return <>{Rc(Test)}</>;
+  return (
+    <>
+      {Rc(Test)}
+      {teex(Test)}
+    </>
+  );
 };
 
 // Test.length == 1 ? return (<Text></Text>) : return (<Text>Texst 1</Text>)
