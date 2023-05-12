@@ -44,7 +44,7 @@ const HistTrns = (props) => {
       />
 
       <View style={styles.allTxt}>
-        <Text style={styles.txt1}>Depot sur votre compte</Text>
+        <Text style={styles.txt1}>Dépôt sur votre compte</Text>
         <Text style={styles.txt2}>20h 30mn</Text>
       </View>
       <Text style={styles.txt3}>10 000 FCFA</Text>

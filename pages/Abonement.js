@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ForItems from "../components/ForItems";
+import AbnItems from "../components/AbnItems";
 
-const Forfait = ({ route, navigation: { navigate } }) => {
+const Abonement = ({ route, navigation: { navigate } }) => {
   return (
     <View>
       <View
@@ -16,13 +16,13 @@ const Forfait = ({ route, navigation: { navigate } }) => {
         </Text>
       </View>
       <View>
-        <ForItems data={route.params}  navigate={navigate} />
+        <AbnItems data={route.params} navigate={navigate} />
       </View>
     </View>
   );
 };
 
-export default Forfait;
+export default Abonement;
 
 const styles = StyleSheet.create({
   barner: {

@@ -26,23 +26,25 @@ const VerificationN3 = ({ navigation: { replace } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Image
-        source={require("../assets/playstore.png")}
-        style={{ width: 172, height: 39 }}
-      />
-      <Text style={styles.FirstText}>
-        Bienvenu sur l’application <Text style={styles.span}>JELOGO</Text>
-      </Text>
-      <Text style={styles.scndText}>Entrez le code de validation</Text>
-      <View style={styles.ViewInputText}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="XXXX"
-          keyboardType="numeric"
-          maxLength={4}
-          onSubmitEditing={() => replace("mainScreen")}
+      <View
+        style={{ backgroundColor: "#0372C1", padding: 10, borderRadius: 5 }}
+      >
+        <Image
+          source={require("../assets/playstore.png")}
+          style={{ width: 172, height: 39 }}
         />
       </View>
+      <Text style={styles.FirstText}>
+        Bienvenue sur l’application <Text style={styles.span}>JELOGO</Text>
+      </Text>
+      <Text style={styles.scndText}>Entrez le code de validation</Text>
+      <TextInput
+        style={styles.TextInput}
+        placeholder="XXXX"
+        keyboardType="numeric"
+        maxLength={4}
+        onSubmitEditing={() => replace("mainScreen")}
+      />
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 40 }}>
         <Pressable
           onPress={() => replace("mainScreen")}
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   },
 
   FirstText: {
-    marginTop: 63,
+    marginTop: 43,
     fontFamily: "Nunito-Regular",
     fontSize: 18,
   },
@@ -77,10 +79,8 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito-Medium",
     fontSize: 21,
   },
-  ViewInputText: {
-    marginTop: 44,
-  },
   TextInput: {
+    marginTop: 44,
     height: "auto",
     width: 70,
     borderBottomWidth: 1,

@@ -35,14 +35,19 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Image
-        source={require("../assets/playstore.png")}
-        style={{ width: 172, height: 39 }}
-      />
+      <View
+        style={{ backgroundColor: "#0372C1", padding: 10, borderRadius: 5 }}
+      >
+        <Image
+          source={require("../assets/playstore.png")}
+          style={{ width: 172, height: 39 }}
+        />
+      </View>
+
       <Text style={styles.FirstText}>
-        Bienvenu sur l’application <Text style={styles.span}>JELOGO</Text>
+        Bienvenue sur l’application <Text style={styles.span}>JELOGO</Text>
       </Text>
-      <Text style={styles.scndText}>Entrez votre numero de compte</Text>
+      <Text style={styles.scndText}>Entrez votre numéro de compte</Text>
       <View style={styles.ViewInputText}>
         <View style={styles.ViewInputText.prefix}>
           <Image source={require("../assets/icons/Group.png")} />
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
   },
 
   FirstText: {
-    marginTop: 63,
+    marginTop: 43,
     fontFamily: "Nunito-Regular",
     fontSize: 18,
   },
@@ -110,10 +115,11 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   TextInput: {
-    height: "auto",
+    width: "35%",
     borderBottomWidth: 1,
     borderBottomColor: "#ABB0BC",
     fontSize: 17,
+    fontFamily: "Nunito-Medium",
   },
   BtnPrinc: {
     width: 200,

@@ -4,13 +4,14 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Historique from "../pages/Historique";
 import Compte from "../pages/Compte";
 import AccScreens from "./AccScreens";
+import { AntDesign } from "@expo/vector-icons";
 import CustomDrawerContent from "../components/DrawerCustom";
 
 const Drawer = createDrawerNavigator();
 
 const MainScreen = ({ navigation: { navigate } }) => {
   return (
-    <Drawer.Navigator 
+    <Drawer.Navigator
       initialRouteName="accueil"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
@@ -33,10 +34,7 @@ const MainScreen = ({ navigation: { navigate } }) => {
                   justifyContent: "center",
                 }}
               >
-                <Image
-                  source={require("../assets/icons/Group19.png")}
-                  style={{ width: 14, height: 17 }}
-                />
+                <AntDesign name="bells" size={17} color="white" />
               </View>
               <Pressable onPress={() => navigate("compte")}>
                 <Image

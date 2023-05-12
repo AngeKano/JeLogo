@@ -27,12 +27,16 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
   }
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Image
-        source={require("../assets/playstore.png")}
-        style={{ width: 172, height: 39 }}
-      />
+      <View
+        style={{ backgroundColor: "#0372C1", padding: 10, borderRadius: 5 }}
+      >
+        <Image
+          source={require("../assets/playstore.png")}
+          style={{ width: 172, height: 39 }}
+        />
+      </View>
       <Text style={styles.FirstText}>
-        Bienvenu sur l’application <Text style={styles.span}>JELOGO</Text>
+        Bienvenue sur l’application <Text style={styles.span}>JELOGO</Text>
       </Text>
       <Text style={styles.scndText}>Entrez votre mot de passe</Text>
       <TextInput
@@ -89,14 +93,14 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
           ]}
         ></View>
       </Pressable>
-      <Text style={styles.TxtMdp}>Mot de passe oubliez</Text>
+      <Text style={styles.TxtMdp}>Mot de passe oublié</Text>
 
       <Pressable
         onPress={() => navigate("verificationN22")}
         style={{
           flex: 1,
           justifyContent: "flex-end",
-          marginBottom: 40,
+          marginBottom: 20,
           alignItems: "center",
           gap: 8,
         }}
@@ -123,7 +127,7 @@ const styles = StyleSheet.create({
     marginTop: 116,
   },
   FirstText: {
-    marginTop: 63,
+    marginTop: 43,
     fontFamily: "Nunito-Regular",
     fontSize: 18,
   },

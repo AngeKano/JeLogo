@@ -10,7 +10,7 @@ const MbSrvItem = (props) => {
       data={
         props.label == "Paiements des factures"
           ? Data_Factures
-          : props.label == "Tranfert et achat de Pass"
+          : props.label == "Transfert et achat de Pass"
           ? Data_Pass
           : Data_Transaction
       }
@@ -19,7 +19,12 @@ const MbSrvItem = (props) => {
         <Pressable
           onPress={() => {
             item.option
-              ? props.navigate("Forfait", { option: item.option })
+              ? props.navigate("Abonement", {
+                  option: item.option,
+                  nom: item.nom,
+                  backgroundColor: item.backgroundColor,
+                  textColor: item.textColor,
+                })
               : props.navigate("Opr2", {
                   label: item.nom,
                   img: item.text,

@@ -6,7 +6,7 @@ import { FlatList } from "react-native-gesture-handler";
 SplashScreen.preventAutoHideAsync();
 const DATA = [
   {
-    label: "Depot",
+    label: "Dépôt",
     txt: "Effectuer une transaction",
     img: require("../assets/icons/iconographie/depot.png"),
     width: 58,
@@ -27,8 +27,8 @@ const DATA = [
     height: 50,
   },
   {
-    label: "Tranfert et achat de Pass",
-    txt: "Tranfert d'unités et achat de Pass",
+    label: "Transfert et achat de Pass",
+    txt: "Transfert d'unités et achat de Pass",
     img: require("../assets/icons/iconographie/pass.png"),
     width: 45,
     height: 67,
@@ -74,13 +74,11 @@ const Iconogrh = (props) => {
               height: 30,
             }}
           />
-          
         )}
         renderItem={({ item, index }) => (
           <Pressable
             onPress={() => {
-              
-                item.label == "Historique"
+              item.label == "Historique"
                 ? props.navigate("historique")
                 : item.label == "Retrait"
                 ? props.navigate("Scan")

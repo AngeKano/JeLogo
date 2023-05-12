@@ -2,22 +2,99 @@ const Data_Factures = [
   {
     nom: "Canal +",
     text: require("../assets/icons/factureItems/canal.png"),
+    backgroundColor: "black",
+    textColor: "white",
+    option: [
+      {
+        Label: "Reconduire mon abonement actuel",
+        option: [
+          {
+            Etape: "Numéro de réabonement CANAL +",
+          },
+          {
+            Etape: "Code secret",
+          },
+        ],
+      },
+      {
+        Label: "Changer d’offre",
+        option: [
+          {
+            Etape: "Numéro de réabonement CANAL +",
+          },
+          {
+            Etape: "Code secret",
+          },
+        ],
+      },
+      {
+        Label: "Consulter / Regulariser mon solde impayé",
+        option: [
+          {
+            Etape: "Numéro de réabonement CANAL +",
+          },
+          {
+            Etape: "Code secret",
+          },
+        ],
+      },
+    ],
   },
   {
     nom: "CIE",
     text: require("../assets/icons/factureItems/cie.png"),
+    backgroundColor: "#F1892A",
+    textColor: "white",
+    option: [
+      {
+        Etape: "Numero identifiant CIE",
+      },
+      {
+        Etape: "Code secret",
+      },
+    ],
   },
   {
     nom: "SODECI",
     text: require("../assets/icons/factureItems/sodeci.png"),
+    backgroundColor: "#00AC67",
+    textColor: "white",
+    option: [
+      {
+        Etape: "Numero identifiant CIE",
+      },
+      {
+        Etape: "Code secret",
+      },
+    ],
   },
   {
-    nom: "pont HKB",
+    nom: "Pont HKB",
     text: require("../assets/icons/factureItems/hkb.png"),
+    backgroundColor: "#00AC67",
+    textColor: "white",
+    option: [
+      {
+        Etape: "Numero de badget HKB",
+      },
+      {
+        Etape: "Code secret",
+      },
+    ],
   },
   {
     nom: "StarTimes",
     text: require("../assets/icons/factureItems/startimes.png"),
+    backgroundColor: "#F1892A",
+    textColor: "white",
+    option: [
+      {
+        Etape: "Numero d’abonné",
+      },
+      {
+        Etape: "Code secret",
+      },
+    ],
   },
 ];
 
@@ -43,6 +120,8 @@ const Data_Transaction = [
 const Data_Pass = [
   {
     nom: "Orange Money",
+    backgroundColor: "black",
+    textColor: "#FF7900",
     text: require("../assets/icons/Mobileservices.png"),
     option: [
       {
@@ -148,6 +227,8 @@ const Data_Pass = [
   },
   {
     nom: "Moov Money",
+    backgroundColor: "#0066B5",
+    textColor: "white",
     text: require("../assets/icons/Group12.png"),
     option: [
       {
@@ -255,6 +336,8 @@ const Data_Pass = [
 
   {
     nom: "MTN Money",
+    backgroundColor: "#FFC403",
+    textColor: "black",
     text: require("../assets/icons/Group13.png"),
     option: [],
   },
@@ -305,7 +388,5 @@ const Test = [
     ],
   },
 ];
-const Test2 =[
-
-]
+const Test2 = [];
 export default { Data_Factures, Data_Transaction, Data_Pass, Test };

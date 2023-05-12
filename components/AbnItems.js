@@ -25,7 +25,7 @@ const renderItem = (data, item, navigate) => {
         alignItems: "center",
       }}
       onPress={() =>
-        navigate("Forfait", {
+        navigate("Abonement", {
           option: item.option,
           nom: data.nom,
           backgroundColor: data.backgroundColor,
@@ -41,7 +41,7 @@ const renderItem = (data, item, navigate) => {
   );
 };
 
-const ForItems = ({ data, navigate }) => {
+const AbnItems = ({ data, navigate }) => {
   const [visible, setVisible] = useState(false);
   const [forfait, setForfait] = useState("");
 
@@ -49,6 +49,8 @@ const ForItems = ({ data, navigate }) => {
   const [forYou, setForYou] = useState(false);
 
   const [modalVisible, setModalVisible] = useState(false);
+
+  console.log(data);
 
   const showModal = () => {
     setModalVisible(true);
@@ -223,32 +225,37 @@ const ForItems = ({ data, navigate }) => {
           Object.keys(item).length == 2 ? (
             renderItem(data, item, navigate)
           ) : (
-            <Pressable
-              onPress={() => {
-                setVisible(!visible);
-                setForfait(item.Label);
-              }}
-              style={{
-                paddingVertical: 10,
-                borderBottomWidth: 2,
-                borderBottomColor: data.backgroundColor,
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-              }}
-            >
-              <Text style={{ fontFamily: "Nunito-Medium", fontSize: 17 }}>
-                {item.Label}
+            <View style={{ alignItems: "center", marginVertical: 25, gap: 10 }}>
+              <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 17 }}>
+                {item.Etape}
               </Text>
-            </Pressable>
+              <TextInput
+                style={[
+                  styles.TextInput,
+                  {
+                    width: item.Etape == "Code secret" ? "13%" : "37%",
+                  },
+                ]}
+                placeholder={
+                  item.Etape == "Code secret" ? "* * * *" : "0X XX XX XX XX"
+                }
+                keyboardType="numeric"
+                secureTextEntry={item.Etape == "Code secret" ? true : false}
+                maxLength={item.Etape == "Code secret" ? 4 : 10}
+                onSubmitEditing={() => showModal()}
+              />
+            </View>
           )
         }
       />
+      <Pressable onPress={() => showModal()} style={styles.BtnPrinc}>
+        <Text style={styles.BtnPrincTxt}>Confirmé</Text>
+      </Pressable>
     </>
   );
 };
 
-export default ForItems;
+export default AbnItems;
 
 const styles = StyleSheet.create({
   visible: {
@@ -256,7 +263,6 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   TextInput: {
-    width: "53%",
     borderBottomWidth: 1,
     borderBottomColor: "#ABB0BC",
     fontSize: 17,
@@ -270,6 +276,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     marginVertical: 20,
+    alignSelf: "center",
+    justifyContent: "flex-end",
   },
   BtnPrincTxt: {
     fontFamily: "Nunito-Medium",

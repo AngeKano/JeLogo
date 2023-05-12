@@ -25,12 +25,16 @@ const VerificationN22 = ({ navigation: { navigate } }) => {
   }
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Image
-        source={require("../assets/playstore.png")}
-        style={{ width: 172, height: 39 }}
-      />
+      <View
+        style={{ backgroundColor: "#0372C1", padding: 10, borderRadius: 5 }}
+      >
+        <Image
+          source={require("../assets/playstore.png")}
+          style={{ width: 172, height: 39 }}
+        />
+      </View>
       <Text style={styles.FirstText}>
-        Bienvenu sur l’application <Text style={styles.span}>JELOGO</Text>
+        Bienvenue sur l’application <Text style={styles.span}>JELOGO</Text>
       </Text>
       <View
         style={{
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
     marginTop: 116,
   },
   FirstText: {
-    marginTop: 63,
+    marginTop: 43,
     fontFamily: "Nunito-Regular",
     fontSize: 18,
   },
