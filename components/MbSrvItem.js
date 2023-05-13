@@ -18,7 +18,14 @@ const MbSrvItem = (props) => {
       renderItem={({ item }) => (
         <Pressable
           onPress={() => {
-            item.option
+            item.option && item.pass
+              ? props.navigate("Forfait", {
+                  option: item.option,
+                  nom: item.nom,
+                  backgroundColor: item.backgroundColor,
+                  textColor: item.textColor,
+                })
+              : item.option
               ? props.navigate("Abonement", {
                   option: item.option,
                   nom: item.nom,

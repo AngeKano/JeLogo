@@ -2,10 +2,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   Image,
   Pressable,
-  Keyboard,
 } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";

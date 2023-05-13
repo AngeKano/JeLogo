@@ -10,7 +10,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Camera } from "expo-camera";
 import { shareAsync } from "expo-sharing";
 import * as MediaLibrary from "expo-media-library";
-import { set } from "react-native-reanimated";
 
 const CamScan = () => {
   let cameraRef = useRef();

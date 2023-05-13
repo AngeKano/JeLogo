@@ -119,6 +119,7 @@ const Data_Transaction = [
 
 const Data_Pass = [
   {
+    pass: true,
     nom: "Orange Money",
     backgroundColor: "black",
     textColor: "#FF7900",
@@ -226,6 +227,7 @@ const Data_Pass = [
     ],
   },
   {
+    pass: true,
     nom: "Moov Money",
     backgroundColor: "#0066B5",
     textColor: "white",
@@ -335,6 +337,7 @@ const Data_Pass = [
   },
 
   {
+    pass: true,
     nom: "MTN Money",
     backgroundColor: "#FFC403",
     textColor: "black",
@@ -343,50 +346,40 @@ const Data_Pass = [
   },
 ];
 
-const Test = [
+const Data_Social_Media = [
   {
-    nom: "Papa",
-    enfant: [
-      {
-        nom: "ano",
-        enfant: [
-          {
-            nom: "mm",
-          },
-          {
-            nom: "tte",
-          },
-        ],
-      },
-      {
-        nom: "ange",
-        enfant: [
-          {
-            nom: "stph",
-          },
-        ],
-      },
-      {
-        nom: "grc",
-        enfant: [
-          {
-            nom: "nacj",
-          },
-          {
-            nom: "jr",
-          },
-        ],
-      },
-    ],
+    nom: "Twitter",
+    img: require("../assets/icons/Twitter.png"),
   },
   {
-    nom: "Maman",
-    enfant: [
-      {
-        nom: "retyre",
-      },
-    ],
+    nom: "Facebook",
+    img: require("../assets/icons/Facebook.png"),
+  },
+  {
+    nom: "Whatsapp",
+    img: require("../assets/icons/WhatsApp.png"),
+  },
+  {
+    nom: "Telegram",
+    img: require("../assets/icons/Telegram.png"),
+  },
+  {
+    nom: "Instagram",
+    img: require("../assets/icons/Instagram.png"),
+  },
+  {
+    nom: "Copy",
+    img: require("../assets/icons/copy.png"),
+  },
+  {
+    nom: "docs",
+    img: require("../assets/icons/docs.png"),
   },
 ];
-const Test2 = [];
-export default { Data_Factures, Data_Transaction, Data_Pass, Test };
+
+export default {
+  Data_Factures,
+  Data_Transaction,
+  Data_Pass,
+  Data_Social_Media,
+};

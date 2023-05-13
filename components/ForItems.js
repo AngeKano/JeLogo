@@ -133,7 +133,7 @@ const ForItems = ({ data, navigate }) => {
             }}
           >
             <Text style={{ fontSize: 20, fontFamily: "Nunito-Light" }}>
-              Confirmé l'achat du forfait suivant :
+              Confirmer l'achat du forfait suivant :
             </Text>
             <Text style={{ fontSize: 21, fontFamily: "Nunito-Bold" }}>
               {forfait}
@@ -158,7 +158,7 @@ const ForItems = ({ data, navigate }) => {
                   }}
                 ></View>
                 <Text style={{ fontSize: 17, fontFamily: "Nunito-Regular" }}>
-                  Confirmé pour soi même
+                  Confirmer pour soi même
                 </Text>
               </Pressable>
               <Pressable
@@ -179,7 +179,7 @@ const ForItems = ({ data, navigate }) => {
                   }}
                 ></View>
                 <Text style={{ fontSize: 17, fontFamily: "Nunito-Regular" }}>
-                  Confirmé pour un(e) autre
+                  Confirmer pour un(e) autre
                 </Text>
               </Pressable>
               <View
@@ -211,7 +211,7 @@ const ForItems = ({ data, navigate }) => {
             </View>
 
             <Pressable onPress={() => showModal()} style={styles.BtnPrinc}>
-              <Text style={styles.BtnPrincTxt}>Confirmé</Text>
+              <Text style={styles.BtnPrincTxt}>Confirmer</Text>
             </Pressable>
           </Pressable>
         </Pressable>

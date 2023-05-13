@@ -1,4 +1,3 @@
-import { Button, StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Princ from "../pages/Princ";
@@ -41,5 +40,3 @@ const AccScreens = () => {
 };
 
 export default AccScreens;
-
-const styles = StyleSheet.create({});

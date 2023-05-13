@@ -86,12 +86,7 @@ const CustomDrawerContent = (props) => {
             onPress={() => {
               props.navigation.navigate("Princ");
             }}
-            icon={() => (
-              <Image
-                source={require("../assets/icons/VectorAcc.png")}
-                style={{ width: 20, height: 20 }}
-              />
-            )}
+            icon={() => <AntDesign name="home" size={20} color="black" />}
             style={{ marginTop: 90, paddingHorizontal: 40 }}
           />
         </View>
@@ -102,12 +97,7 @@ const CustomDrawerContent = (props) => {
             onPress={() => {
               props.navigation.navigate("compte");
             }}
-            icon={() => (
-              <Image
-                source={require("../assets/icons/VectorUser.png")}
-                style={{ width: 17, height: 20 }}
-              />
-            )}
+            icon={() => <AntDesign name="user" size={20} color="black" />}
             style={{ paddingHorizontal: 40 }}
           />
         </View>
@@ -135,7 +125,7 @@ const CustomDrawerContent = (props) => {
             style={{ paddingHorizontal: 40 }}
           />
         </View>
-     
+
         <View style={{ flex: 1, gap: 19, marginHorizontal: 40 }}>
           <Pressable
             onPress={() => {

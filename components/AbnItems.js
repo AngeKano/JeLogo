@@ -3,14 +3,12 @@ import {
   Text,
   FlatList,
   View,
-  Button,
   Pressable,
   Modal,
   TextInput,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState } from "react";
-import Data from "./Data";
 
 const renderItem = (data, item, navigate) => {
   return (
@@ -135,7 +133,7 @@ const AbnItems = ({ data, navigate }) => {
             }}
           >
             <Text style={{ fontSize: 20, fontFamily: "Nunito-Light" }}>
-              Confirmé l'achat du forfait suivant :
+              Confirmer l'achat du forfait suivant :
             </Text>
             <Text style={{ fontSize: 21, fontFamily: "Nunito-Bold" }}>
               {forfait}
@@ -160,7 +158,7 @@ const AbnItems = ({ data, navigate }) => {
                   }}
                 ></View>
                 <Text style={{ fontSize: 17, fontFamily: "Nunito-Regular" }}>
-                  Confirmé pour soi même
+                  Confirmer pour soi même
                 </Text>
               </Pressable>
               <Pressable
@@ -181,7 +179,7 @@ const AbnItems = ({ data, navigate }) => {
                   }}
                 ></View>
                 <Text style={{ fontSize: 17, fontFamily: "Nunito-Regular" }}>
-                  Confirmé pour un(e) autre
+                  Confirmer pour un(e) autre
                 </Text>
               </Pressable>
               <View
@@ -213,7 +211,7 @@ const AbnItems = ({ data, navigate }) => {
             </View>
 
             <Pressable onPress={() => showModal()} style={styles.BtnPrinc}>
-              <Text style={styles.BtnPrincTxt}>Confirmé</Text>
+              <Text style={styles.BtnPrincTxt}>Confirmer</Text>
             </Pressable>
           </Pressable>
         </Pressable>
@@ -249,7 +247,7 @@ const AbnItems = ({ data, navigate }) => {
         }
       />
       <Pressable onPress={() => showModal()} style={styles.BtnPrinc}>
-        <Text style={styles.BtnPrincTxt}>Confirmé</Text>
+        <Text style={styles.BtnPrincTxt}>Confirmer</Text>
       </Pressable>
     </>
   );
