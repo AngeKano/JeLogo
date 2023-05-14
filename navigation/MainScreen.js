@@ -8,7 +8,7 @@ import HeaderRight from "../components/HeaderRight";
 
 const Drawer = createDrawerNavigator();
 
-const MainScreen = ({ navigation: { navigate } }) => {
+const MainScreen = () => {
   return (
     <Drawer.Navigator
       initialRouteName="accueil"

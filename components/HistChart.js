@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, View } from "react-native";
+import React, { memo } from "react";
 import { LineChart } from "react-native-chart-kit";
 
 const HistChart = () => {
@@ -50,6 +50,6 @@ const HistChart = () => {
   );
 };
 
-export default HistChart;
+export default memo(HistChart);
 
 const styles = StyleSheet.create({});

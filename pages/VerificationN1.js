@@ -1,15 +1,11 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-} from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
+import VerifItem from "../components/VerifItem";
+import BtnItem from "../components/BtnItem";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,19 +29,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <View
-        style={{ backgroundColor: "#0372C1", padding: 10, borderRadius: 5 }}
-      >
-        <Image
-          source={require("../assets/playstore.png")}
-          style={{ width: 172, height: 39 }}
-        />
-      </View>
-
-      <Text style={styles.FirstText}>
-        Bienvenue sur l’application <Text style={styles.span}>JELOGO</Text>
-      </Text>
-      <Text style={styles.scndText}>Entrez votre numéro de compte</Text>
+      <VerifItem text="Entrez votre numéro de compte" />
       <View style={styles.ViewInputText}>
         <View style={styles.ViewInputText.prefix}>
           <Image source={require("../assets/icons/Group.png")} />
@@ -61,12 +45,10 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
         />
       </View>
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 40 }}>
-        <Pressable
-          onPress={() => navigate("verificationN21")}
-          style={styles.BtnPrinc}
-        >
-          <Text style={styles.BtnPrincTxt}>Continuer</Text>
-        </Pressable>
+        <BtnItem
+          text="Continuer"
+          navigation={() => navigate("verificationN21")}
+        />
       </View>
     </View>
   );
@@ -80,19 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3F3",
     alignItems: "center",
     marginTop: 116,
-  },
-
-  FirstText: {
-    marginTop: 43,
-    fontFamily: "Nunito-Regular",
-    fontSize: 18,
-  },
-  span: {
-    fontFamily: "Nunito-Black",
-  },
-  scndText: {
-    fontFamily: "Nunito-Medium",
-    fontSize: 21,
   },
   ViewInputText: {
     prefix: {
@@ -118,19 +87,5 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ABB0BC",
     fontSize: 17,
     fontFamily: "Nunito-Medium",
-  },
-  BtnPrinc: {
-    width: 200,
-    height: 50,
-    padding: 10,
-    backgroundColor: "#0372C1",
-    alignItems: "center",
-    borderRadius: 10,
-    justifyContent: "flex-end",
-  },
-  BtnPrincTxt: {
-    fontFamily: "Nunito-Medium",
-    fontSize: 21,
-    color: "white",
   },
 });

@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, Button, Image, Pressable } from "react-native";
-import React, { useRef, useCallback, useState } from "react";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TextInput } from "react-native-gesture-handler";
+import VerifItem from "../components/VerifItem";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,17 +25,7 @@ const VerificationN22 = ({ navigation: { navigate } }) => {
   }
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <View
-        style={{ backgroundColor: "#0372C1", padding: 10, borderRadius: 5 }}
-      >
-        <Image
-          source={require("../assets/playstore.png")}
-          style={{ width: 172, height: 39 }}
-        />
-      </View>
-      <Text style={styles.FirstText}>
-        Bienvenue sur l’application <Text style={styles.span}>JELOGO</Text>
-      </Text>
+      <VerifItem />
       <View
         style={{
           flex: 1,
@@ -112,14 +102,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3F3",
     alignItems: "center",
     marginTop: 116,
-  },
-  FirstText: {
-    marginTop: 43,
-    fontFamily: "Nunito-Regular",
-    fontSize: 18,
-  },
-  span: {
-    fontFamily: "Nunito-Black",
   },
   txtPrint: {
     fontFamily: "Nunito-Medium",

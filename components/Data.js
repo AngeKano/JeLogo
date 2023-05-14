@@ -335,7 +335,6 @@ const Data_Pass = [
       },
     ],
   },
-
   {
     pass: true,
     nom: "MTN Money",
@@ -377,9 +376,54 @@ const Data_Social_Media = [
   },
 ];
 
+const Data_Iconographie = [
+  {
+    label: "Dépôt",
+    txt: "Effectuer une transaction",
+    img: require("../assets/icons/iconographie/depot.png"),
+    width: 58,
+    height: 46,
+  },
+  {
+    label: "Retrait",
+    txt: "Retirer votre argent en toute securité",
+    img: require("../assets/icons/iconographie/cash.png"),
+    width: 52,
+    height: 45,
+  },
+  {
+    label: "Recharger mon solde",
+    txt: "Recharger votre solde depuis votre operateur",
+    img: require("../assets/icons/iconographie/money.png"),
+    width: 50,
+    height: 50,
+  },
+  {
+    label: "Transfert et achat de Pass",
+    txt: "Transfert d'unités et achat de Pass",
+    img: require("../assets/icons/iconographie/pass.png"),
+    width: 45,
+    height: 67,
+  },
+  {
+    label: "Paiements des factures",
+    txt: "Paiements des factures et services",
+    img: require("../assets/icons/iconographie/facture.png"),
+    width: 46,
+    height: 42,
+  },
+  {
+    label: "Historique",
+    img: require("../assets/icons/iconographie/historique.png"),
+    width: 48,
+    height: 47,
+  },
+];
+
 export default {
   Data_Factures,
   Data_Transaction,
   Data_Pass,
   Data_Social_Media,
+  Data_Iconographie
 };
