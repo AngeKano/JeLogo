@@ -420,10 +420,55 @@ const Data_Iconographie = [
   },
 ];
 
+const Data_Date = [
+  { nom: "Janvier" },
+  { nom: "Fevrier" },
+  { nom: "Mars" },
+  { nom: "Avril" },
+  { nom: "Mai" },
+  { nom: "Juin" },
+  { nom: "Juillet" },
+  { nom: "Aout" },
+  { nom: "Septembre" },
+  { nom: "Octobre" },
+  { nom: "Novembre" },
+  { nom: "Decembre" },
+];
+const Data_Operation = [
+  { nom: "Tout" },
+  { nom: "Dépense" },
+  { nom: "Recharger" },
+];
+
+const Data_Image = [
+  {
+    img: require("../assets/icons/Mobileservices.png"),
+  },
+  {
+    img: require("../assets/icons/Group14.png"),
+  },
+  {
+    img: require("../assets/icons/Group13.png"),
+  },
+  {
+    img: require("../assets/icons/Group12.png"),
+  },
+];
+
+const Data_Null = [
+  {
+    null: "null",
+  },
+];
+
 export default {
   Data_Factures,
   Data_Transaction,
   Data_Pass,
   Data_Social_Media,
-  Data_Iconographie
+  Data_Iconographie,
+  Data_Date,
+  Data_Operation,
+  Data_Image,
+  Data_Null,
 };

@@ -31,9 +31,6 @@ const HistChart = () => {
           decimalPlaces: 0, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(197, 226, 245, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(33, 33, 33, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
           propsForDots: {
             r: "5",
             strokeWidth: "2",
@@ -43,7 +40,6 @@ const HistChart = () => {
         bezier
         style={{
           marginVertical: 8,
-          borderRadius: 10,
         }}
       />
     </View>

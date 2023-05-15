@@ -1,30 +1,9 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React, { useCallback } from "react";
-import { useFonts } from "expo-font";
-
-import * as SplashScreen from "expo-splash-screen";
-
-SplashScreen.preventAutoHideAsync();
+import React from "react";
 
 const News = () => {
-  const [fontsLoaded] = useFonts({
-    "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
-    "Nunito-SemiBold": require("../assets/fonts/Nunito-SemiBold.ttf"),
-    "Nunito-Medium": require("../assets/fonts/Nunito-Medium.ttf"),
-    "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
   return (
-    <View onLayout={onLayoutRootView} style={styles.News}>
+    <View style={styles.News}>
       <Text style={styles.smTxt}>Profitez des soldes </Text>
       <Text style={styles.lrgTxt}>Gagnez jusqu’a 100.000 XOF</Text>
       <Text style={styles.txt}>

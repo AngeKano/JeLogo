@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Pressable } from "react-native";
+import { StyleSheet, Text, Pressable, View } from "react-native";
 import React, { useState, useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -27,18 +27,14 @@ const HistItems = (props) => {
 
   return (
     <Pressable onLayout={onLayoutRootView} onPress={() => setActive(!active)}>
-      <LinearGradient
-        style={[styles.container]}
-        colors={
-          active || props.active
-            ? ["#0372C1", "#034676"]
-            : ["#BDBDBD", "#BDBDBD"]
-        }
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0.5, y: 0.5 }}
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: active || props.active ? "#0372C1" : "#BDBDBD" },
+        ]}
       >
         <Text style={styles.txt}>{props.label}</Text>
-      </LinearGradient>
+      </View>
     </Pressable>
   );
 };
@@ -57,20 +53,3 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito-Bold",
   },
 });
-
-// import { StyleSheet, Text, View } from "react-native";
-// import React from "react";
-
-// const ItemHist = () => {
-//   return (
-//     <View style={styles.container}>
-//       <Text>nssd</Text>
-//     </View>
-//   );
-// };
-
-// export default ItemHist;
-
-// const styles = StyleSheet.create({
-
-// });

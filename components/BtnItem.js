@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0372C1",
     alignItems: "center",
     borderRadius: 10,
+    alignSelf: "center",
   },
   BtnPrincTxt: {
     fontFamily: "Nunito-Medium",

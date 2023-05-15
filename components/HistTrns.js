@@ -1,26 +1,13 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
 
 const HistTrns = (props) => {
-  const BD = [
-    {
-      img: require("../assets/icons/Mobileservices.png"),
-    },
-    {
-      img: require("../assets/icons/Group14.png"),
-    },
-    {
-      img: require("../assets/icons/Group13.png"),
-    },
-    {
-      img: require("../assets/icons/Group12.png"),
-    },
-  ];
+
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -39,12 +26,12 @@ const HistTrns = (props) => {
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <Image
-        source={BD[props.num].img}
+        source={props.img}
         style={{ borderRadius: 200, width: 45, height: 45 }}
       />
 
       <View style={styles.allTxt}>
-        <Text style={styles.txt1}>Dépôt sur votre compte</Text>
+        <Text style={styles.txt1}>Dépôt sur compte</Text>
         <Text style={styles.txt2}>20h 30mn</Text>
       </View>
       <Text style={styles.txt3}>10 000 FCFA</Text>

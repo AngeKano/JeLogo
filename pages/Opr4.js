@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, Button, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TextInput } from "react-native-gesture-handler";
+import BtnItem from "../components/BtnItem";
 SplashScreen.preventAutoHideAsync();
 
 const Opr4 = ({ route, navigation: { navigate } }) => {
@@ -39,17 +39,15 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
           marginBottom: 40,
         }}
       >
-        <Pressable
-          onPress={() =>
+        <BtnItem
+          text="A un ami"
+          navigation={() =>
             navigate("Princ", {
               label: label,
               img: img,
             })
           }
-          style={styles.BtnPrinc}
-        >
-          <Text style={styles.BtnPrincTxt}>A un ami</Text>
-        </Pressable>
+        />
         <Pressable
           onPress={() =>
             navigate("Princ", {

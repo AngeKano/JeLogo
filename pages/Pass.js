@@ -3,8 +3,6 @@ import {
   Text,
   View,
   SafeAreaView,
-  Pressable,
-  Button,
 } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";

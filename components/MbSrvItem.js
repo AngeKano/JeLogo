@@ -1,10 +1,9 @@
-import { StyleSheet, Image, FlatList, Pressable, Text } from "react-native";
-import React from "react";
-import DataMen from "./Data";
+import { Image, FlatList, Pressable } from "react-native";
+import React, { memo } from "react";
+import Data from "./Data";
 
 const MbSrvItem = (props) => {
-  const { Data_Factures, Data_Pass, Data_Transaction } = DataMen;
-  console.log(props.label);
+  const { Data_Factures, Data_Pass, Data_Transaction } = Data;
   return (
     <FlatList
       data={
@@ -38,7 +37,6 @@ const MbSrvItem = (props) => {
                 });
           }}
         >
-          {console.log(item.option)}
           <Image
             source={item.text}
             style={{
@@ -50,20 +48,8 @@ const MbSrvItem = (props) => {
           />
         </Pressable>
       )}
-      style={styles.flatlist}
     />
   );
 };
 
-export default MbSrvItem;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexWrap: "wrap",
-    alignItems: "center",
-  },
-  flatlist: {
-    gap: 1,
-  },
-});
+export default memo(MbSrvItem);

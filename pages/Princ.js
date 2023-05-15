@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useCallback } from "react";
 import Iconogrh from "../components/Iconogrh";
 import ShowCash from "../components/ShowCash";

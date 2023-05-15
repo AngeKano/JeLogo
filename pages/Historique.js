@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useCallback } from "react";
-import HistItems from "../components/HistItems";
 import HistChart from "../components/HistChart";
-import HistTrns from "../components/HistTrns";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { ScrollView } from "react-native-gesture-handler";
 import ShowCash from "../components/ShowCash";
+import ItemDate from "../components/ItemDate";
+import ItemOperat from "../components/ItemOperat";
+import Data from "../components/Data";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,61 +27,41 @@ const Historique = ({ navigation: { navigate } }) => {
     return null;
   }
 
-  return (
-    <View onLayout={onLayoutRootView} style={styles.container}>
-      <View style={styles.Solde}>
-        <ShowCash />
-      </View>
+  const { Data_Null } = Data;
 
-      <View style={styles.Ctn}>
-        <Text style={styles.histTxt}>Historique de transaction</Text>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          style={styles.scrollCont}
-          horizontal={true}
-        >
-          <View style={styles.scrollH}>
-            <HistItems label="Janvier" active />
-            <HistItems label="Fevrier" />
-            <HistItems label="Mars" />
-            <HistItems label="Avril" />
-            <HistItems label="Mai" />
-            <HistItems label="Juin" />
-            <HistItems label="Juillet" />
-            <HistItems label="Aout" />
-            <HistItems label="Septembre" />
-            <HistItems label="Octobre" />
-            <HistItems label="Novembre" />
-            <HistItems label="Decembre" />
-          </View>
-        </ScrollView>
-        <View style={styles.chart}>
-          <HistChart />
+  const Header = () => {
+    return (
+      <View onLayout={onLayoutRootView} style={styles.container}>
+        <View style={styles.Solde}>
+          <ShowCash />
         </View>
-        <View style={styles.txtDps}>
-          <Text style={styles.txt1}>Dépenses Avril 2023</Text>
-          <Text style={styles.txt2}>Rechargements : 123 790 XOF</Text>
-          <Text style={styles.txt3}>Dépenses : 122 300 XOF</Text>
-          <Text style={styles.txt4}>Solde initial : 1 530 XOF</Text>
-        </View>
-        <Text style={styles.txtTransc}>Transactions</Text>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+        <View style={styles.Ctn}>
+          <Text style={styles.histTxt}>Historique de transaction</Text>
           <View style={styles.scrollH}>
-            <HistItems label="Tout" active />
-            <HistItems label="Dépense" />
-            <HistItems label="Rechargement" />
+            <ItemDate date />
           </View>
-        </ScrollView>
-        <Text style={styles.Auj}>Aujourd’hui</Text>
-        <View style={styles.listTranssc}>
-          <HistTrns num={0} />
-          <HistTrns num={1} />
-          <HistTrns num={3} />
-          <HistTrns num={2} />
+          <View style={styles.chart}>
+            <HistChart />
+          </View>
+          <View style={styles.txtDps}>
+            <Text style={styles.txt1}>Dépenses Avril 2023</Text>
+            <Text style={styles.txt2}>Rechargements : 123 790 XOF</Text>
+            <Text style={styles.txt3}>Dépenses : 122 300 XOF</Text>
+            <Text style={styles.txt4}>Solde initial : 1 530 XOF</Text>
+          </View>
+          <View style={styles.scrollH}>
+            <ItemDate />
+          </View>
+          <Text style={styles.Auj}>Aujourd’hui</Text>
+          <View style={styles.listTranssc}>
+            <ItemOperat />
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  };
+
+  return <FlatList data={Data_Null} renderItem={() => <Header />} />;
 };
 
 export default Historique;
@@ -100,21 +80,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
   },
-  scrollCont: {
-    marginBottom: 45,
-  },
   scrollH: {
-    flexDirection: "row",
-    gap: 20,
+    marginVertical: 30,
   },
   chart: {
     alignItems: "center",
-  },
-  sldTxt: {
-    fontFamily: "Nunito-SemiBold",
-    color: "white",
-    marginTop: 36,
-    textAlign: "center",
   },
   histTxt: {
     fontFamily: "Nunito-Bold",
@@ -122,8 +92,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     maxWidth: 193,
     alignItems: "center",
-    marginTop: 60,
-    marginBottom: 29,
+    marginVertical: 30,
     marginHorizontal: 39,
   },
   txtDps: {
@@ -144,21 +113,13 @@ const styles = StyleSheet.create({
   txt4: {
     fontFamily: "Nunito-Bold",
   },
-  txtTransc: {
-    marginTop: 51,
-    marginHorizontal: 39,
-    fontFamily: "Nunito-Regular",
-    color: "#4F4F4F",
-    marginBottom: 27,
-  },
   Auj: {
     fontFamily: "Nunito-Regular",
     marginHorizontal: 39,
+    marginVertical: 15,
     color: "#4F4F4F",
-    marginTop: 30,
   },
   listTranssc: {
-    gap: 30,
-    marginVertical: 25,
+    marginBottom: 40,
   },
 });

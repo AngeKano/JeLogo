@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -56,8 +56,6 @@ const Opr1 = ({ route, navigation: { navigate } }) => {
           <Text style={[styles.BtnPrincTxt, { color: "black" }]}>Retrait</Text>
         </Pressable>
       </View>
-
-      {/* <Button title="Opr2" onPress={() => navigate("Opr2")} /> */}
     </View>
   );
 };

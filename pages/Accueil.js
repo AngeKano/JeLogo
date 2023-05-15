@@ -1,17 +1,10 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Pressable,
-  Button,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useCallback } from "react";
 import MbSrvItem from "../components/MbSrvItem";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { ScrollView } from "react-native-gesture-handler";
 import News from "../components/News";
+import Data from "../components/Data";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,7 +16,7 @@ const Accueil = ({ route, navigation: { navigate } }) => {
     "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
   });
 
-  const { label,txt } = route.params;
+  const { label, txt } = route.params;
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -34,9 +27,11 @@ const Accueil = ({ route, navigation: { navigate } }) => {
     return null;
   }
 
-  return (
-    <ScrollView style={styles.container}>
-      <View onLayout={onLayoutRootView}>
+  const { Data_Null } = Data;
+
+  const Header = () => {
+    return (
+      <View onLayout={onLayoutRootView} style={styles.container}>
         <Text style={styles.textCont}>{txt}</Text>
         <View style={styles.items}>
           <MbSrvItem navigate={navigate} label={label} />
@@ -44,7 +39,15 @@ const Accueil = ({ route, navigation: { navigate } }) => {
         <Text style={styles.textCont}>News</Text>
         <News />
       </View>
-    </ScrollView>
+    );
+  };
+
+  return (
+    <FlatList
+      showsVerticalScrollIndicator={false}
+      data={Data_Null}
+      renderItem={() => <Header />}
+    />
   );
 };
 
@@ -53,7 +56,8 @@ export default Accueil;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingBottom: 40,
+    paddingHorizontal: 10,
   },
   textCont: {
     fontSize: 30,
