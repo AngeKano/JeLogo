@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#0372C1"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ange002.jelogo"
@@ -32,6 +30,7 @@
       "eas": {
         "projectId": "7405a835-0b28-4a35-b64c-5e16bf855106"
       }
-    }
+    },
+    "plugins": ["expo-image-picker"]
   }
 }

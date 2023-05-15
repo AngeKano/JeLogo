@@ -3,10 +3,15 @@ import React, { useCallback, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { TextInput } from "react-native-gesture-handler";
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import AvatarPermission from "../utilies/AvatarPermission";
+import * as ImagePicker from "expo-image-picker";
 SplashScreen.preventAutoHideAsync();
 
 const Compte = ({ navigation: { navigate } }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [imageUser, setImgUser] = useState(null);
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-SemiBold": require("../assets/fonts/Nunito-SemiBold.ttf"),
@@ -22,9 +27,21 @@ const Compte = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
+
+  const handlePickUser = async () => {
+    AvatarPermission.getCameraPermission();
+    let resultat = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+    });
+
+    if (!resultat.canceled) {
+      setImgUser(resultat.uri);
+    }
+  };
   return (
     <View onPress={onLayoutRootView} style={styles.container}>
-      {/* Modal */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -56,7 +73,7 @@ const Compte = ({ navigation: { navigate } }) => {
               <View style={styles.itmCalnd}>
                 <Text style={styles.txtCalnd}>17 Mars 1978</Text>
                 <View style={styles.btnCalnd}>
-                  <Image source={require("../assets/icons/calendar.png")} />
+                  <AntDesign name="calendar" size={24} color="black" />
                 </View>
               </View>
             </View>
@@ -72,42 +89,50 @@ const Compte = ({ navigation: { navigate } }) => {
         </Pressable>
       </Modal>
 
-      {/* endModal */}
-
-      <View style={styles.princUser}>
+      <Pressable
+        style={styles.princUser}
+        onPress={() => {
+          handlePickUser();
+        }}
+      >
         <Image
-          source={require("../assets/icons/UserImageV1.png")}
-          style={{ width: 125, height: 125 }}
+          source={
+            imageUser == null
+              ? require("../assets/user/4800_1_05.jpg")
+              : {
+                  uri: imageUser,
+                }
+          }
+          style={{ width: 125, height: 125, borderRadius: 100 }}
         />
-        <Image
-          source={require("../assets/icons/plus.png")}
+        <AntDesign
+          name="pluscircleo"
+          size={24}
+          color="black"
           style={styles.plus}
         />
         <Text style={styles.txtName}>Guy Espoir KOUMAN</Text>
-      </View>
+      </Pressable>
+
       <View style={styles.itemsInfos}>
         <View style={styles.itemIfon}>
-          <Image
-            source={require("../assets/icons/mail.png")}
-            style={styles.mail}
-          />
+          <AntDesign name="mail" size={24} color="black" />
           <Text style={styles.txtIfon}>guyespoirkouman@gmail.com</Text>
         </View>
         <View style={styles.itemIfon}>
-          <Image
-            source={require("../assets/icons/phone.png")}
-            style={styles.mail}
-          />
+          <AntDesign name="phone" size={24} color="black" />
           <Text style={styles.txtIfon}>+225 0707869131</Text>
         </View>
         <View style={styles.itemIfon}>
-          <Image
-            source={require("../assets/icons/calendar.png")}
-            style={styles.mail}
-          />
+          <AntDesign name="calendar" size={24} color="black" />
           <Text style={styles.txtIfon}>17 Mars 1978</Text>
         </View>
+        <View style={styles.itemIfon}>
+          <MaterialIcons name="gps-fixed" size={24} color="black" />
+          <Text style={styles.txtIfon}>Angré Djorobite</Text>
+        </View>
       </View>
+
       <View style={styles.viewBtn}>
         <Pressable
           onPress={() => setModalVisible(!modalVisible)}
@@ -205,8 +230,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 100,
     left: 175,
-    width: 20,
-    height: 20,
+    borderRadius: 20,
+    backgroundColor: "white",
   },
   txtName: {
     marginTop: 17,

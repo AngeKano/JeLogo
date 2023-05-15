@@ -2,7 +2,6 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Princ from "../pages/Princ";
 import Accueil from "../pages/Accueil";
-import Pass from "../pages/Pass";
 import Opr1 from "../pages/Opr1";
 import Opr2 from "../pages/Opr2";
 import Opr3 from "../pages/Opr3";
@@ -26,7 +25,6 @@ const AccScreens = () => {
     >
       <Stack.Screen name="Princ" component={Princ} />
       <Stack.Screen name="Accueil" component={Accueil} />
-      <Stack.Screen name="Pass" component={Pass} />
       <Stack.Screen name="Forfait" component={Forfait} />
       <Stack.Screen name="Abonement" component={Abonement} />
       <Stack.Screen name="Scan" component={Scan} />

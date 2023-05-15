@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, FlatList, Image } from "react-native";
-import React from "react";
+import React, { memo } from "react";
 import Data from "./Data";
 
 const ShareItems = () => {
@@ -9,7 +9,7 @@ const ShareItems = () => {
       data={Data_Social_Media}
       numColumns={4}
       keyExtractor={(item) => item.nom}
-      renderItem={({ index, item }) => (
+      renderItem={({ item }) => (
         <View style={styles.item}>
           <Image source={item.img} style={{ width: 50, height: 50 }} />
           <Text style={styles.txtItems}>{item.nom}</Text>
@@ -20,7 +20,7 @@ const ShareItems = () => {
   );
 };
 
-export default ShareItems;
+export default memo(ShareItems);
 
 const styles = StyleSheet.create({
   item: {

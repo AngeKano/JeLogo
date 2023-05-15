@@ -116,12 +116,12 @@ const CustomDrawerContent = (props) => {
         </View>
         <View style={[styles.drawerItem, { marginBottom: 60 }]}>
           <DrawerItem
-            label="Notification"
+            label="Paramètre"
             labelStyle={{ fontFamily: "Nunito-Regular" }}
             onPress={() => {
               props.navigation.navigate("compte");
             }}
-            icon={() => <AntDesign name="bells" size={17} color="black" />}
+            icon={() => <AntDesign name="setting" size={20} color="black" />}
             style={{ paddingHorizontal: 40 }}
           />
         </View>
