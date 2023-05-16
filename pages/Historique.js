@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, memo } from "react";
 import HistChart from "../components/HistChart";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -64,7 +64,7 @@ const Historique = ({ navigation: { navigate } }) => {
   return <FlatList data={Data_Null} renderItem={() => <Header />} />;
 };
 
-export default Historique;
+export default memo(Historique);
 
 const styles = StyleSheet.create({
   container: {

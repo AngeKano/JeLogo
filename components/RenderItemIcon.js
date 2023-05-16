@@ -6,7 +6,7 @@ const RenderItemIcon = ({ item, navigate }) => {
     <Pressable
       onPress={() => {
         item.label == "Historique"
-          ? navigate.navigate("historique")
+          ? navigate.navigate("Historique")
           : item.label == "Retrait"
           ? navigate.navigate("Scan")
           : navigate.navigate("Accueil", {

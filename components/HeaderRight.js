@@ -2,7 +2,7 @@ import { View, Pressable, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 
-const HeaderRight = () => {
+const HeaderRight = ({ navigate }) => {
   return (
     <View style={{ flexDirection: "row", gap: 5, marginRight: 10 }}>
       <View

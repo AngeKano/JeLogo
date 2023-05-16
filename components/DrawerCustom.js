@@ -104,7 +104,7 @@ const CustomDrawerContent = (props) => {
             label="Historique"
             labelStyle={{ fontFamily: "Nunito-Regular" }}
             onPress={() => {
-              props.navigation.navigate("historique");
+              props.navigation.navigate("Historique");
             }}
             icon={() => <AntDesign name="calendar" size={17} color="black" />}
             style={{

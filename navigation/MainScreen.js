@@ -8,10 +8,10 @@ import HeaderRight from "../components/HeaderRight";
 
 const Drawer = createDrawerNavigator();
 
-const MainScreen = () => {
+const MainScreen = ({ navigation: { navigate } }) => {
   return (
     <Drawer.Navigator
-      initialRouteName="accueil"
+      initialRouteName="Accueil"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerTitle: "",
@@ -21,14 +21,14 @@ const MainScreen = () => {
         name="AccScreens"
         component={AccScreens}
         options={{
-          headerRight: () => <HeaderRight />,
+          headerRight: () => <HeaderRight navigate={navigate} />,
         }}
       />
       <Drawer.Screen
-        name="historique"
+        name="Historique"
         component={Historique}
         options={{
-          headerRight: () => <HeaderRight />,
+          headerRight: () => <HeaderRight navigate={navigate} />,
         }}
       />
       <Drawer.Screen name="compte" component={Compte} />
