@@ -2,7 +2,6 @@ import { StyleSheet, Text, Pressable, View } from "react-native";
 import React, { useState, useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { LinearGradient } from "expo-linear-gradient";
 
 SplashScreen.preventAutoHideAsync();
 

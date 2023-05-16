@@ -3,14 +3,12 @@ import {
   Text,
   FlatList,
   View,
-  Button,
   Pressable,
   Modal,
   TextInput,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import React, { useState } from "react";
-import Data from "./Data";
+import React, { useState, memo } from "react";
 
 const renderItem = (data, item, navigate) => {
   return (
@@ -65,9 +63,6 @@ const ForItems = ({ data, navigate }) => {
         animationType="fade"
         transparent
         visible={modalVisible}
-        onRequestClose={() => {
-          console.log("Modal has been closed.");
-        }}
       >
         <View
           style={{
@@ -248,7 +243,7 @@ const ForItems = ({ data, navigate }) => {
   );
 };
 
-export default ForItems;
+export default memo(ForItems);
 
 const styles = StyleSheet.create({
   visible: {

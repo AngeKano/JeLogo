@@ -36,7 +36,6 @@ const CustomDrawerContent = (props) => {
   }
   return (
     <DrawerContentScrollView {...props}>
-      {/* Modal */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -58,7 +57,6 @@ const CustomDrawerContent = (props) => {
         </Pressable>
       </Modal>
 
-      {/* endModal */}
       <View onLayout={onLayoutRootView} style={styles.MenuContainer}>
         <ImageBackground
           style={{ height: 182 }}
@@ -158,8 +156,6 @@ const CustomDrawerContent = (props) => {
 export default CustomDrawerContent;
 
 const styles = StyleSheet.create({
-  // Modal
-
   centeredView: {
     flex: 1,
     justifyContent: "flex-end",
@@ -178,7 +174,6 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito-Medium",
   },
 
-  // enModal
   drawerItem: {
     flexDirection: "column",
   },

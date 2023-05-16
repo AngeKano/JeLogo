@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import React, { memo } from "react";
 import { LineChart } from "react-native-chart-kit";
 
@@ -22,7 +22,7 @@ const HistChart = () => {
         }}
         width={300} // from react-native
         height={220}
-        yAxisSuffix="000"
+        yAxisSuffix="00"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
           backgroundColor: "#ffffff",
@@ -47,5 +47,3 @@ const HistChart = () => {
 };
 
 export default memo(HistChart);
-
-const styles = StyleSheet.create({});

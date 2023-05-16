@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
@@ -36,7 +36,6 @@ export default function App({ navigation: { navigate } }) {
       />
       {
         scanData && navigate("Princ")
-        // <Button title="Scan Again?" onPress={() => setScanData(undefined)} />
       }
       <View style={styles.scan}></View>
       <Text style={styles.txt}>Scanner le QR Code de la carte</Text>
