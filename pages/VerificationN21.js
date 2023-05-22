@@ -32,7 +32,7 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
   }
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <VerifItem text="Entrez votre mot de passe" />
+      <VerifItem text="Entrez votre code secret" />
       <PuceItem navigate={navigate} />
       <Text style={styles.TxtMdp}>Mot de passe oublié</Text>
 

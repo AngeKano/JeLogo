@@ -10,6 +10,7 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState, memo } from "react";
 import BtnItem from "./BtnItem";
+import { Button } from "react-native-web";
 
 const renderItem = (data, item, navigate) => {
   return (
@@ -40,42 +41,45 @@ const renderItem = (data, item, navigate) => {
   );
 };
 
-const renderItemFalse = (item) => {
-  
-  return (
-    <View
-      style={{
-        alignItems: "center",
-        marginVertical: 25,
-        gap: 10,
-      }}
-    >
-      <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 17 }}>
-        {item.Etape}
-      </Text>
-      <TextInput
-        style={[
-          styles.TextInput,
-          {
-            width: item.Etape == "Code secret" ? "13%" : "37%",
-          },
-        ]}
-        placeholder={item.Etape == "Code secret" ? "* * * *" : "0X XX XX XX XX"}
-        keyboardType="numeric"
-        secureTextEntry={item.Etape == "Code secret" ? true : false}
-        maxLength={item.Etape == "Code secret" ? 4 : 10}
-        onSubmitEditing={() => showModal()}
-      />
-    </View>
-  );
-};
-
 const AbnItems = ({ data, navigate }) => {
-  const [btnVisible, setBtnVisible] = useState(false);
+  const renderItemFalse = (item) => {
+    return (
+      <View
+        style={{
+          alignItems: "center",
+          marginVertical: 25,
+          gap: 10,
+        }}
+      >
+        <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 17 }}>
+          {item.Etape}
+        </Text>
+        <TextInput
+          style={[
+            styles.TextInput,
+            {
+              width: item.Etape == "Code secret" ? "13%" : "45%",
+            },
+          ]}
+          placeholder={
+            item.Etape == "Code secret" ? "* * * *" : "XXXXXXXXXXXXX"
+          }
+          keyboardType="numeric"
+          secureTextEntry={item.Etape == "Code secret" ? true : false}
+          maxLength={item.Etape == "Code secret" ? 4 : 14}
+          onSubmitEditing={() => showModal()}
+        />
+        {item.Etape == "Code secret" ? (
+          <View style={{ marginTop: 20 }}>
+            <BtnItem navigation={() => showModal()} text="Confirmer" />
+          </View>
+        ) : null}
+      </View>
+    );
+  };
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  console.log(data);
 
   const showModal = () => {
     setModalVisible(true);
@@ -91,9 +95,6 @@ const AbnItems = ({ data, navigate }) => {
         animationType="fade"
         transparent
         visible={modalVisible}
-        onRequestClose={() => {
-          console.log("Modal has been closed.");
-        }}
       >
         <View
           style={{
@@ -136,12 +137,6 @@ const AbnItems = ({ data, navigate }) => {
             : renderItemFalse(item)
         }
       />
-
-      {btnVisible ? (
-        <View style={{ marginTop: 20 }}>
-          <BtnItem navigation={() => showModal()} text="Confirmer" />
-        </View>
-      ) : null}
     </>
   );
 };

@@ -28,7 +28,7 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
       <Text style={styles.text}>{label}</Text>
       <Image source={img} style={{ width: 154, height: 154 }} />
       <Text style={styles.txtPwd}>
-        <Text style={styles.txtBld}>Félicitations !</Text> votre transfèrt à
+        <Text style={styles.txtBld}>Félicitations !</Text> votre transfert a
         bien été éffectué
       </Text>
       <View

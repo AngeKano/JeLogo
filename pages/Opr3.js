@@ -50,7 +50,7 @@ const Opr3 = ({ route, navigation: { navigate } }) => {
       </View>
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 30 }}>
         <BtnItem
-          text="Depot"
+          text="Depôt"
           navigation={() =>
             navigate("Opr4", {
               label: label,

@@ -1,17 +1,55 @@
 import { StyleSheet, Text, View, Pressable, Image, Modal } from "react-native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
+import { TextInput } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import AvatarPermission from "../utilies/AvatarPermission";
 import * as ImagePicker from "expo-image-picker";
+import { AuthContext } from "../context/AuthContext";
+import DateTimePicker from "@react-native-community/datetimepicker";
+
 SplashScreen.preventAutoHideAsync();
 
 const Compte = ({ navigation: { navigate } }) => {
+  ///
+  const [dateTime, setDateTime] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState("date");
+  const [show, setShow] = useState(false);
+
+  const onChange = (selectedDate) => {
+    setDateTime(new Date(selectedDate));
+    setDate(dateTime.toDateString());
+    setShow(false);
+  };
+
+  const showMode = () => {
+    if (Platform.OS === "android") {
+      setShow(true);
+      // for iOS, add a button that closes the picker
+    }
+    setMode("date");
+  };
+
+  ///
+
   const [modalVisible, setModalVisible] = useState(false);
-  const [imageUser, setImgUser] = useState(null);
+  const {
+    imageUser,
+    email,
+    nom,
+    numero,
+    date,
+    lieu,
+    setNumero,
+    setImageUser,
+    setEmail,
+    setNom,
+    setLieu,
+    setDate,
+  } = useContext(AuthContext);
+
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-SemiBold": require("../assets/fonts/Nunito-SemiBold.ttf"),
@@ -30,14 +68,14 @@ const Compte = ({ navigation: { navigate } }) => {
 
   const handlePickUser = async () => {
     AvatarPermission.getCameraPermission();
-    let resultat = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
+      quality: 1,
     });
-
-    if (!resultat.canceled) {
-      setImgUser(resultat.uri);
+    if (!result.canceled) {
+      setImageUser(result.assets[0].uri);
     }
   };
   return (
@@ -56,26 +94,73 @@ const Compte = ({ navigation: { navigate } }) => {
         >
           <Pressable onPress={() => {}} style={styles.modalView}>
             <View style={styles.enTete}>
-              <Image source={require("../assets/icons/modifIcon.png")} />
+              <AntDesign name="edit" size={30} color="black" />
               <Text style={styles.txtLabel}>Modifier vos données</Text>
             </View>
             <View style={styles.listInputs}>
-              <TextInput style={styles.TextInput} placeholder="Guy Espoire" />
-              <TextInput
-                style={styles.TextInput}
-                placeholder="guyespoirkouman@gmail.com"
-              />
-              <TextInput
-                style={styles.TextInput}
-                placeholder="+225 0151831681"
-                keyboardType="numeric"
-              />
-              <View style={styles.itmCalnd}>
-                <Text style={styles.txtCalnd}>17 Mars 1978</Text>
+              <View style={styles.inputStyle}>
+                <AntDesign name="user" size={24} color="black" />
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder="Nom"
+                  onChangeText={(textNom) => {
+                    setNom(textNom);
+                  }}
+                />
+              </View>
+              <View style={styles.inputStyle}>
+                <AntDesign name="mail" size={24} color="black" />
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder="Email"
+                  onChangeText={(textEmail) => {
+                    setEmail(textEmail);
+                  }}
+                />
+              </View>
+              <View style={styles.inputStyle}>
+                <AntDesign name="phone" size={24} color="black" />
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder={"Numero"}
+                  keyboardType="numeric"
+                  onChangeText={(textNumero) => {
+                    setNumero(textNumero);
+                  }}
+                />
+              </View>
+              <View style={styles.inputStyle}>
+                <MaterialIcons name="gps-fixed" size={24} color="black" />
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder={"Lieu"}
+                  onChangeText={(textLieu) => {
+                    setLieu(textLieu);
+                  }}
+                />
+              </View>
+              <Pressable
+                onPress={() => {
+                  showMode();
+                }}
+                style={styles.itmCalnd}
+              >
                 <View style={styles.btnCalnd}>
                   <AntDesign name="calendar" size={24} color="black" />
                 </View>
-              </View>
+                <Text style={styles.txtCalnd}>{dateTime.toDateString()}</Text>
+              </Pressable>
+              {show ? (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={dateTime}
+                  mode={mode}
+                  is24Hour={true}
+                  onChange={(e) => {
+                    onChange(e.nativeEvent.timestamp);
+                  }}
+                />
+              ) : null}
             </View>
             <Pressable
               onPress={() => {
@@ -96,13 +181,7 @@ const Compte = ({ navigation: { navigate } }) => {
         }}
       >
         <Image
-          source={
-            imageUser == null
-              ? require("../assets/user/4800_1_05.jpg")
-              : {
-                  uri: imageUser,
-                }
-          }
+          source={imageUser == 41 ? imageUser : { uri: imageUser }}
           style={{ width: 125, height: 125, borderRadius: 100 }}
         />
         <AntDesign
@@ -111,25 +190,25 @@ const Compte = ({ navigation: { navigate } }) => {
           color="black"
           style={styles.plus}
         />
-        <Text style={styles.txtName}>Guy Espoir KOUMAN</Text>
+        <Text style={styles.txtName}>{nom}</Text>
       </Pressable>
 
       <View style={styles.itemsInfos}>
         <View style={styles.itemIfon}>
           <AntDesign name="mail" size={24} color="black" />
-          <Text style={styles.txtIfon}>guyespoirkouman@gmail.com</Text>
+          <Text style={styles.txtIfon}>{email}</Text>
         </View>
         <View style={styles.itemIfon}>
           <AntDesign name="phone" size={24} color="black" />
-          <Text style={styles.txtIfon}>+225 0707869131</Text>
+          <Text style={styles.txtIfon}>+225 {numero}</Text>
         </View>
         <View style={styles.itemIfon}>
           <AntDesign name="calendar" size={24} color="black" />
-          <Text style={styles.txtIfon}>17 Mars 1978</Text>
+          <Text style={styles.txtIfon}>{date}</Text>
         </View>
         <View style={styles.itemIfon}>
           <MaterialIcons name="gps-fixed" size={24} color="black" />
-          <Text style={styles.txtIfon}>Angré Djorobite</Text>
+          <Text style={styles.txtIfon}>{lieu}</Text>
         </View>
       </View>
 
@@ -144,7 +223,6 @@ const Compte = ({ navigation: { navigate } }) => {
           onPress={() =>
             navigate("Accueil", {
               label: label,
-              img: img,
             })
           }
           style={[
@@ -185,6 +263,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ABB0BC",
     fontSize: 17,
     fontFamily: "Nunito-Regular",
+    width: "80%",
   },
   modalView: {
     gap: 40,
@@ -198,6 +277,7 @@ const styles = StyleSheet.create({
   },
   enTete: {
     alignItems: "center",
+    flexDirection: "row",
     gap: 9,
   },
   txtLabel: {
@@ -220,6 +300,10 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(3, 114, 193, 0.2)",
     borderRadius: 10,
   },
+  inputStyle: {
+    flexDirection: "row",
+    gap: 10,
+  },
 
   ///
   princUser: {
@@ -229,7 +313,7 @@ const styles = StyleSheet.create({
   plus: {
     position: "absolute",
     top: 100,
-    left: 175,
+    left: 85,
     borderRadius: 20,
     backgroundColor: "white",
   },

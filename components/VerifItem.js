@@ -35,5 +35,6 @@ const styles = StyleSheet.create({
   scndText: {
     fontFamily: "Nunito-Medium",
     fontSize: 21,
+    textAlign: 'center'
   },
 });

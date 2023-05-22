@@ -28,7 +28,7 @@ const VerificationN3 = ({ navigation: { replace } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <VerifItem text="Entrez le code de validation" />
+      <VerifItem text="Code de validation reçu par SMS" />
       <TextInput
         style={styles.TextInput}
         placeholder="XXXX"

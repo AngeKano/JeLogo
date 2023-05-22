@@ -36,7 +36,7 @@ const Historique = ({ navigation: { navigate } }) => {
           <ShowCash />
         </View>
         <View style={styles.Ctn}>
-          <Text style={styles.histTxt}>Historique de transaction</Text>
+          <Text style={styles.histTxt}>Historique des transactions</Text>
           <View style={styles.scrollH}>
             <ItemDate date />
           </View>

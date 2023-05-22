@@ -91,7 +91,7 @@ const ForItems = ({ data, navigate }) => {
                 textAlign: "center",
               }}
             >
-              Votre operation à bien été effectuée
+              Votre opération a bien été effectuée
             </Text>
           </View>
         </View>

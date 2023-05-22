@@ -1,15 +1,18 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
+import { AuthContext } from "../context/AuthContext";
 
 SplashScreen.preventAutoHideAsync();
 
-const VerificationN1 = ({ navigation: { navigate } }) => {
+const Login = ({ navigation: { navigate } }) => {
+  const { setNumero, setCode } = useContext(AuthContext);
+
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -29,7 +32,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <VerifItem text="Entrez votre numéro de compte" />
+      <VerifItem text="Entrez vos coordonnées" />
       <View style={styles.ViewInputText}>
         <View style={styles.ViewInputText.prefix}>
           <Image source={require("../assets/icons/Group.png")} />
@@ -41,28 +44,47 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
           placeholder="0X XX XX XX XX"
           keyboardType="numeric"
           maxLength={10}
-          onSubmitEditing={() => navigate("VerificationN21")}
+          onChange={(text) => {
+            setNumero(text.nativeEvent.text);
+          }}
+        />
+      </View>
+      <View style={[styles.ViewInputText, { marginTop: 20 }]}>
+        <View style={styles.ViewInputText.prefix}>
+          <Text style={styles.ViewInputText.text}>Code secret</Text>
+          <AntDesign name="Safety" size={20} color="black" />
+        </View>
+        <TextInput
+          style={styles.TextInputPwd}
+          placeholder="XXXX"
+          keyboardType="numeric"
+          maxLength={4}
+          secureTextEntry
+          onChange={(text) => {
+            setCode(text.nativeEvent.text);
+          }}
+          onSubmitEditing={() => navigate("verificationN3")}
         />
       </View>
       <Pressable
         onPress={() => {
-          navigate("login");
+          navigate("verificationN1");
         }}
       >
-        <Text style={styles.textLogin}>Se créer un compte</Text>
+        <Text style={styles.textLogin}>Se connecter</Text>
       </Pressable>
 
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 40 }}>
         <BtnItem
-          text="Continuer"
-          navigation={() => navigate("verificationN21")}
+          text="Inscription"
+          navigation={() => navigate("verificationN3")}
         />
       </View>
     </View>
   );
 };
 
-export default VerificationN1;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {
@@ -102,5 +124,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 22,
     color: "#0E9CFF",
+  },
+  TextInputPwd: {
+    height: "auto",
+    width: 70,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ABB0BC",
+    fontSize: 17,
+    letterSpacing: 8,
+    fontFamily: "Nunito-Medium",
   },
 });

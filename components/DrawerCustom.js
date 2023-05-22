@@ -7,16 +7,19 @@ import {
   Pressable,
   Modal,
 } from "react-native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import ShareItems from "./ShareItems";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { AntDesign } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { AuthContext } from "../context/AuthContext";
 
 SplashScreen.preventAutoHideAsync();
 
 const CustomDrawerContent = (props) => {
+  const { imageUser, email, nom } = useContext(AuthContext);
+
   const [modalVisible, setModalVisible] = useState(false);
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
@@ -70,12 +73,12 @@ const CustomDrawerContent = (props) => {
             style={styles.profil}
           >
             <Image
-              source={require("../assets/icons/UserImage.png")}
-              style={{ width: 80, height: 80 }}
+              source={imageUser == 41 ? imageUser : { uri: imageUser }}
+              style={{ width: 80, height: 80, borderRadius: 100 }}
             />
             <View style={{ marginHorizontal: 14 }}>
-              <Text style={styles.TxtName}>Guy Espoir</Text>
-              <Text style={styles.TxtMail}>guyespoirkouman@gmail.com</Text>
+              <Text style={styles.TxtName}>{nom}</Text>
+              <Text style={styles.TxtMail}>{email}</Text>
             </View>
           </Pressable>
           <DrawerItem
@@ -117,7 +120,7 @@ const CustomDrawerContent = (props) => {
             label="Paramètre"
             labelStyle={{ fontFamily: "Nunito-Regular" }}
             onPress={() => {
-              props.navigation.navigate("compte");
+              props.navigation.navigate("Parametre");
             }}
             icon={() => <AntDesign name="setting" size={20} color="black" />}
             style={{ paddingHorizontal: 40 }}

@@ -1,8 +1,11 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const ShowCash = () => {
+  const { montant } = useContext(AuthContext);
   const [cashVisible, setCashVisible] = useState(false);
+
   var payements = [];
   for (let pas = 0; pas < 5; pas++) {
     payements.push(<View key={pas} style={styles.btnItem}></View>);
@@ -33,7 +36,7 @@ const ShowCash = () => {
               },
             ]}
           >
-            123.233 FCFA
+            {montant} FCFA
           </Text>
         </View>
       </Pressable>

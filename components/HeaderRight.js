@@ -1,8 +1,10 @@
 import { View, Pressable, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const HeaderRight = ({ navigate }) => {
+  const { imageUser } = useContext(AuthContext);
   return (
     <View style={{ flexDirection: "row", gap: 5, marginRight: 10 }}>
       <View
@@ -19,8 +21,8 @@ const HeaderRight = ({ navigate }) => {
       </View>
       <Pressable onPress={() => navigate("compte")}>
         <Image
-          source={require("../assets/icons/UserImage.png")}
-          style={{ width: 40, height: 40 }}
+          source={imageUser == 41 ? imageUser : { uri: imageUser }}
+          style={{ width: 40, height: 40,  borderRadius: 100 }}
         />
       </Pressable>
     </View>

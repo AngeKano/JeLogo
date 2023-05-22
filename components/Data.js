@@ -61,7 +61,7 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Etape: "Numero identifiant CIE",
+        Etape: "Numero identifiant SODECI",
       },
       {
         Etape: "Code secret",
@@ -89,11 +89,12 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Etape: "Numero d’abonné",
+        Etape: "Numero d’abonné StarTimes",
       },
       {
         Etape: "Code secret",
       },
+      
     ],
   },
 ];
