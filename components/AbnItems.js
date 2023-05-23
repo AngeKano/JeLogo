@@ -80,7 +80,6 @@ const AbnItems = ({ data, navigate }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-
   const showModal = () => {
     setModalVisible(true);
     setTimeout(() => {
@@ -91,11 +90,7 @@ const AbnItems = ({ data, navigate }) => {
 
   return (
     <>
-      <Modal
-        animationType="fade"
-        transparent
-        visible={modalVisible}
-      >
+      <Modal animationType="fade" transparent visible={modalVisible}>
         <View
           style={{
             flex: 1,
@@ -123,7 +118,7 @@ const AbnItems = ({ data, navigate }) => {
                 textAlign: "center",
               }}
             >
-              Votre operation à bien été effectuée
+              Votre opération a bien été effectuée
             </Text>
           </View>
         </View>

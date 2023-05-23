@@ -6,10 +6,10 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Label: "Reconduire mon abonement actuel",
+        Label: "Reconduire mon abonnement actuel",
         option: [
           {
-            Etape: "Numéro de réabonement CANAL +",
+            Etape: "Numéro de réabonnement CANAL +",
           },
           {
             Etape: "Code secret",
@@ -20,7 +20,7 @@ const Data_Factures = [
         Label: "Changer d’offre",
         option: [
           {
-            Etape: "Numéro de réabonement CANAL +",
+            Etape: "Numéro de réabonnement CANAL +",
           },
           {
             Etape: "Code secret",
@@ -31,7 +31,7 @@ const Data_Factures = [
         Label: "Consulter / Regulariser mon solde impayé",
         option: [
           {
-            Etape: "Numéro de réabonement CANAL +",
+            Etape: "Numéro de réabonnement CANAL +",
           },
           {
             Etape: "Code secret",
