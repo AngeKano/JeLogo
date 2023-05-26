@@ -94,7 +94,6 @@ const Data_Factures = [
       {
         Etape: "Code secret",
       },
-      
     ],
   },
 ];
@@ -115,6 +114,10 @@ const Data_Transaction = [
   {
     nom: "Wave",
     text: require("../assets/icons/Group14.png"),
+  },
+  {
+    nom: "VISA",
+    text: require("../assets/icons/visa.png"),
   },
 ];
 
@@ -454,6 +457,10 @@ const Data_Image = [
   {
     img: require("../assets/icons/Group12.png"),
   },
+
+  {
+    img: require("../assets/icons/visa.png"),
+  },
 ];
 
 const Data_Null = [
@@ -461,6 +468,54 @@ const Data_Null = [
     null: "null",
   },
 ];
+
+const Data_Parametre = [
+  {
+    Label: "Modes de paiement",
+    option: [
+      {
+        Label: "Annuler un transfert d'argent",
+        icon: "money-bill",
+      },
+      {
+        Label: "Lire QR Code",
+        icon: "qrcode",
+      },
+    ],
+  },
+  {
+    Label: "Paramètres",
+    option: [
+      {
+        Label: "Changer de code secret",
+        icon: "lock",
+      },
+    ],
+  },
+  {
+    Label: "Aide et contact",
+    option: [
+      {
+        Label: "Partager l'application",
+        icon: "share-alt",
+      },
+      {
+        Label: "Où nous trouver",
+        icon: "location-arrow",
+      },
+      {
+        Label: "Nous contacter",
+        icon: "headphones",
+      },
+      {
+        Label: "À propos",
+        icon: "info-circle",
+      },
+    ],
+  },
+];
+
+const keyboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default {
   Data_Factures,
@@ -471,5 +526,7 @@ export default {
   Data_Date,
   Data_Operation,
   Data_Image,
+  Data_Parametre,
   Data_Null,
+  keyboard,
 };

@@ -34,22 +34,63 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
       <Text style={styles.txtPwd}>Transférez votre argent</Text>
 
       <View style={{ gap: 23, marginVertical: 30 }}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Numéro du dépôt"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Montant du dépôt"
-          keyboardType="numeric"
-          onSubmitEditing={() =>
-            navigate("Opr3", {
-              label: label,
-              img: img,
-            })
-          }
-        />
+        {label == "VISA" ? (
+          <>
+            <View style={{ flexDirection: "row", gap: 8 }}>
+              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
+                N° de carte:
+              </Text>
+              <TextInput
+                style={styles.TextInput}
+                placeholder="XXX XXX XXX 1234"
+                keyboardType="numeric"
+              />
+            </View>
+
+            <View style={{ flexDirection: "row", gap: 8 }}>
+              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
+                N° de telephone:
+              </Text>
+              <TextInput
+                style={styles.TextInput}
+                placeholder="0XXXXXXXX"
+                keyboardType="numeric"
+              />
+            </View>
+            <View style={{ flexDirection: "row", gap: 8 }}>
+              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
+                Montant:
+              </Text>
+              <TextInput
+                style={styles.TextInput}
+                placeholder="0XXXXX"
+                keyboardType="numeric"
+              />
+              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
+                XOF
+              </Text>
+            </View>
+          </>
+        ) : (
+          <>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Numéro du dépôt"
+              keyboardType="numeric"
+            />
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Montant du dépôt"
+              keyboardType="numeric"
+              onSubmitEditing={() =>
+                navigate("Opr3", {
+                  label: label,
+                  img: img,
+                })
+              }
+            />
+          </>
+        )}
       </View>
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 30 }}>
         <BtnItem

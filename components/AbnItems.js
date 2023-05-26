@@ -10,7 +10,6 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState, memo } from "react";
 import BtnItem from "./BtnItem";
-import { Button } from "react-native-web";
 
 const renderItem = (data, item, navigate) => {
   return (

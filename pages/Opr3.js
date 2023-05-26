@@ -32,7 +32,7 @@ const Opr3 = ({ route, navigation: { navigate } }) => {
         source={img}
         style={{ width: 154, height: 154, marginVertical: 30 }}
       />
-      <Text style={styles.txtPwd}>Entrez votre mot de passe</Text>
+      <Text style={styles.txtPwd}>Entrez votre code secret</Text>
       <View style={{ gap: 23, marginVertical: 30 }}>
         <TextInput
           style={styles.TextInput}

@@ -73,7 +73,7 @@ const CustomDrawerContent = (props) => {
             style={styles.profil}
           >
             <Image
-              source={imageUser == 41 ? imageUser : { uri: imageUser }}
+              source={typeof imageUser == "number" ? imageUser : { uri: imageUser }}
               style={{ width: 80, height: 80, borderRadius: 100 }}
             />
             <View style={{ marginHorizontal: 14 }}>

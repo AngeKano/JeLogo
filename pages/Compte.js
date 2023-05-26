@@ -181,7 +181,7 @@ const Compte = ({ navigation: { navigate } }) => {
         }}
       >
         <Image
-          source={imageUser == 41 ? imageUser : { uri: imageUser }}
+          source={typeof imageUser == "number" ? imageUser : { uri: imageUser }}
           style={{ width: 125, height: 125, borderRadius: 100 }}
         />
         <AntDesign

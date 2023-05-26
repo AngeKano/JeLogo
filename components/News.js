@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Feather } from '@expo/vector-icons';
 import React from "react";
 
 const News = () => {
@@ -14,10 +15,7 @@ const News = () => {
       <View style={styles.disCode}>
         <Text style={styles.txtCode}>{"iojlfh".toUpperCase()}</Text>
         <View style={styles.btnCode}>
-          <Image
-            source={require("../assets/icons/Code.png")}
-            style={{ width: 20, height: 20 }}
-          />
+        <Feather name="copy" size={20} color="black" />
         </View>
       </View>
     </View>

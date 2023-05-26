@@ -21,7 +21,7 @@ const HeaderRight = ({ navigate }) => {
       </View>
       <Pressable onPress={() => navigate("compte")}>
         <Image
-          source={imageUser == 41 ? imageUser : { uri: imageUser }}
+          source={typeof imageUser == 'number' ? imageUser : { uri: imageUser }}
           style={{ width: 40, height: 40,  borderRadius: 100 }}
         />
       </Pressable>
