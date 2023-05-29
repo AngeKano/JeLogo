@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Pressable, Image, Modal } from "react-native";
 import React, { useCallback, useContext, useState } from "react";
-import { TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { AntDesign } from "@expo/vector-icons";
@@ -20,7 +20,7 @@ const Compte = ({ navigation: { navigate } }) => {
 
   const onChange = (selectedDate) => {
     setDateTime(new Date(selectedDate));
-    setDate(dateTime.toDateString());
+    setDate(dateTime.toLocaleDateString());
     setShow(false);
   };
 
@@ -103,6 +103,7 @@ const Compte = ({ navigation: { navigate } }) => {
                 <TextInput
                   style={styles.TextInput}
                   placeholder="Nom"
+                  keyboardType="default"
                   onChangeText={(textNom) => {
                     setNom(textNom);
                   }}
@@ -148,12 +149,15 @@ const Compte = ({ navigation: { navigate } }) => {
                 <View style={styles.btnCalnd}>
                   <AntDesign name="calendar" size={24} color="black" />
                 </View>
-                <Text style={styles.txtCalnd}>{dateTime.toDateString()}</Text>
+                <Text style={styles.txtCalnd}>
+                  {dateTime.toLocaleDateString()}
+                </Text>
               </Pressable>
               {show ? (
                 <DateTimePicker
                   testID="dateTimePicker"
                   value={dateTime}
+                  dateFormat="day month year"
                   mode={mode}
                   is24Hour={true}
                   onChange={(e) => {
@@ -190,10 +194,10 @@ const Compte = ({ navigation: { navigate } }) => {
           color="black"
           style={styles.plus}
         />
-        <Text style={styles.txtName}>{nom}</Text>
+        {/* <Text style={styles.txtName}>{nom}</Text> */}
       </Pressable>
 
-      <View style={styles.itemsInfos}>
+      {/* <View style={styles.itemsInfos}>
         <View style={styles.itemIfon}>
           <AntDesign name="mail" size={24} color="black" />
           <Text style={styles.txtIfon}>{email}</Text>
@@ -210,6 +214,79 @@ const Compte = ({ navigation: { navigate } }) => {
           <MaterialIcons name="gps-fixed" size={24} color="black" />
           <Text style={styles.txtIfon}>{lieu}</Text>
         </View>
+      </View> */}
+      <View style={styles.itemsInfos}>
+        <View style={styles.listInputs}>
+          <View style={styles.inputStyle}>
+            <AntDesign name="user" size={24} color="black" />
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Nom"
+              keyboardType="default"
+              onChangeText={(textNom) => {
+                setNom(textNom);
+              }}
+              value={nom}
+            />
+          </View>
+          <View style={styles.inputStyle}>
+            <AntDesign name="mail" size={24} color="black" />
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Email"
+              onChangeText={(textEmail) => {
+                setEmail(textEmail);
+              }}
+              value={email}
+            />
+          </View>
+          <View style={styles.inputStyle}>
+            <AntDesign name="phone" size={24} color="black" />
+            <TextInput
+              style={styles.TextInput}
+              placeholder={"Numero"}
+              keyboardType="numeric"
+              onChangeText={(textNumero) => {
+                setNumero(textNumero);
+              }}
+              value={numero}
+            />
+          </View>
+          <View style={styles.inputStyle}>
+            <MaterialIcons name="gps-fixed" size={24} color="black" />
+            <TextInput
+              style={styles.TextInput}
+              placeholder={"Lieu"}
+              onChangeText={(textLieu) => {
+                setLieu(textLieu);
+              }}
+              value={lieu}
+            />
+          </View>
+          <Pressable
+            onPress={() => {
+              showMode();
+            }}
+            style={styles.itmCalnd}
+          >
+            <View style={styles.btnCalnd}>
+              <AntDesign name="calendar" size={24} color="black" />
+            </View>
+            <Text style={styles.txtCalnd}>{dateTime.toLocaleDateString()}</Text>
+          </Pressable>
+          {show ? (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={dateTime}
+              dateFormat="day month year"
+              mode={mode}
+              is24Hour={true}
+              onChange={(e) => {
+                onChange(e.nativeEvent.timestamp);
+              }}
+            />
+          ) : null}
+        </View>
       </View>
 
       <View style={styles.viewBtn}>
@@ -217,7 +294,7 @@ const Compte = ({ navigation: { navigate } }) => {
           onPress={() => setModalVisible(!modalVisible)}
           style={styles.BtnPrinc}
         >
-          <Text style={styles.BtnPrincTxt}>Modifier</Text>
+          <Text style={styles.BtnPrincTxt}>Enregistrer</Text>
         </Pressable>
         <Pressable
           onPress={() =>
@@ -290,10 +367,11 @@ const styles = StyleSheet.create({
   itmCalnd: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 33,
+    gap: 15,
   },
   txtCalnd: {
     fontFamily: "Nunito-Regular",
+    fontSize: 20,
   },
   btnCalnd: {
     padding: 8,

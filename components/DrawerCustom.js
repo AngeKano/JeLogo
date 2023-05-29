@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Pressable,
   Modal,
+  BackHandler,
 } from "react-native";
 import React, { useCallback, useContext, useState } from "react";
 import ShareItems from "./ShareItems";
@@ -73,7 +74,9 @@ const CustomDrawerContent = (props) => {
             style={styles.profil}
           >
             <Image
-              source={typeof imageUser == "number" ? imageUser : { uri: imageUser }}
+              source={
+                typeof imageUser == "number" ? imageUser : { uri: imageUser }
+              }
               style={{ width: 80, height: 80, borderRadius: 100 }}
             />
             <View style={{ marginHorizontal: 14 }}>
@@ -137,6 +140,10 @@ const CustomDrawerContent = (props) => {
             <Text style={styles.BtnPrincTxt}>Invitez vos amis</Text>
           </Pressable>
           <Pressable
+            onPress={() => {
+              props.navigation.navigate("verificationN1");
+              BackHandler.exitApp();
+            }}
             style={[
               styles.BtnPrinc,
               {

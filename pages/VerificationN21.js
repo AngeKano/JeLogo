@@ -1,26 +1,18 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  Keyboard,
-} from "react-native";
-import React, { useCallback, useContext, useState } from "react";
+import { StyleSheet, Text, View, Pressable } from "react-native";
+import React, { useCallback, useContext, useState, memo } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import VerifItem from "../components/VerifItem";
-import PuceItem from "../components/PuceItem";
-import Data from "../components/Data";
-import { FlatList, TextInput } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
+import BtnItem from "../components/BtnItem";
 
 SplashScreen.preventAutoHideAsync();
 
-// const { keyboard } = Data;
-
 const VerificationN21 = ({ navigation: { navigate } }) => {
-  const { code, setCode } = useContext(AuthContext);
+  const { tabl } = useContext(AuthContext);
+  const [pwd, setPwd] = useState([]);
+
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -37,51 +29,49 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
-  const tabl = [];
-  const key = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  while (tabl.length != 10) {
-    let random = Math.floor(Math.random() * key.length);
-    let bol = true;
-    for (let a = 0; a < tabl.length; a++) {
-      if (tabl[a] == random) {
-        bol = false;
-      }
-    }
-    if (bol) {
-      tabl.push(random);
-    }
-  }
+
+  const puce = [0, 1, 2, 3];
+
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <View style={{ alignItems: "center", flex: 2 }}>
         <VerifItem text="Entrez votre code secret" />
-        <PuceItem navigate={navigate} />
+        <View style={styles.ViewPuce}>
+          <View>
+            <FlatList
+              data={puce}
+              horizontal
+              renderItem={({ item }) => (
+                <View
+                  style={[
+                    styles.puce,
+                    {
+                      backgroundColor:
+                        pwd.length > item
+                          ? "#0372C1"
+                          : "rgba(3, 114, 193, 0.25)",
+                    },
+                  ]}
+                ></View>
+              )}
+            />
+          </View>
+        </View>
         <Text style={styles.TxtMdp}>Mot de passe oublié</Text>
-        <TextInput
-          style={{
-            height: 100,
-            fontSize: 20,
-            borderBottomColor: "red",
-            borderBottomWidth: 1,
-          }}
-          value={code}
-        />
       </View>
 
       <View
         onPress={() => navigate("verificationN22")}
         style={{
-          flex: 1,
-          justifyContent: "center",
+          flex: 1.5,
           gap: 8,
-          backgroundColor: "red",
           width: "100%",
         }}
       >
-        <View style={{ borderWidth: 10, borderColor: "gray", height: "100%" }}>
+        <View style={{ gap: 17 }}>
           <FlatList
             data={tabl}
-            numColumns={5}
+            numColumns={4}
             renderItem={({ item }) => (
               <Pressable
                 style={{
@@ -90,19 +80,21 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
                   alignSelf: "center",
                   justifyContent: "center",
                   alignContent: "center",
-                  borderWidth: 1,
-                  borderColor: "green",
+                  height: 50,
                 }}
                 onPress={() => {
-                  setCode(item);
-                  console.log(code);
+                  typeof item != "object" ? setPwd([...pwd, item]) : setPwd([]);
                 }}
               >
-                <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
+                <Text style={{ fontSize: 20, fontFamily: "Nunito-Medium" }}>
                   {item}
                 </Text>
               </Pressable>
             )}
+          />
+          <BtnItem
+            text="Validez"
+            navigation={() => navigate("verificationN3")}
           />
         </View>
       </View>
@@ -110,7 +102,7 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
   );
 };
 
-export default VerificationN21;
+export default memo(VerificationN21);
 
 const styles = StyleSheet.create({
   container: {
@@ -125,12 +117,17 @@ const styles = StyleSheet.create({
     marginTop: 33,
     color: "#ABB0BC",
   },
-});
 
-// <Image
-//           source={require("../assets/icons/Digtal.png")}
-//           style={{ width: 44, height: 52 }}
-//         />
-//         <Text style={{ color: "#ABB0BC", fontFamily: "Nunito-Light" }}>
-//           Empreinte Digital
-//         </Text>
+  puce: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    marginHorizontal: 10,
+  },
+  ViewPuce: {
+    flexDirection: "row",
+    marginTop: 45,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

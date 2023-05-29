@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { createContext, useState } from "react";
+import Data from "../components/Data";
+import { AntDesign } from "@expo/vector-icons";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const { keyboard } = Data;
+
   const [nom, setNom] = useState("Inconnu.e");
   const [email, setEmail] = useState("Inconnu@example.net");
   const [numero, setNumero] = useState("0123456789");
@@ -14,7 +18,25 @@ export const AuthProvider = ({ children }) => {
   const [imageUser, setImageUser] = useState(
     require("../assets/user/userUnknow.png")
   );
-  
+  //
+
+  const tabl = [];
+  while (tabl.length != 10) {
+    let random = Math.floor(Math.random() * keyboard.length);
+    let bol = true;
+    for (let a = 0; a < tabl.length; a++) {
+      if (tabl[a] == random) {
+        bol = false;
+      }
+    }
+    if (bol) {
+      tabl.push(random);
+    }
+  }
+  tabl.push(<AntDesign name="delete" size={22} color="black" />);
+
+  //
+
   return (
     <AuthContext.Provider
       value={{
@@ -26,6 +48,7 @@ export const AuthProvider = ({ children }) => {
         date,
         lieu,
         montant,
+        tabl,
         setMontant,
         setCode,
         setNumero,

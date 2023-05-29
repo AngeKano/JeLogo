@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import BtnItem from "../components/BtnItem";
 SplashScreen.preventAutoHideAsync();
 
@@ -26,84 +26,76 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
   const { label, img } = route.params;
 
   return (
-    <View onLayout={onLayoutRootView} style={styles.container}>
-      <Image
-        source={img}
-        style={{ width: 154, height: 154, marginVertical: 30 }}
-      />
-      <Text style={styles.txtPwd}>Transférez votre argent</Text>
-
-      <View style={{ gap: 23, marginVertical: 30 }}>
-        {label == "VISA" ? (
-          <>
-            <View style={{ flexDirection: "row", gap: 8 }}>
-              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
-                N° de carte:
-              </Text>
-              <TextInput
-                style={styles.TextInput}
-                placeholder="XXX XXX XXX 1234"
-                keyboardType="numeric"
-              />
-            </View>
-
-            <View style={{ flexDirection: "row", gap: 8 }}>
-              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
-                N° de telephone:
-              </Text>
-              <TextInput
-                style={styles.TextInput}
-                placeholder="0XXXXXXXX"
-                keyboardType="numeric"
-              />
-            </View>
-            <View style={{ flexDirection: "row", gap: 8 }}>
-              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
-                Montant:
-              </Text>
-              <TextInput
-                style={styles.TextInput}
-                placeholder="0XXXXX"
-                keyboardType="numeric"
-              />
-              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 21 }}>
-                XOF
-              </Text>
-            </View>
-          </>
-        ) : (
-          <>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Numéro du dépôt"
-              keyboardType="numeric"
-            />
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Montant du dépôt"
-              keyboardType="numeric"
-              onSubmitEditing={() =>
-                navigate("Opr3", {
-                  label: label,
-                  img: img,
-                })
-              }
-            />
-          </>
-        )}
-      </View>
-      <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 30 }}>
-        <BtnItem
-          text="Continuez"
-          navigation={() =>
-            navigate("Opr3", {
-              label: label,
-              img: img,
-            })
-          }
+    <ScrollView>
+      <View onLayout={onLayoutRootView} style={styles.container}>
+        <Image
+          source={img}
+          style={{ width: 154, height: 154, marginVertical: 30 }}
         />
+        <Text style={styles.txtPwd}>Transférez votre argent</Text>
+
+        <View style={{ gap: 23, marginVertical: 30 }}>
+          {label == "VISA" ? (
+            <>
+              <View style={{ flexDirection: "row", gap: 8 }}>
+                <Text style={{ fontFamily: "Nunito-Bold", fontSize: 21 }}>
+                  N° de carte:
+                </Text>
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder="XXX XXX XXX 1234"
+                  keyboardType="numeric"
+                />
+              </View>
+
+              <View style={{ flexDirection: "row", gap: 8 }}>
+                <Text style={{ fontFamily: "Nunito-Bold", fontSize: 21 }}>
+                  Montant:
+                </Text>
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder="0XXXXX"
+                  keyboardType="numeric"
+                />
+                <Text style={{ fontFamily: "Nunito-Bold", fontSize: 21 }}>
+                  XOF
+                </Text>
+              </View>
+            </>
+          ) : (
+            <>
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Numéro du dépôt"
+                keyboardType="numeric"
+              />
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Montant du dépôt"
+                keyboardType="numeric"
+                onSubmitEditing={() =>
+                  navigate("Opr3", {
+                    label: label,
+                    img: img,
+                  })
+                }
+              />
+            </>
+          )}
+        </View>
+        <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 30 }}>
+          <BtnItem
+            text="Continuez"
+            navigation={() =>
+              navigate("Opr3", {
+                label: label,
+                img: img,
+              })
+            }
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

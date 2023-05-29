@@ -1,34 +1,39 @@
 {
   "expo": {
-    "name": "jelogo",
-    "slug": "jelogo",
+    "name": "JELOGO",
+    "slug": "JELOGO",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/playstore.png",
+    "icon": "./assets/playstore1.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/playstore.png",
       "resizeMode": "contain",
       "backgroundColor": "#0372C1"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ange002.jelogo"
+      "bundleIdentifier": "com.ange002.JELOGO"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/playstore.png",
+        "foregroundImage": "./assets/playstore1.png",
         "backgroundColor": "#0372C1"
       },
-      "package": "com.ange002.jelogov2"
+      "package": "com.ange002.JELOGO",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "7405a835-0b28-4a35-b64c-5e16bf855106"
+        "projectId": "a540496e-f489-4fc6-bb65-86572b73ddc8"
       }
     },
     "plugins": [
