@@ -1,15 +1,110 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
-import React, { useCallback, useContext, useState, memo } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Button,
+  Alert,
+  TouchableHighlight,
+} from "react-native";
+import React, {
+  useCallback,
+  useContext,
+  useState,
+  memo,
+  useEffect,
+} from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import VerifItem from "../components/VerifItem";
 import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
+//
+import * as LocalAuthentication from "expo-local-authentication";
+//
 
 SplashScreen.preventAutoHideAsync();
 
 const VerificationN21 = ({ navigation: { navigate } }) => {
+  const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+  useEffect(() => {
+    (async () => {
+      const compatible = await LocalAuthentication.hasHardwareAsync();
+      setIsBiometricSupported(compatible);
+    })();
+  });
+
+  const fallBackToDefaultAuth = () => {
+    console.log("fall back to password authentification");
+  };
+
+  const alertComponent = (title, mess, btnTxt, BtnFunc) => {
+    return Alert.alert(title, mess, [
+      {
+        text: btnTxt,
+        onPress: BtnFunc,
+      },
+    ]);
+  };
+
+  const TwoButtonAlert = () => {
+    Alert.alert("Welcome to App", "subs", [
+      {
+        text: "Back",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "OK",
+        onPress: () => {
+          console.log("Ok Pressed");
+        },
+      },
+    ]);
+  };
+
+  const handleBiometricAuth = async () => {
+    const isBiometricAvailable = await LocalAuthentication.hasHardwareAsync();
+    if (!isBiometricAvailable) {
+      return alertComponent(
+        "Entrez votre code secret",
+        "Biometric Auth not Supported",
+        "Ok",
+        () => fallBackToDefaultAuth()
+      );
+    }
+    let supportedBiometrics;
+    if (isBiometricAvailable) {
+      supportedBiometrics =
+        await LocalAuthentication.supportedAuthenticationTypesAsync();
+    }
+
+    const savedBiometrics = await LocalAuthentication.isEnrolledAsync();
+    if (!savedBiometrics) {
+      return alertComponent(
+        "Biometric record not found",
+        "Alert Login With Password",
+        "Ok",
+        () => fallBackToDefaultAuth()
+      );
+    }
+
+    const biometricAuth = await LocalAuthentication.authenticateAsync({
+      promptMessage: "Login with Biometric",
+      cancelLabel: "cancel",
+      disableDeviceFallback: true,
+    });
+
+    if (biometricAuth) {
+      TwoButtonAlert();
+    }
+    console.log({ isBiometricAvailable });
+    console.log({ supportedBiometrics });
+    console.log({ savedBiometrics });
+    console.log({ biometricAuth });
+  };
+
   const { tabl } = useContext(AuthContext);
   const [pwd, setPwd] = useState([]);
 
@@ -34,6 +129,18 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
+      <Text>
+        {isBiometricSupported
+          ? "Votre appareil est compatible avec l' empreinte digital"
+          : "FaceID ou l' empreinte digital n'est pas disponible sur votre appareil "}
+      </Text>
+      <TouchableHighlight style={{ height: 60, marginTop: 200 }}>
+        <Button
+          title="Biometric Auth"
+          color={"black"}
+          onPress={handleBiometricAuth}
+        />
+      </TouchableHighlight>
       <View style={{ alignItems: "center", flex: 2 }}>
         <VerifItem text="Entrez votre code secret" />
         <View style={styles.ViewPuce}>
