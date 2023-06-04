@@ -4,29 +4,25 @@
     "slug": "JELOGO",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/playstore1.png",
+    "icon": "./assets/playstore2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/playstore.png",
       "resizeMode": "contain",
       "backgroundColor": "#0372C1"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ange002.JELOGO"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/playstore1.png",
+        "foregroundImage": "./assets/playstore2.png",
         "backgroundColor": "#0372C1"
       },
       "package": "com.ange002.JELOGO",
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ]
+      "permissions": ["android.permission.RECORD_AUDIO"]
     },
     "web": {
       "favicon": "./assets/favicon.png"

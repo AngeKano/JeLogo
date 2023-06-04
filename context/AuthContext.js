@@ -2,6 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { createContext, useState } from "react";
 import Data from "../components/Data";
 import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome5 } from '@expo/vector-icons';
+
 
 export const AuthContext = createContext();
 
@@ -34,6 +36,11 @@ export const AuthProvider = ({ children }) => {
     }
   }
   tabl.push(<AntDesign name="delete" size={22} color="black" />);
+  tabl.splice(
+    8,
+    0,
+    <FontAwesome5 name="fingerprint" size={22} color="black" />
+  );
 
   //
 

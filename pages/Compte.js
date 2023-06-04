@@ -20,8 +20,8 @@ const Compte = ({ navigation: { navigate } }) => {
 
   const onChange = (selectedDate) => {
     setDateTime(new Date(selectedDate));
-    setDate(dateTime.toLocaleDateString());
     setShow(false);
+    setDateL(dateTime.toLocaleDateString());
   };
 
   const showMode = () => {
@@ -50,6 +50,26 @@ const Compte = ({ navigation: { navigate } }) => {
     setDate,
   } = useContext(AuthContext);
 
+  const handle = () => {
+    setNom(nomL);
+    setEmail(emailL);
+    setNumero(numeroL);
+    setLieu(lieuL);
+    setDate(dateL);
+    setImageUser(imageUserL);
+    setModalVisible(true);
+    setTimeout(() => {
+      setModalVisible(false);
+    }, 800);
+  };
+
+  const [nomL, setNomL] = useState(nom);
+  const [emailL, setEmailL] = useState(email);
+  const [numeroL, setNumeroL] = useState(numero);
+  const [lieuL, setLieuL] = useState(lieu);
+  const [dateL, setDateL] = useState(date);
+  const [imageUserL, setImageUserL] = useState(imageUser);
+
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-SemiBold": require("../assets/fonts/Nunito-SemiBold.ttf"),
@@ -75,107 +95,43 @@ const Compte = ({ navigation: { navigate } }) => {
       quality: 1,
     });
     if (!result.canceled) {
-      setImageUser(result.assets[0].uri);
+      setImageUserL(result.assets[0].uri);
     }
   };
   return (
     <View onPress={onLayoutRootView} style={styles.container}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(!modalVisible)}
-      >
-        <Pressable
-          onPress={() => {
-            setModalVisible(!modalVisible);
+      <Modal animationType="fade" transparent visible={modalVisible}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,.2)",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          style={styles.centeredView}
         >
-          <Pressable onPress={() => {}} style={styles.modalView}>
-            <View style={styles.enTete}>
-              <AntDesign name="edit" size={30} color="black" />
-              <Text style={styles.txtLabel}>Modifier vos données</Text>
-            </View>
-            <View style={styles.listInputs}>
-              <View style={styles.inputStyle}>
-                <AntDesign name="user" size={24} color="black" />
-                <TextInput
-                  style={styles.TextInput}
-                  placeholder="Nom"
-                  keyboardType="default"
-                  onChangeText={(textNom) => {
-                    setNom(textNom);
-                  }}
-                />
-              </View>
-              <View style={styles.inputStyle}>
-                <AntDesign name="mail" size={24} color="black" />
-                <TextInput
-                  style={styles.TextInput}
-                  placeholder="Email"
-                  onChangeText={(textEmail) => {
-                    setEmail(textEmail);
-                  }}
-                />
-              </View>
-              <View style={styles.inputStyle}>
-                <AntDesign name="phone" size={24} color="black" />
-                <TextInput
-                  style={styles.TextInput}
-                  placeholder={"Numero"}
-                  keyboardType="numeric"
-                  onChangeText={(textNumero) => {
-                    setNumero(textNumero);
-                  }}
-                />
-              </View>
-              <View style={styles.inputStyle}>
-                <MaterialIcons name="gps-fixed" size={24} color="black" />
-                <TextInput
-                  style={styles.TextInput}
-                  placeholder={"Lieu"}
-                  onChangeText={(textLieu) => {
-                    setLieu(textLieu);
-                  }}
-                />
-              </View>
-              <Pressable
-                onPress={() => {
-                  showMode();
-                }}
-                style={styles.itmCalnd}
-              >
-                <View style={styles.btnCalnd}>
-                  <AntDesign name="calendar" size={24} color="black" />
-                </View>
-                <Text style={styles.txtCalnd}>
-                  {dateTime.toLocaleDateString()}
-                </Text>
-              </Pressable>
-              {show ? (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={dateTime}
-                  dateFormat="day month year"
-                  mode={mode}
-                  is24Hour={true}
-                  onChange={(e) => {
-                    onChange(e.nativeEvent.timestamp);
-                  }}
-                />
-              ) : null}
-            </View>
-            <Pressable
-              onPress={() => {
-                setModalVisible(!modalVisible);
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "white",
+              paddingVertical: 25,
+              paddingHorizontal: 30,
+              borderRadius: 25,
+              gap: 15,
+            }}
+          >
+            <AntDesign name="checkcircleo" size={55} color="#1ACA56" />
+            <Text
+              style={{
+                fontFamily: "Nunito-Medium",
+                fontSize: 20,
+                textAlign: "center",
               }}
-              style={[styles.BtnPrinc, { marginBottom: 43 }]}
             >
-              <Text style={styles.BtnPrincTxt}>Modifier</Text>
-            </Pressable>
-          </Pressable>
-        </Pressable>
+              Vos modifications ont bien été enregistrées
+            </Text>
+          </View>
+        </View>
       </Modal>
 
       <Pressable
@@ -185,7 +141,9 @@ const Compte = ({ navigation: { navigate } }) => {
         }}
       >
         <Image
-          source={typeof imageUser == "number" ? imageUser : { uri: imageUser }}
+          source={
+            typeof imageUserL == "number" ? imageUserL : { uri: imageUserL }
+          }
           style={{ width: 125, height: 125, borderRadius: 100 }}
         />
         <AntDesign
@@ -224,9 +182,9 @@ const Compte = ({ navigation: { navigate } }) => {
               placeholder="Nom"
               keyboardType="default"
               onChangeText={(textNom) => {
-                setNom(textNom);
+                setNomL(textNom);
               }}
-              value={nom}
+              value={nomL}
             />
           </View>
           <View style={styles.inputStyle}>
@@ -235,9 +193,9 @@ const Compte = ({ navigation: { navigate } }) => {
               style={styles.TextInput}
               placeholder="Email"
               onChangeText={(textEmail) => {
-                setEmail(textEmail);
+                setEmailL(textEmail);
               }}
-              value={email}
+              value={emailL}
             />
           </View>
           <View style={styles.inputStyle}>
@@ -247,9 +205,9 @@ const Compte = ({ navigation: { navigate } }) => {
               placeholder={"Numero"}
               keyboardType="numeric"
               onChangeText={(textNumero) => {
-                setNumero(textNumero);
+                setNumeroL(textNumero);
               }}
-              value={numero}
+              value={numeroL}
             />
           </View>
           <View style={styles.inputStyle}>
@@ -258,9 +216,9 @@ const Compte = ({ navigation: { navigate } }) => {
               style={styles.TextInput}
               placeholder={"Lieu"}
               onChangeText={(textLieu) => {
-                setLieu(textLieu);
+                setLieuL(textLieu);
               }}
-              value={lieu}
+              value={lieuL}
             />
           </View>
           <Pressable
@@ -290,10 +248,7 @@ const Compte = ({ navigation: { navigate } }) => {
       </View>
 
       <View style={styles.viewBtn}>
-        <Pressable
-          onPress={() => setModalVisible(!modalVisible)}
-          style={styles.BtnPrinc}
-        >
+        <Pressable onPress={() => handle()} style={styles.BtnPrinc}>
           <Text style={styles.BtnPrincTxt}>Enregistrer</Text>
         </Pressable>
         <Pressable
@@ -322,6 +277,7 @@ export default Compte;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -402,6 +358,7 @@ const styles = StyleSheet.create({
   },
   itemsInfos: {
     gap: 10,
+    marginTop: 10,
   },
   itemIfon: {
     flexDirection: "row",

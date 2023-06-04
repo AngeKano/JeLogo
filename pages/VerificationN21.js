@@ -1,12 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  Button,
-  Alert,
-  TouchableHighlight,
-} from "react-native";
+import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
 import React, {
   useCallback,
   useContext,
@@ -36,7 +28,7 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
   });
 
   const fallBackToDefaultAuth = () => {
-    console.log("fall back to password authentification");
+    // console.log("fall back to password authentification");
   };
 
   const alertComponent = (title, mess, btnTxt, BtnFunc) => {
@@ -52,13 +44,14 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
     Alert.alert("Welcome to App", "subs", [
       {
         text: "Back",
-        onPress: () => console.log("Cancel Pressed"),
+      onPress: () => {/*console.log("Cancel Pressed")*/},
         style: "cancel",
       },
       {
         text: "OK",
         onPress: () => {
-          console.log("Ok Pressed");
+          /*
+          console.log("Ok Pressed");*/
         },
       },
     ]);
@@ -69,7 +62,7 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
     if (!isBiometricAvailable) {
       return alertComponent(
         "Entrez votre code secret",
-        "Biometric Auth not Supported",
+        "Biometric Authentification n'est pas supporter par cette appareil",
         "Ok",
         () => fallBackToDefaultAuth()
       );
@@ -84,25 +77,26 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
     if (!savedBiometrics) {
       return alertComponent(
         "Biometric record not found",
-        "Alert Login With Password",
+        "Connecter vous avec votre code secret",
         "Ok",
         () => fallBackToDefaultAuth()
       );
     }
 
     const biometricAuth = await LocalAuthentication.authenticateAsync({
-      promptMessage: "Login with Biometric",
+      promptMessage: "Connexion par empreinte digital",
       cancelLabel: "cancel",
       disableDeviceFallback: true,
     });
 
     if (biometricAuth) {
-      TwoButtonAlert();
+      // TwoButtonAlert();
+      navigate("verificationN3");
     }
-    console.log({ isBiometricAvailable });
-    console.log({ supportedBiometrics });
-    console.log({ savedBiometrics });
-    console.log({ biometricAuth });
+    // console.log({ isBiometricAvailable });
+    // console.log({ supportedBiometrics });
+    // console.log({ savedBiometrics });
+    // console.log({ biometricAuth });
   };
 
   const { tabl } = useContext(AuthContext);
@@ -129,18 +123,6 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Text>
-        {isBiometricSupported
-          ? "Votre appareil est compatible avec l' empreinte digital"
-          : "FaceID ou l' empreinte digital n'est pas disponible sur votre appareil "}
-      </Text>
-      <TouchableHighlight style={{ height: 60, marginTop: 200 }}>
-        <Button
-          title="Biometric Auth"
-          color={"black"}
-          onPress={handleBiometricAuth}
-        />
-      </TouchableHighlight>
       <View style={{ alignItems: "center", flex: 2 }}>
         <VerifItem text="Entrez votre code secret" />
         <View style={styles.ViewPuce}>
@@ -190,7 +172,11 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
                   height: 50,
                 }}
                 onPress={() => {
-                  typeof item != "object" ? setPwd([...pwd, item]) : setPwd([]);
+                  typeof item != "object"
+                    ? setPwd([...pwd, item])
+                    : Object.values(item)[4].name == "fingerprint"
+                    ? handleBiometricAuth()
+                    : setPwd([]);
                 }}
               >
                 <Text style={{ fontSize: 20, fontFamily: "Nunito-Medium" }}>

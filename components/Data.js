@@ -47,7 +47,7 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Etape: "Numero identifiant CIE",
+        Etape: "Numéro identifiant CIE",
       },
       {
         Etape: "Code secret",
@@ -61,7 +61,7 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Etape: "Numero identifiant SODECI",
+        Etape: "Numéro identifiant SODECI",
       },
       {
         Etape: "Code secret",
@@ -75,7 +75,7 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Etape: "Numero de badget HKB",
+        Etape: "Numéro de badge HKB",
       },
       {
         Etape: "Code secret",
@@ -89,7 +89,7 @@ const Data_Factures = [
     textColor: "white",
     option: [
       {
-        Etape: "Numero d’abonné StarTimes",
+        Etape: "Numéro d’abonné StarTimes",
       },
       {
         Etape: "Code secret",
