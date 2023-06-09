@@ -8,8 +8,9 @@ import {
   TextInput,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import React, { useState, memo } from "react";
+import React, { useState, memo, useContext } from "react";
 import BtnItem from "./BtnItem";
+import { AuthContext } from "../context/AuthContext";
 
 const renderItem = (data, item, navigate) => {
   return (
@@ -41,6 +42,7 @@ const renderItem = (data, item, navigate) => {
 };
 
 const AbnItems = ({ data, navigate }) => {
+  const { validate } = useContext(AuthContext);
   const renderItemFalse = (item) => {
     return (
       <View
@@ -66,11 +68,11 @@ const AbnItems = ({ data, navigate }) => {
           keyboardType="numeric"
           secureTextEntry={item.Etape == "Code secret" ? true : false}
           maxLength={item.Etape == "Code secret" ? 4 : 14}
-          onSubmitEditing={() => showModal()}
+          onSubmitEditing={() => navigate("code")}
         />
-        {item.Etape == "Code secret" ? (
+        {validate == false ? (
           <View style={{ marginTop: 20 }}>
-            <BtnItem navigation={() => showModal()} text="Confirmer" />
+            <BtnItem navigation={() => navigate("code")} text="Confirmer" />
           </View>
         ) : null}
       </View>
@@ -131,6 +133,8 @@ const AbnItems = ({ data, navigate }) => {
             : renderItemFalse(item)
         }
       />
+
+      
     </>
   );
 };

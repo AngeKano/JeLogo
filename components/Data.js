@@ -11,9 +11,6 @@ const Data_Factures = [
           {
             Etape: "Numéro de réabonnement CANAL +",
           },
-          {
-            Etape: "Code secret",
-          },
         ],
       },
       {
@@ -22,9 +19,6 @@ const Data_Factures = [
           {
             Etape: "Numéro de réabonnement CANAL +",
           },
-          {
-            Etape: "Code secret",
-          },
         ],
       },
       {
@@ -32,9 +26,6 @@ const Data_Factures = [
         option: [
           {
             Etape: "Numéro de réabonnement CANAL +",
-          },
-          {
-            Etape: "Code secret",
           },
         ],
       },
@@ -49,9 +40,6 @@ const Data_Factures = [
       {
         Etape: "Numéro identifiant CIE",
       },
-      {
-        Etape: "Code secret",
-      },
     ],
   },
   {
@@ -62,9 +50,6 @@ const Data_Factures = [
     option: [
       {
         Etape: "Numéro identifiant SODECI",
-      },
-      {
-        Etape: "Code secret",
       },
     ],
   },
@@ -77,9 +62,6 @@ const Data_Factures = [
       {
         Etape: "Numéro de badge HKB",
       },
-      {
-        Etape: "Code secret",
-      },
     ],
   },
   {
@@ -90,9 +72,6 @@ const Data_Factures = [
     option: [
       {
         Etape: "Numéro d’abonné StarTimes",
-      },
-      {
-        Etape: "Code secret",
       },
     ],
   },
@@ -478,7 +457,7 @@ const Data_Parametre = [
         icon: "money-bill",
       },
       {
-        Label: "Lire QR Code",
+        Label: "Lire Qr code",
         icon: "qrcode",
       },
     ],
@@ -487,7 +466,7 @@ const Data_Parametre = [
     Label: "Paramètres",
     option: [
       {
-        Label: "Changer de code secret",
+        Label: "Changer code secret",
         icon: "lock",
       },
     ],

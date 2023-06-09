@@ -2,8 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { createContext, useState } from "react";
 import Data from "../components/Data";
 import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome5 } from '@expo/vector-icons';
-
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export const AuthContext = createContext();
 
@@ -43,6 +42,22 @@ export const AuthProvider = ({ children }) => {
   );
 
   //
+  const tablCode = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    null,
+    8,
+    9,
+    <AntDesign name="delete" size={22} color="black" />,
+  ];
+
+  const [validate, setValidate] = useState(false);
 
   return (
     <AuthContext.Provider
@@ -56,6 +71,8 @@ export const AuthProvider = ({ children }) => {
         lieu,
         montant,
         tabl,
+        tablCode,
+        validate,
         setMontant,
         setCode,
         setNumero,
@@ -64,6 +81,7 @@ export const AuthProvider = ({ children }) => {
         setNom,
         setDate,
         setLieu,
+        setValidate,
       }}
     >
       {children}

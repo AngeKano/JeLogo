@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { memo } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -15,7 +15,7 @@ const renderItem = (item) => {
 };
 const renderItemParam = (item) => {
   return (
-    <View style={styles.item}>
+    <Pressable style={styles.item}>
       <View style={styles.icon}>
         <FontAwesome5 name={item.icon} size={20} color="black" />
         <Text style={{ fontFamily: "Nunito-Bold", fontSize: 17 }}>
@@ -23,7 +23,7 @@ const renderItemParam = (item) => {
         </Text>
       </View>
       <AntDesign name="right" size={16} color="black" />
-    </View>
+    </Pressable>
   );
 };
 

@@ -8,17 +8,18 @@ import React, {
 } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import VerifItem from "../components/VerifItem";
+import VerifItemCode from "../components/VerifItemCode";
 import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
 //
 import * as LocalAuthentication from "expo-local-authentication";
 //
+import { AntDesign } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
 
-const VerificationN21 = ({ navigation: { navigate } }) => {
+const VerificationN21 = ({ navigation }) => {
   const [isBiometricSupported, setIsBiometricSupported] = useState(false);
   useEffect(() => {
     (async () => {
@@ -92,8 +93,8 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
     });
 
     if (biometricAuth) {
-      // TwoButtonAlert();
-      navigate("verificationN3");
+      setValidate(true);
+      navigation.goBack();
     }
     // console.log({ isBiometricAvailable });
     // console.log({ supportedBiometrics });
@@ -101,7 +102,7 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
     // console.log({ biometricAuth });
   };
 
-  const { tabl } = useContext(AuthContext);
+  const { tabl, setValidate } = useContext(AuthContext);
   const [pwd, setPwd] = useState([]);
 
   const [fontsLoaded] = useFonts({
@@ -125,8 +126,16 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
+      <Pressable
+        onPress={() => {
+          navigation.goBack();
+        }}
+        style={{ position: "absolute", zIndex: 3, top: 40, left: 20 }}
+      >
+        <AntDesign name="close" size={24} color="black" />
+      </Pressable>
       <View style={{ alignItems: "center", flex: 2 }}>
-        <VerifItem text="Entrez votre code secret" />
+        <VerifItemCode text="Entrez votre code secret" />
         <View style={styles.ViewPuce}>
           <View>
             <FlatList
@@ -188,7 +197,12 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
           />
           <BtnItem
             text="Validez"
-            navigation={() => navigate("verificationN3")}
+            navigation={
+              () => {
+                setValidate(true);
+                navigation.goBack();
+              }
+            }
           />
         </View>
       </View>
@@ -203,7 +217,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    marginTop: 116,
+    paddingTop: 116,
   },
   TxtMdp: {
     fontFamily: "Nunito-Medium",

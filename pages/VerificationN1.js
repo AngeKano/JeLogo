@@ -41,7 +41,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
           placeholder="0X XX XX XX XX"
           keyboardType="numeric"
           maxLength={10}
-          onSubmitEditing={() => navigate("VerificationN21")}
+          onSubmitEditing={() => navigate("verificationN21")}
         />
       </View>
       <Pressable
