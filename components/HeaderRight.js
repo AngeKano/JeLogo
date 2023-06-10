@@ -14,7 +14,19 @@ const HeaderRight = ({ navigate }) => {
         alignItems: "center",
       }}
     >
-      <AntDesign name="lock" size={24} color="gray" />
+      <Pressable
+        onPress={() => {
+          null;
+        }}
+      >
+        <AntDesign
+          name="unlock"
+          size={24}
+          color="#a4a4a4"
+          style={{ marginRight: 5 }}
+        />
+      </Pressable>
+
       <View
         style={{
           width: 40,

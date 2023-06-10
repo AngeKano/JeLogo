@@ -118,6 +118,19 @@ const CustomDrawerContent = (props) => {
             }}
           />
         </View>
+        <View style={styles.drawerItem}>
+          <DrawerItem
+            label="Notification"
+            labelStyle={{ fontFamily: "Nunito-Regular" }}
+            onPress={() => {
+              props.navigation.navigate("Notification");
+            }}
+            icon={() => <AntDesign name="bells" size={17} color="black" />}
+            style={{
+              paddingHorizontal: 40,
+            }}
+          />
+        </View>
         <View style={[styles.drawerItem, { marginBottom: 60 }]}>
           <DrawerItem
             label="Paramètre"
@@ -141,8 +154,7 @@ const CustomDrawerContent = (props) => {
           </Pressable>
           <Pressable
             onPress={() => {
-              props.navigation.navigate("verificationN1");
-              BackHandler.exitApp();
+              props.navigation.popToTop();
             }}
             style={[
               styles.BtnPrinc,
