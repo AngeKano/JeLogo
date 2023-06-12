@@ -8,7 +8,7 @@ import HeaderRight from "../components/HeaderRight";
 
 const Drawer = createDrawerNavigator();
 
-const MainScreen = ({ navigation: { navigate } }) => {
+const MainScreen = ({ navigation: { navigate, replace } }) => {
   return (
     <Drawer.Navigator
       initialRouteName="Accueil"
@@ -21,7 +21,9 @@ const MainScreen = ({ navigation: { navigate } }) => {
         name="AccScreens"
         component={AccScreens}
         options={{
-          headerRight: () => <HeaderRight navigate={navigate} />,
+          headerRight: () => (
+            <HeaderRight navigate={navigate} replace={replace} />
+          ),
         }}
       />
       <Drawer.Screen

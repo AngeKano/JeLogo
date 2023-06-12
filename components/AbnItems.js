@@ -72,7 +72,14 @@ const AbnItems = ({ data, navigate }) => {
         />
         {validate == false ? (
           <View style={{ marginTop: 20 }}>
-            <BtnItem navigation={() => navigate("code")} text="Confirmer" />
+            <BtnItem
+              navigation={() =>
+                navigate("code", {
+                  type: "normal",
+                })
+              }
+              text="Confirmer"
+            />
           </View>
         ) : null}
       </View>
@@ -133,8 +140,6 @@ const AbnItems = ({ data, navigate }) => {
             : renderItemFalse(item)
         }
       />
-
-      
     </>
   );
 };

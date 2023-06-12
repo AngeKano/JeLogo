@@ -12,14 +12,14 @@ import VerifItemCode from "../components/VerifItemCode";
 import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
+
 //
 import * as LocalAuthentication from "expo-local-authentication";
 //
-import { AntDesign } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
 
-const VerificationN21 = ({ navigation }) => {
+const Code = ({ route, navigation }) => {
   const [isBiometricSupported, setIsBiometricSupported] = useState(false);
   useEffect(() => {
     (async () => {
@@ -123,19 +123,22 @@ const VerificationN21 = ({ navigation }) => {
   }
 
   const puce = [0, 1, 2, 3];
-
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Pressable
-        onPress={() => {
-          navigation.goBack();
-        }}
-        style={{ position: "absolute", zIndex: 3, top: 40, left: 20 }}
-      >
-        <AntDesign name="close" size={24} color="black" />
-      </Pressable>
+      {route.params.type == "secure" ? null : (
+        <Pressable
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{ position: "absolute", zIndex: 3, top: 40, left: 20 }}
+        >
+          <AntDesign name="close" size={24} color="black" />
+        </Pressable>
+      )}
+
       <View style={{ alignItems: "center", flex: 2 }}>
-        <VerifItemCode text="Entrez votre code secret" />
+        <VerifItemCode text="Entrez votre code secret" type="secure" />
+        
         <View style={styles.ViewPuce}>
           <View>
             <FlatList
@@ -197,12 +200,10 @@ const VerificationN21 = ({ navigation }) => {
           />
           <BtnItem
             text="Validez"
-            navigation={
-              () => {
-                setValidate(true);
-                navigation.goBack();
-              }
-            }
+            navigation={() => {
+              setValidate(true);
+              navigation.goBack();
+            }}
           />
         </View>
       </View>
@@ -210,7 +211,7 @@ const VerificationN21 = ({ navigation }) => {
   );
 };
 
-export default memo(VerificationN21);
+export default memo(Code);
 
 const styles = StyleSheet.create({
   container: {

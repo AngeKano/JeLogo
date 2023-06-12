@@ -5,7 +5,7 @@ import ItemParam from "../components/ItemParam";
 import Data from "../components/Data";
 
 const { Data_Parametre } = Data;
-const Parametre = () => {
+const Parametre = ({ navigation: { navigate } }) => {
   const { imageUser, numero, nom } = useContext(AuthContext);
   return (
     <View>
@@ -27,7 +27,7 @@ const Parametre = () => {
         </View>
       </View>
       <View>
-        <ItemParam data={Data_Parametre}/>
+        <ItemParam data={Data_Parametre} />
       </View>
     </View>
   );

@@ -3,7 +3,7 @@ import { AntDesign } from "@expo/vector-icons";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-const HeaderRight = ({ navigate }) => {
+const HeaderRight = ({ navigate, replace }) => {
   const { imageUser } = useContext(AuthContext);
   return (
     <View
@@ -16,7 +16,7 @@ const HeaderRight = ({ navigate }) => {
     >
       <Pressable
         onPress={() => {
-          null;
+          replace("code", { type: "secure" });
         }}
       >
         <AntDesign

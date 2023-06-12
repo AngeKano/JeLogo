@@ -15,7 +15,12 @@ const renderItem = (item) => {
 };
 const renderItemParam = (item) => {
   return (
-    <Pressable style={styles.item}>
+    <Pressable
+      onPress={() => {
+        item.Label == "Lire Qr code" ? null : null;
+      }}
+      style={styles.item}
+    >
       <View style={styles.icon}>
         <FontAwesome5 name={item.icon} size={20} color="black" />
         <Text style={{ fontFamily: "Nunito-Bold", fontSize: 17 }}>
@@ -27,12 +32,29 @@ const renderItemParam = (item) => {
   );
 };
 
-const ItemParam = ({ data }) => {
+const ItemParam = (props) => {
   return (
     <FlatList
-      data={data}
+      data={props.data}
       renderItem={({ item }) =>
-        item.option ? renderItem(item) : renderItemParam(item)
+        item.option ? (
+          renderItem(item)
+        ) : (
+          <Pressable
+            onPress={() => {
+              item.Label == "Lire Qr code" ? null : null;
+            }}
+            style={styles.item}
+          >
+            <View style={styles.icon}>
+              <FontAwesome5 name={item.icon} size={20} color="black" />
+              <Text style={{ fontFamily: "Nunito-Bold", fontSize: 17 }}>
+                {item.Label}
+              </Text>
+            </View>
+            <AntDesign name="right" size={16} color="black" />
+          </Pressable>
+        )
       }
     />
   );
