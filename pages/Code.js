@@ -12,6 +12,7 @@ import VerifItemCode from "../components/VerifItemCode";
 import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
+import { AntDesign } from "@expo/vector-icons";
 
 //
 import * as LocalAuthentication from "expo-local-authentication";
@@ -122,6 +123,7 @@ const Code = ({ route, navigation }) => {
     return null;
   }
 
+  
   const puce = [0, 1, 2, 3];
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
@@ -138,7 +140,7 @@ const Code = ({ route, navigation }) => {
 
       <View style={{ alignItems: "center", flex: 2 }}>
         <VerifItemCode text="Entrez votre code secret" type="secure" />
-        
+
         <View style={styles.ViewPuce}>
           <View>
             <FlatList
@@ -201,8 +203,12 @@ const Code = ({ route, navigation }) => {
           <BtnItem
             text="Validez"
             navigation={() => {
-              setValidate(true);
-              navigation.goBack();
+              route.params.nav
+                ? route.params.nav("Opr4", {
+                    label: route.params.label,
+                    img: route.params.img,
+                  })
+                : (setValidate(true), navigation.goBack());
             }}
           />
         </View>

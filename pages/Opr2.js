@@ -1,12 +1,32 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { ScrollView, TextInput } from "react-native-gesture-handler";
+import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import BtnItem from "../components/BtnItem";
+import * as Contacts from "expo-contacts";
+
 SplashScreen.preventAutoHideAsync();
 
 const Opr2 = ({ route, navigation: { navigate } }) => {
+  const [contacts, setContacts] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const { status } = await Contacts.requestPermissionsAsync();
+      if (status === "granted") {
+        const { data } = await Contacts.getContactsAsync({
+          fields: [Contacts.Fields.PhoneNumbers],
+        });
+
+        if (data.length > 0) {
+          const contact = data[8];
+          console.log(contact);
+          setContacts(data);
+        }
+      }
+    })();
+  }, []);
+
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -28,12 +48,33 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
   return (
     <ScrollView>
       <View onLayout={onLayoutRootView} style={styles.container}>
-        <Image
+        {/* <Image
           source={img}
           style={{ width: 154, height: 154, marginVertical: 30 }}
-        />
+        /> */}
         <Text style={styles.txtPwd}>Transférez votre argent</Text>
-
+        <FlatList
+          data={contacts}
+          horizontal
+          ItemSeparatorComponent={() => {
+            <View style={{ height: 100 }} />;
+          }}
+          renderItem={({ item, index }) => (
+            <View
+              style={[
+                { backgroundColor: "red", flex: 1 },
+               { marginRight: 10 } ,
+              ]}
+            >
+              <View></View>
+              <FlatList
+                data={item.phoneNumbers}
+                renderItem={({ item }) => <Text>{item.number}</Text>}
+              />
+              <Text>{item.name}</Text>
+            </View>
+          )}
+        />
         <View style={{ gap: 23, marginVertical: 30 }}>
           {label == "VISA" ? (
             <>
@@ -74,9 +115,8 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                 placeholder="Montant du dépôt"
                 keyboardType="numeric"
                 onSubmitEditing={() =>
-                  navigate("Opr3", {
-                    label: label,
-                    img: img,
+                  navigate("code", {
+                    type: "normal",
                   })
                 }
               />
@@ -87,7 +127,9 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
           <BtnItem
             text="Continuez"
             navigation={() =>
-              navigate("Opr3", {
+              navigate("code", {
+                type: "normal",
+                nav: navigate,
                 label: label,
                 img: img,
               })
