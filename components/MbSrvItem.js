@@ -34,6 +34,7 @@ const MbSrvItem = (props) => {
               : props.navigate("Opr2", {
                   label: item.nom,
                   img: item.text,
+                  style: item.style
                 });
           }}
         >

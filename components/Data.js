@@ -1,3 +1,5 @@
+import { color } from "react-native-reanimated";
+
 const Data_Factures = [
   {
     nom: "Canal +",
@@ -81,22 +83,42 @@ const Data_Transaction = [
   {
     nom: "Orange Money",
     text: require("../assets/icons/Mobileservices.png"),
+    style: {
+      color: "#FF7900",
+      backgroundColor: "black",
+    },
   },
   {
     nom: "Moov Money",
     text: require("../assets/icons/Group12.png"),
+    style: {
+      color: "white",
+      backgroundColor: "0066B5",
+    },
   },
   {
     nom: "MTN Money",
     text: require("../assets/icons/Group13.png"),
+    style: {
+      color: "black",
+      backgroundColor: "#FFC403",
+    },
   },
   {
     nom: "Wave",
     text: require("../assets/icons/Group14.png"),
+    style: {
+      color: "white",
+      backgroundColor: "#1DC8FF",
+    },
   },
   {
     nom: "VISA",
     text: require("../assets/icons/visa.png"),
+    style: {
+      color: "#FF7900",
+      backgroundColor: "black",
+    },
   },
 ];
 
