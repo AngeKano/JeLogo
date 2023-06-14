@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -6,7 +6,6 @@ import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import BtnItem from "../components/BtnItem";
 import * as Contacts from "expo-contacts";
 import { AntDesign } from "@expo/vector-icons";
-import { WhiteBalance } from "expo-camera";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -55,13 +54,17 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
         /> */}
       <View
         style={{
-          backgroundColor: "black",
+          backgroundColor: style.backgroundColor,
           alignItems: "center",
           paddingVertical: 15,
         }}
       >
         <Text
-          style={{ color: "orange", fontFamily: "Nunito-Medium", fontSize: 17 }}
+          style={{
+            color: style.color,
+            fontFamily: "Nunito-Bold",
+            fontSize: 17,
+          }}
         >
           {label}
         </Text>
@@ -111,7 +114,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
           </View>
         )}
       </View>
-      <View
+      <Pressable
         style={{
           padding: 10,
           flexDirection: "row",
@@ -119,6 +122,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
           alignItems: "center",
           justifyContent: "space-between",
         }}
+        onPress={() => navigate("ContactsScreen")}
       >
         <View
           style={{
@@ -141,7 +145,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
         </View>
 
         <AntDesign name="right" size={20} color="black" />
-      </View>
+      </Pressable>
       <Text
         style={{
           marginVertical: 10,
@@ -152,7 +156,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
       >
         Contacts récents
       </Text>
-      <FlatList
+      {/* <FlatList
         data={contacts}
         horizontal
         renderItem={({ item }) => (
@@ -176,7 +180,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
             />
           </View>
         )}
-      />
+      /> */}
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 18 }}>
         <BtnItem
           text="Continuez"

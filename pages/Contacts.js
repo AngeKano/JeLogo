@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Alert,
+  StatusBar,
+} from "react-native";
 import React, {
   useCallback,
   useContext,
@@ -9,17 +16,32 @@ import React, {
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import VerifItemCode from "../components/VerifItemCode";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, TextInput } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
 import { AntDesign } from "@expo/vector-icons";
-
+import * as Contacts from "expo-contacts";
 
 SplashScreen.preventAutoHideAsync();
 
-const Contacts = ({ route, navigation }) => {
- 
+const ContactsScreen = ({ route, navigation }) => {
+  const [contacts, setContacts] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const { status } = await Contacts.requestPermissionsAsync();
+      if (status === "granted") {
+        const { data } = await Contacts.getContactsAsync({
+          fields: [Contacts.Fields.PhoneNumbers],
+        });
 
+        if (data.length > 0) {
+          const contact = data[8];
+          console.log(contact);
+          setContacts(data);
+        }
+      }
+    })();
+  }, []);
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -39,121 +61,91 @@ const Contacts = ({ route, navigation }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      {route.params.type == "secure" ? null : (
-        <Pressable
-          onPress={() => {
-            navigation.goBack();
-          }}
-          style={{ position: "absolute", zIndex: 3, top: 40, left: 20 }}
-        >
-          <AntDesign name="close" size={24} color="black" />
-        </Pressable>
-      )}
-
-      <View style={{ alignItems: "center", flex: 2 }}>
-        <VerifItemCode text="Entrez votre code secret" type="secure" />
-
-        <View style={styles.ViewPuce}>
-          <View>
-            <FlatList
-              data={puce}
-              horizontal
-              renderItem={({ item }) => (
-                <View
-                  style={[
-                    styles.puce,
-                    {
-                      backgroundColor:
-                        pwd.length > item
-                          ? "#0372C1"
-                          : "rgba(3, 114, 193, 0.25)",
-                    },
-                  ]}
-                ></View>
-              )}
-            />
-          </View>
-        </View>
-        <Text style={styles.TxtMdp}>Mot de passe oublié</Text>
-      </View>
-
+      <StatusBar />
       <View
         style={{
-          flex: 1.5,
-          gap: 8,
-          width: "100%",
+          flexDirection: "row",
+          margin: 20,
+          alignItems: "center",
+          gap: 25,
         }}
       >
-        <View style={{ gap: 17 }}>
-          <FlatList
-            data={tabl}
-            numColumns={4}
-            renderItem={({ item }) => (
-              <Pressable
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  alignSelf: "center",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  height: 50,
-                }}
-                onPress={() => {
-                  typeof item != "object"
-                    ? setPwd([...pwd, item])
-                    : Object.values(item)[4].name == "fingerprint"
-                    ? handleBiometricAuth()
-                    : setPwd([]);
-                }}
-              >
-                <Text style={{ fontSize: 20, fontFamily: "Nunito-Medium" }}>
-                  {item}
-                </Text>
-              </Pressable>
-            )}
-          />
-          <BtnItem
-            text="Validez"
-            navigation={() => {
-              route.params.nav
-                ? route.params.nav("Opr4", {
-                    label: route.params.label,
-                    img: route.params.img,
-                  })
-                : (setValidate(true), navigation.goBack());
-            }}
-          />
-        </View>
+        <Pressable onPress={() => navigation.goBack()}>
+          <AntDesign name="close" size={24} color="black" />
+        </Pressable>
+        <Text style={{ fontSize: 20, fontFamily: "Nunito-Regular" }}>
+          azerty
+        </Text>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          gap: 20,
+          alignItems: "center",
+          borderBottomWidth: 1,
+          borderBottomColor: "#ABB0BC",
+          paddingVertical: 7,
+        }}
+      >
+        <AntDesign
+          name="search1"
+          size={20}
+          style={{ marginLeft: 10 }}
+          color="black"
+        />
+        <TextInput
+          placeholder="Entrez un nom ou un numéro"
+          style={{ fontFamily: "Nunito-Medium", flex: 1, fontSize: 18 }}
+        />
+      </View>
+      <View style={{ marginVertical: 15 }}>
+        <Text
+          style={{
+            marginLeft: 15,
+            fontFamily: "Nunito-Regular",
+            color: "gray",
+          }}
+        >
+          Contacts récents
+        </Text>
+        <FlatList />
+      </View>
+      <View>
+        <Text>Contacts</Text>
+        <FlatList
+        data={contacts}
+        renderItem={({ item }) => (
+          <View style={[{ marginRight: 10 }]}>
+            <View
+              style={{
+                width: 60,
+                height: 60,
+                borderRadius: 50,
+                backgroundColor: "#C2D0E1",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text style={{ fontSize: 17 }}>{item.name.substr(0, 2)}</Text>
+            </View>
+            <Text>{item.name}</Text>
+            <FlatList
+              data={item.phoneNumbers}
+              renderItem={({ item }) => <Text>{item.number}</Text>}
+            />
+          </View>
+        )}
+      />
       </View>
     </View>
   );
 };
 
-export default memo(Contacts);
+export default memo(ContactsScreen);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F3F3F3",
-    alignItems: "center",
-    paddingTop: 116,
-  },
-  TxtMdp: {
-    fontFamily: "Nunito-Medium",
-    fontSize: 17,
-    marginTop: 33,
-    color: "#ABB0BC",
-  },
-  puce: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    marginHorizontal: 10,
-  },
-  ViewPuce: {
-    flexDirection: "row",
-    marginTop: 45,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

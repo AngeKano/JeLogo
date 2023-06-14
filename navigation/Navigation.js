@@ -8,7 +8,7 @@ import VerificationN3 from "../pages/VerificationN3";
 import MainScreen from "./MainScreen";
 import Login from "../pages/Login";
 import Code from "../pages/Code";
-
+import ContactsScreen from "../pages/Contacts";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -23,6 +23,7 @@ const Navigation = () => {
         <Stack.Screen name="verificationN1" component={VerificationN1} />
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="code" component={Code} />
+        <Stack.Screen name="ContactsScreen" component={ContactsScreen} />
         <Stack.Screen name="verificationN21" component={VerificationN21} />
         <Stack.Screen name="verificationN22" component={VerificationN22} />
         <Stack.Screen name="verificationN3" component={VerificationN3} />

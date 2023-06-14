@@ -93,7 +93,7 @@ const Data_Transaction = [
     text: require("../assets/icons/Group12.png"),
     style: {
       color: "white",
-      backgroundColor: "0066B5",
+      backgroundColor: "#0066B5",
     },
   },
   {
