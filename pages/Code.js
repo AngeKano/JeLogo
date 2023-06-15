@@ -123,7 +123,6 @@ const Code = ({ route, navigation }) => {
     return null;
   }
 
-  
   const puce = [0, 1, 2, 3];
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
@@ -208,7 +207,7 @@ const Code = ({ route, navigation }) => {
                     label: route.params.label,
                     img: route.params.img,
                   })
-                : (setValidate(true), navigation.goBack());
+                : (setValidate(true), navigation.navigate("mainScreen"));
             }}
           />
         </View>
