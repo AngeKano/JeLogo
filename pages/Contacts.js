@@ -73,8 +73,8 @@ const ContactsScreen = ({ route, navigation }) => {
         <Pressable onPress={() => navigation.goBack()}>
           <AntDesign name="close" size={24} color="black" />
         </Pressable>
-        <Text style={{ fontSize: 20, fontFamily: "Nunito-Regular" }}>
-          azerty
+        <Text style={{ fontSize: 18, fontFamily: "Nunito-Bold" }}>
+          Séléctionnez le numéro
         </Text>
       </View>
       <View
@@ -111,31 +111,52 @@ const ContactsScreen = ({ route, navigation }) => {
         <FlatList />
       </View>
       <View>
-        <Text>Contacts</Text>
+        <Text
+          style={{
+            marginLeft: 15,
+            fontFamily: "Nunito-Bold",
+            marginBottom: 15,
+            fontSize: 18,
+          }}
+        >
+          Contacts
+        </Text>
         <FlatList
-        data={contacts}
-        renderItem={({ item }) => (
-          <View style={[{ marginRight: 10 }]}>
+          data={contacts}
+          ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+          renderItem={({ item }) => (
             <View
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 50,
-                backgroundColor: "#C2D0E1",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              style={[
+                {
+                  marginLeft: 10,
+                  flexDirection: "row",
+                  gap: 10,
+                  alignItems: "center",
+                },
+              ]}
             >
-              <Text style={{ fontSize: 17 }}>{item.name.substr(0, 2)}</Text>
+              <View
+                style={{
+                  width: 55,
+                  height: 55,
+                  borderRadius: 50,
+                  backgroundColor: "#C2D0E1",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
+                  {item.name.substr(0, 2)}
+                </Text>
+              </View>
+              <Text style={{ fontFamily: "Nunito-Medium" }}>{item.name}</Text>
+              <FlatList
+                data={item.phoneNumbers}
+                renderItem={({ item }) => <Text>{item.number}</Text>}
+              />
             </View>
-            <Text>{item.name}</Text>
-            <FlatList
-              data={item.phoneNumbers}
-              renderItem={({ item }) => <Text>{item.number}</Text>}
-            />
-          </View>
-        )}
-      />
+          )}
+        />
       </View>
     </View>
   );

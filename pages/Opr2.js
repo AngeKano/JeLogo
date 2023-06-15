@@ -100,7 +100,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
             </View>
           </>
         ) : (
-          <View style={{ alignItems: "center" }}>
+          <View style={{ alignItems: "center", gap: 15 }}>
             <TextInput
               style={styles.TextInput}
               placeholder="Montant du dépôt"
@@ -111,12 +111,36 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                 })
               }
             />
+            <View
+              style={{ flexDirection: "row", alignItems: "flex-end", gap: 10 }}
+            >
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontFamily: "Nunito-Regular",
+                  borderBottomWidth: 1,
+                  borderBottomColor: style.color,
+                }}
+              >
+                +225
+              </Text>
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Numéro de dépôt"
+                keyboardType="numeric"
+                onSubmitEditing={() =>
+                  navigate("code", {
+                    type: "normal",
+                  })
+                }
+              />
+            </View>
           </View>
         )}
       </View>
       <Pressable
         style={{
-          padding: 10,
+          paddingHorizontal: 10,
           flexDirection: "row",
           gap: 10,
           alignItems: "center",
