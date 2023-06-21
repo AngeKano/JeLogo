@@ -27,7 +27,7 @@ const Parametre = ({ navigation: { navigate } }) => {
         </View>
       </View>
       <View>
-        <ItemParam data={Data_Parametre} />
+        <ItemParam data={Data_Parametre} nav={navigate} />
       </View>
     </View>
   );

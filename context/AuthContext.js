@@ -58,6 +58,7 @@ export const AuthProvider = ({ children }) => {
   ];
 
   const [validate, setValidate] = useState(false);
+  const [contactSelect, setContactSelect] = useState([]);
 
   return (
     <AuthContext.Provider
@@ -73,6 +74,8 @@ export const AuthProvider = ({ children }) => {
         tabl,
         tablCode,
         validate,
+        contactSelect,
+        setContactSelect,
         setMontant,
         setCode,
         setNumero,

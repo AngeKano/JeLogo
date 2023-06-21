@@ -21,10 +21,12 @@ import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
 import { AntDesign } from "@expo/vector-icons";
 import * as Contacts from "expo-contacts";
+import { FlashList } from "@shopify/flash-list";
 
 SplashScreen.preventAutoHideAsync();
 
 const ContactsScreen = ({ route, navigation }) => {
+  const { contactSelect, setContactSelect } = useContext(AuthContext);
   const [contacts, setContacts] = useState([]);
   useEffect(() => {
     (async () => {
@@ -35,9 +37,14 @@ const ContactsScreen = ({ route, navigation }) => {
         });
 
         if (data.length > 0) {
-          const contact = data[8];
-          console.log(contact);
-          setContacts(data);
+          // const contact = data[8];
+          // console.log(contact);
+          data.map((item) => {
+            if (item.phoneNumbers == undefined) {
+              console.log(item);
+              console.log("Numero Iconnu");
+            }
+          });
         }
       }
     })();
@@ -121,42 +128,45 @@ const ContactsScreen = ({ route, navigation }) => {
         >
           Contacts
         </Text>
-        <FlatList
-          data={contacts}
-          ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-          renderItem={({ item }) => (
-            <View
-              style={[
-                {
-                  marginLeft: 10,
-                  flexDirection: "row",
-                  gap: 10,
-                  alignItems: "center",
-                },
-              ]}
-            >
-              <View
-                style={{
-                  width: 55,
-                  height: 55,
-                  borderRadius: 50,
-                  backgroundColor: "#C2D0E1",
-                  alignItems: "center",
-                  justifyContent: "center",
+        <View style={{ height: "100%", width: "100%" }}>
+          <FlashList
+            data={contacts}
+            ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+            renderItem={({ item }) => (
+              <Pressable
+                style={[
+                  {
+                    marginLeft: 10,
+                    flexDirection: "row",
+                    gap: 10,
+                    alignItems: "center",
+                  },
+                ]}
+                onPress={() => {
+                  navigation.setParams(setContactSelect(item));
+                  navigation.goBack();
                 }}
               >
-                <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
-                  {item.name.substr(0, 2)}
-                </Text>
-              </View>
-              <Text style={{ fontFamily: "Nunito-Medium" }}>{item.name}</Text>
-              <FlatList
-                data={item.phoneNumbers}
-                renderItem={({ item }) => <Text>{item.number}</Text>}
-              />
-            </View>
-          )}
-        />
+                <View
+                  style={{
+                    width: 55,
+                    height: 55,
+                    borderRadius: 50,
+                    backgroundColor: "#C2D0E1",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
+                    {item.name.substr(0, 2)}
+                  </Text>
+                </View>
+                <Text style={{ fontFamily: "Nunito-Medium" }}>{item.name}</Text>
+              </Pressable>
+            )}
+            estimatedItemSize={70}
+          />
+        </View>
       </View>
     </View>
   );

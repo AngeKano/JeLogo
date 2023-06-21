@@ -5,11 +5,11 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 
-const renderItem = (item) => {
+const renderItem = (item, nav) => {
   return (
     <View style={{ marginVertical: 20 }}>
       <Text style={styles.text}>{item.Label}</Text>
-      <ItemParam data={item.option} />
+      <ItemParam data={item.option} nav={nav} />
     </View>
   );
 };
@@ -38,11 +38,15 @@ const ItemParam = (props) => {
       data={props.data}
       renderItem={({ item }) =>
         item.option ? (
-          renderItem(item)
+          renderItem(item, props.nav)
         ) : (
           <Pressable
             onPress={() => {
-              item.Label == "Lire Qr code" ? null : null;
+              item.Label == "Lire Qr code"
+                ? props.nav("Scan")
+                : item.Label == "Changer code secret"
+                ? props.nav("code", { type: "normal" })
+                : null;
             }}
             style={styles.item}
           >

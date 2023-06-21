@@ -1,33 +1,18 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import BtnItem from "../components/BtnItem";
 import * as Contacts from "expo-contacts";
 import { AntDesign } from "@expo/vector-icons";
+import { AuthContext } from "../context/AuthContext";
 
 SplashScreen.preventAutoHideAsync();
 
 const Opr2 = ({ route, navigation: { navigate } }) => {
-  const [contacts, setContacts] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const { status } = await Contacts.requestPermissionsAsync();
-      if (status === "granted") {
-        const { data } = await Contacts.getContactsAsync({
-          fields: [Contacts.Fields.PhoneNumbers],
-        });
-
-        if (data.length > 0) {
-          const contact = data[8];
-          console.log(contact);
-          setContacts(data);
-        }
-      }
-    })();
-  }, []);
-
+  const { contactSelect, setContactSelect } = useContext(AuthContext);
+  console.log(contactSelect);
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),

@@ -38,7 +38,7 @@ const CustomDrawerContent = (props) => {
   if (!fontsLoaded) {
     return null;
   }
-  Sharing.isAvailableAsync() ? console.log("sqs") : console.log("first");
+  // Sharing.isAvailableAsync() ? console.log("sqs") : console.log("first");
   
   return (
     <DrawerContentScrollView {...props}>
