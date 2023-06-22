@@ -28,6 +28,7 @@ SplashScreen.preventAutoHideAsync();
 const ContactsScreen = ({ route, navigation }) => {
   const { contactSelect, setContactSelect } = useContext(AuthContext);
   const [contacts, setContacts] = useState([]);
+
   useEffect(() => {
     (async () => {
       const { status } = await Contacts.requestPermissionsAsync();
@@ -35,20 +36,27 @@ const ContactsScreen = ({ route, navigation }) => {
         const { data } = await Contacts.getContactsAsync({
           fields: [Contacts.Fields.PhoneNumbers],
         });
-
         if (data.length > 0) {
-          // const contact = data[8];
-          // console.log(contact);
-          data.map((item) => {
-            if (item.phoneNumbers == undefined) {
-              console.log(item);
-              console.log("Numero Iconnu");
-            }
-          });
+          setContacts(data);
+          setFilteredData(data);
         }
       }
     })();
   }, []);
+  //
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+    const newData = contacts.filter((item) => {
+      const itemName = item.name.toLowerCase();
+      const search = text.toLowerCase();
+      return itemName.indexOf(search) > -1;
+    });
+    setFilteredData(newData);
+  };
+  //
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -103,9 +111,11 @@ const ContactsScreen = ({ route, navigation }) => {
         <TextInput
           placeholder="Entrez un nom ou un numéro"
           style={{ fontFamily: "Nunito-Medium", flex: 1, fontSize: 18 }}
+          value={searchTerm}
+          onChangeText={handleSearch}
         />
       </View>
-      <View style={{ marginVertical: 15 }}>
+      {/* <View style={{ marginVertical: 15 }}>
         <Text
           style={{
             marginLeft: 15,
@@ -116,8 +126,8 @@ const ContactsScreen = ({ route, navigation }) => {
           Contacts récents
         </Text>
         <FlatList />
-      </View>
-      <View>
+      </View> */}
+      <View style={{ marginVertical: 15 }}>
         <Text
           style={{
             marginLeft: 15,
@@ -130,7 +140,7 @@ const ContactsScreen = ({ route, navigation }) => {
         </Text>
         <View style={{ height: "100%", width: "100%" }}>
           <FlashList
-            data={contacts}
+            data={filteredData}
             ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
             renderItem={({ item }) => (
               <Pressable
@@ -158,7 +168,9 @@ const ContactsScreen = ({ route, navigation }) => {
                   }}
                 >
                   <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
-                    {item.name.substr(0, 2)}
+                    {item.lastName == undefined
+                      ? item.name.substr(0, 2)
+                      : item.lastName.substr(0, 2)}
                   </Text>
                 </View>
                 <Text style={{ fontFamily: "Nunito-Medium" }}>{item.name}</Text>

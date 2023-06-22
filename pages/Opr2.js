@@ -7,12 +7,15 @@ import BtnItem from "../components/BtnItem";
 import * as Contacts from "expo-contacts";
 import { AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
+import { FlashList } from "@shopify/flash-list";
+import { Entypo } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
 
 const Opr2 = ({ route, navigation: { navigate } }) => {
   const { contactSelect, setContactSelect } = useContext(AuthContext);
   console.log(contactSelect);
+
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -97,7 +100,11 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               }
             />
             <View
-              style={{ flexDirection: "row", alignItems: "flex-end", gap: 10 }}
+              style={{
+                flexDirection: "row",
+                alignItems: "flex-end",
+                gap: 10,
+              }}
             >
               <Text
                 style={{
@@ -165,6 +172,61 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
       >
         Contacts récents
       </Text>
+      {/* <FlashList /> */}
+      <Text
+        style={{
+          marginVertical: 10,
+          fontFamily: "Nunito-Regular",
+          color: "gray",
+          marginLeft: 10,
+        }}
+      >
+        Contacts sélectionné
+      </Text>
+      {console.log(typeof contactSelect.phoneNumbers)}
+
+      {typeof contactSelect.phoneNumbers == "undefined" ? null : (
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 5,
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <View style={{ flexDirection: "row", gap: 7, alignItems: "center" }}>
+            <View
+              style={{
+                width: 55,
+                height: 55,
+                borderRadius: 50,
+                backgroundColor: "#C2D0E1",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
+                {contactSelect.lastName == undefined
+                  ? contactSelect.name.substr(0, 2)
+                  : contactSelect.firstName.substr(0, 1) +
+                    contactSelect.lastName.substr(0, 1)}
+              </Text>
+            </View>
+            <View>
+              <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
+                {contactSelect.name}
+              </Text>
+              <Text style={{ fontSize: 17, fontFamily: "Nunito-Medium" }}>
+                {Object.values(contactSelect.phoneNumbers)[0].number}
+              </Text>
+            </View>
+          </View>
+          <Pressable style={{}} onPress={() => setContactSelect({})}>
+            <Entypo name="cross" size={24} color="gray" />
+          </Pressable>
+        </View>
+      )}
+
       {/* <FlatList
         data={contacts}
         horizontal
@@ -225,5 +287,11 @@ const styles = StyleSheet.create({
     fontSize: 21,
     alignItems: "center",
     textAlign: "center",
+  },
+
+  icon: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
   },
 });
