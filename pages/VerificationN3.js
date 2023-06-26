@@ -75,11 +75,11 @@ const VerificationN3 = ({ navigation: { replace } }) => {
       <View
         style={{
           flex: 1.5,
-          gap: 8,
           width: "100%",
+          justifyContent: "flex-end",
         }}
       >
-        <View style={{ gap: 17 }}>
+        <View style={{ gap: 10 }}>
           <FlatList
             data={tablCode}
             numColumns={4}
@@ -103,7 +103,9 @@ const VerificationN3 = ({ navigation: { replace } }) => {
               </Pressable>
             )}
           />
-          <BtnItem text="Terminer" navigation={() => replace("mainScreen")} />
+          <View style={{ marginBottom: 15 }}>
+            <BtnItem text="Terminer" navigation={() => replace("mainScreen")} />
+          </View>
         </View>
       </View>
     </View>

@@ -511,6 +511,28 @@ const Data_Parametre = [
       {
         Label: "À propos",
         icon: "info-circle",
+        option: [
+          {
+            Label: "Outil de diagnostic",
+            icon: "",
+          },
+          {
+            Label: "Informations légales",
+            icon: "",
+          },
+          {
+            Label: "Conditions générales d'utilisation",
+            icon: "",
+          },
+          {
+            Label: "Logiciels tiers",
+            icon: "",
+          },
+          {
+            Label: "Badge de confiance",
+            icon: "",
+          },
+        ],
       },
     ],
   },

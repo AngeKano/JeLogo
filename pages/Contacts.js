@@ -89,7 +89,7 @@ const ContactsScreen = ({ route, navigation }) => {
           <AntDesign name="close" size={24} color="black" />
         </Pressable>
         <Text style={{ fontSize: 18, fontFamily: "Nunito-Bold" }}>
-          Séléctionnez le numéro
+          Sélectionnez le numéro
         </Text>
       </View>
       <View

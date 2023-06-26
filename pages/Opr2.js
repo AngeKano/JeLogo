@@ -14,7 +14,7 @@ SplashScreen.preventAutoHideAsync();
 
 const Opr2 = ({ route, navigation: { navigate } }) => {
   const { contactSelect, setContactSelect } = useContext(AuthContext);
-  console.log(contactSelect);
+ 
 
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
@@ -181,9 +181,8 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
           marginLeft: 10,
         }}
       >
-        Contacts sélectionné
+        Contacts sélectionnés
       </Text>
-      {console.log(typeof contactSelect.phoneNumbers)}
 
       {typeof contactSelect.phoneNumbers == "undefined" ? null : (
         <View

@@ -14,7 +14,8 @@ SplashScreen.preventAutoHideAsync();
 
 const Compte = ({ navigation: { navigate } }) => {
   ///
-  const [dateTime, setDateTime] = useState(new Date(1598051730000));
+  const [dateTime, setDateTime] = useState(new Date(Date.now()));
+
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
 
@@ -266,7 +267,7 @@ const Compte = ({ navigation: { navigate } }) => {
             Supprimer le compte
           </Text>
         </Pressable>
-        <Text style={styles.txtRec}>Compte crée le 25 Juin 2012</Text>
+        <Text style={styles.txtRec}>Compte crée le JJ/MM/AA</Text>
       </View>
     </View>
   );

@@ -154,11 +154,11 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
       <View
         style={{
           flex: 1.5,
-          gap: 8,
           width: "100%",
+          justifyContent: "flex-end",
         }}
       >
-        <View style={{ gap: 17 }}>
+        <View style={{ gap: 10 }}>
           <FlatList
             data={tabl}
             numColumns={4}
@@ -186,10 +186,12 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
               </Pressable>
             )}
           />
-          <BtnItem
-            text="Validez"
-            navigation={() => navigate("verificationN3")}
-          />
+          <View style={{ marginBottom: 15 }}>
+            <BtnItem
+              text="Validez"
+              navigation={() => navigate("verificationN3")}
+            />
+          </View>
         </View>
       </View>
     </View>

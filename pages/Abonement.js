@@ -75,9 +75,9 @@ const Abonement = ({ route, navigation: { navigate } }) => {
                 <Text
                   style={{ textAlign: "center", fontFamily: "Nunito-Medium" }}
                 >
-                  Votre réabonnement au services{" "}
+                  Votre réabonnement au service{" "}
                   <Text style={{ fontWeight: "bold" }}>{route.params.nom}</Text>{" "}
-                  à bien été effectuée
+                  a bien été effectué
                 </Text>
               </View>
             </View>
