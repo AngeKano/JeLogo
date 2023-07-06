@@ -212,7 +212,7 @@ const Compte = ({ navigation: { navigate } }) => {
             />
           </View>
           <View style={styles.inputStyle}>
-            <MaterialIcons name="gs-fixed" size={24} color="black" />
+            <MaterialIcons name="gps-fixed" size={24} color="black" />
             <TextInput
               style={styles.TextInput}
               placeholder={"Lieu"}
