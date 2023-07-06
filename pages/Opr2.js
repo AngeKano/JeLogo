@@ -189,8 +189,9 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
           style={{
             flexDirection: "row",
             gap: 5,
-            justifyContent: "space-around",
+            justifyContent: "space-between",
             alignItems: "center",
+            marginHorizontal: 5
           }}
         >
           <View style={{ flexDirection: "row", gap: 7, alignItems: "center" }}>

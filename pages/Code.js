@@ -94,8 +94,12 @@ const Code = ({ route, navigation }) => {
     });
 
     if (biometricAuth) {
-      setValidate(true);
-      navigation.goBack();
+      route.params.nav
+        ? route.params.nav("Opr4", {
+            label: route.params.label,
+            img: route.params.img,
+          })
+        : (setValidate(true), navigation.navigate("mainScreen"));
     }
     // console.log({ isBiometricAvailable });
     // console.log({ supportedBiometrics });
@@ -169,6 +173,7 @@ const Code = ({ route, navigation }) => {
           flex: 1.5,
           gap: 8,
           width: "100%",
+          justifyContent: "flex-end",
         }}
       >
         <View style={{ gap: 17 }}>
@@ -199,17 +204,19 @@ const Code = ({ route, navigation }) => {
               </Pressable>
             )}
           />
-          <BtnItem
-            text="Validez"
-            navigation={() => {
-              route.params.nav
-                ? route.params.nav("Opr4", {
-                    label: route.params.label,
-                    img: route.params.img,
-                  })
-                : (setValidate(true), navigation.navigate("mainScreen"));
-            }}
-          />
+          <View style={{ marginBottom: 15 }}>
+            <BtnItem
+              text="Validez"
+              navigation={() => {
+                route.params.nav
+                  ? route.params.nav("Opr4", {
+                      label: route.params.label,
+                      img: route.params.img,
+                    })
+                  : (setValidate(true), navigation.navigate("mainScreen"));
+              }}
+            />
+          </View>
         </View>
       </View>
     </View>
