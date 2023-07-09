@@ -6,6 +6,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
+import { Dimensions } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,6 +27,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
+  console.log(Dimensions.get("window"));
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    marginTop: 116,
+    marginTop: Dimensions.get("window").height > 500 ? 116 : 0,
   },
   ViewInputText: {
     prefix: {
