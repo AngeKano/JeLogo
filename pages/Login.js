@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useCallback, useContext, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
@@ -74,7 +74,7 @@ const Login = ({ navigation: { navigate } }) => {
         <Text style={styles.textLogin}>Se connecter</Text>
       </Pressable>
 
-      <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 40 }}>
+      <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 15 }}>
         <BtnItem
           text="Inscription"
           navigation={() => navigate("verificationN3")}

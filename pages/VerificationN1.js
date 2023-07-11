@@ -1,4 +1,13 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  StatusBar,
+  Dimensions,
+  KeyboardAvoidingView,
+} from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -6,7 +15,6 @@ import { TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
-import { Dimensions } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,7 +38,11 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
   console.log(Dimensions.get("window"));
 
   return (
-    <View onLayout={onLayoutRootView} style={styles.container}>
+    <KeyboardAvoidingView
+      behavior="height"
+      onLayout={onLayoutRootView}
+      style={styles.container}
+    >
       <VerifItem text="Entrez votre numéro de compte" />
       <View style={styles.ViewInputText}>
         <View style={styles.ViewInputText.prefix}>
@@ -60,7 +72,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
           navigation={() => navigate("verificationN21")}
         />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -71,7 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    marginTop: Dimensions.get("window").height > 500 ? 116 : 0,
+    paddingTop: 116,
   },
   ViewInputText: {
     prefix: {
