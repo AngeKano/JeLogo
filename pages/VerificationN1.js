@@ -38,7 +38,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
   console.log(Dimensions.get("window"));
 
   return (
-    <KeyboardAvoidingView
+    <View
       behavior="height"
       onLayout={onLayoutRootView}
       style={styles.container}
@@ -72,7 +72,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
           navigation={() => navigate("verificationN21")}
         />
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   TextInput: {
-    width: "35%",
+    width: "37%",
     borderBottomWidth: 1,
     borderBottomColor: "#ABB0BC",
     fontSize: 17,

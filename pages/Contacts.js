@@ -138,7 +138,7 @@ const ContactsScreen = ({ route, navigation }) => {
         >
           Contacts
         </Text>
-        <View style={{ height: "100%", width: "100%" }}>
+        <View style={{ height: "100%", width: "100%", paddingBottom: 210 }}>
           <FlashList
             data={filteredData}
             ItemSeparatorComponent={() => <View style={{ height: 8 }} />}

@@ -31,56 +31,58 @@ const Login = ({ navigation: { navigate } }) => {
   }
 
   return (
-    <View onLayout={onLayoutRootView} style={styles.container}>
-      <VerifItem text="Entrez vos coordonnées" />
-      <View style={styles.ViewInputText}>
-        <View style={styles.ViewInputText.prefix}>
-          <Image source={require("../assets/icons/Group.png")} />
-          <Text style={styles.ViewInputText.text}>+225</Text>
-          <AntDesign name="down" size={20} color="black" />
+    <ScrollView>
+      <View onLayout={onLayoutRootView} style={styles.container}>
+        <VerifItem text="Entrez vos coordonnées" />
+        <View style={styles.ViewInputText}>
+          <View style={styles.ViewInputText.prefix}>
+            <Image source={require("../assets/icons/Group.png")} />
+            <Text style={styles.ViewInputText.text}>+225</Text>
+            <AntDesign name="down" size={20} color="black" />
+          </View>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="0X XX XX XX XX"
+            keyboardType="numeric"
+            maxLength={10}
+            onChange={(text) => {
+              setNumero(text.nativeEvent.text);
+            }}
+          />
         </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="0X XX XX XX XX"
-          keyboardType="numeric"
-          maxLength={10}
-          onChange={(text) => {
-            setNumero(text.nativeEvent.text);
-          }}
-        />
-      </View>
-      <View style={[styles.ViewInputText, { marginTop: 20 }]}>
-        <View style={styles.ViewInputText.prefix}>
-          <Text style={styles.ViewInputText.text}>Code secret</Text>
-          <AntDesign name="Safety" size={20} color="black" />
+        <View style={[styles.ViewInputText, { marginTop: 20 }]}>
+          <View style={styles.ViewInputText.prefix}>
+            <Text style={styles.ViewInputText.text}>Code secret</Text>
+            <AntDesign name="Safety" size={20} color="black" />
+          </View>
+          <TextInput
+            style={styles.TextInputPwd}
+            placeholder="XXXX"
+            keyboardType="numeric"
+            maxLength={4}
+            secureTextEntry
+            onChange={(text) => {
+              setCode(text.nativeEvent.text);
+            }}
+            onSubmitEditing={() => navigate("verificationN3")}
+          />
         </View>
-        <TextInput
-          style={styles.TextInputPwd}
-          placeholder="XXXX"
-          keyboardType="numeric"
-          maxLength={4}
-          secureTextEntry
-          onChange={(text) => {
-            setCode(text.nativeEvent.text);
+        <Pressable
+          onPress={() => {
+            navigate("verificationN1");
           }}
-          onSubmitEditing={() => navigate("verificationN3")}
-        />
-      </View>
-      <Pressable
-        onPress={() => {
-          navigate("verificationN1");
-        }}
-      >
-        <Text style={styles.textLogin}>Se connecter</Text>
-      </Pressable>
+        >
+          <Text style={styles.textLogin}>Se connecter</Text>
+        </Pressable>
 
-      <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 15 }}>
-        <BtnItem
-          text="Inscription"
-          navigation={() => navigate("verificationN3")}
-        />
+        <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 15 }}>
+          <BtnItem
+            text="Inscription"
+            navigation={() => navigate("verificationN3")}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
