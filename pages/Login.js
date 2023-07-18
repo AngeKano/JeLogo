@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  Dimensions,
+} from "react-native";
 import React, { useCallback, useContext, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -93,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    marginTop: 116,
+    marginTop: Dimensions.get("window").height * 0.15,
   },
   ViewInputText: {
     prefix: {

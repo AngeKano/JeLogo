@@ -100,63 +100,64 @@ const Compte = ({ navigation: { navigate } }) => {
     }
   };
   return (
-    <View onPress={onLayoutRootView} style={styles.container}>
-      <Modal animationType="fade" transparent visible={modalVisible}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "rgba(0,0,0,.2)",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+    <ScrollView>
+      <View onPress={onLayoutRootView} style={styles.container}>
+        <Modal animationType="fade" transparent visible={modalVisible}>
           <View
             style={{
+              flex: 1,
+              backgroundColor: "rgba(0,0,0,.2)",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "white",
-              paddingVertical: 25,
-              paddingHorizontal: 30,
-              borderRadius: 25,
-              gap: 15,
             }}
           >
-            <AntDesign name="checkcircleo" size={55} color="#1ACA56" />
-            <Text
+            <View
               style={{
-                fontFamily: "Nunito-Medium",
-                fontSize: 20,
-                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                paddingVertical: 25,
+                paddingHorizontal: 30,
+                borderRadius: 25,
+                gap: 15,
               }}
             >
-              Vos modifications ont bien été enregistrées
-            </Text>
+              <AntDesign name="checkcircleo" size={55} color="#1ACA56" />
+              <Text
+                style={{
+                  fontFamily: "Nunito-Medium",
+                  fontSize: 20,
+                  textAlign: "center",
+                }}
+              >
+                Vos modifications ont bien été enregistrées
+              </Text>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
 
-      <Pressable
-        style={styles.princUser}
-        onPress={() => {
-          handlePickUser();
-        }}
-      >
-        <Image
-          source={
-            typeof imageUserL == "number" ? imageUserL : { uri: imageUserL }
-          }
-          style={{ width: 125, height: 125, borderRadius: 100 }}
-        />
-        <AntDesign
-          name="pluscircleo"
-          size={24}
-          color="black"
-          style={styles.plus}
-        />
-        {/* <Text style={styles.txtName}>{nom}</Text> */}
-      </Pressable>
+        <Pressable
+          style={styles.princUser}
+          onPress={() => {
+            handlePickUser();
+          }}
+        >
+          <Image
+            source={
+              typeof imageUserL == "number" ? imageUserL : { uri: imageUserL }
+            }
+            style={{ width: 125, height: 125, borderRadius: 100 }}
+          />
+          <AntDesign
+            name="pluscircleo"
+            size={24}
+            color="black"
+            style={styles.plus}
+          />
+          {/* <Text style={styles.txtName}>{nom}</Text> */}
+        </Pressable>
 
-      {/* <View style={styles.itemsInfos}>
+        {/* <View style={styles.itemsInfos}>
         <View style={styles.itemIfon}>
           <AntDesign name="mail" size={24} color="black" />
           <Text style={styles.txtIfon}>{email}</Text>
@@ -174,102 +175,109 @@ const Compte = ({ navigation: { navigate } }) => {
           <Text style={styles.txtIfon}>{lieu}</Text>
         </View>
       </View> */}
-      <View style={styles.itemsInfos}>
-        <View style={styles.listInputs}>
-          <View style={styles.inputStyle}>
-            <AntDesign name="user" size={24} color="black" />
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Nom"
-              keyboardType="default"
-              onChangeText={(textNom) => {
-                setNomL(textNom);
-              }}
-              value={nomL}
-            />
-          </View>
-          <View style={styles.inputStyle}>
-            <AntDesign name="mail" size={24} color="black" />
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Email"
-              onChangeText={(textEmail) => {
-                setEmailL(textEmail);
-              }}
-              value={emailL}
-            />
-          </View>
-          <View style={styles.inputStyle}>
-            <AntDesign name="phone" size={24} color="black" />
-            <TextInput
-              style={styles.TextInput}
-              placeholder={"Numero"}
-              keyboardType="numeric"
-              onChangeText={(textNumero) => {
-                setNumeroL(textNumero);
-              }}
-              value={numeroL}
-            />
-          </View>
-          <View style={styles.inputStyle}>
-            <MaterialIcons name="gps-fixed" size={24} color="black" />
-            <TextInput
-              style={styles.TextInput}
-              placeholder={"Lieu"}
-              onChangeText={(textLieu) => {
-                setLieuL(textLieu);
-              }}
-              value={lieuL}
-            />
-          </View>
-          <Pressable
-            onPress={() => {
-              showMode();
-            }}
-            style={styles.itmCalnd}
-          >
-            <View style={styles.btnCalnd}>
-              <AntDesign name="calendar" size={24} color="black" />
+        <View style={styles.itemsInfos}>
+          <View style={styles.listInputs}>
+            <View style={styles.inputStyle}>
+              <AntDesign name="user" size={24} color="black" />
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Nom"
+                keyboardType="default"
+                onChangeText={(textNom) => {
+                  setNomL(textNom);
+                }}
+                value={nomL}
+              />
             </View>
-            <Text style={styles.txtCalnd}>{dateTime.toLocaleDateString()}</Text>
-          </Pressable>
-          {show ? (
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={dateTime}
-              dateFormat="day month year"
-              mode={mode}
-              is24Hour={true}
-              onChange={(e) => {
-                onChange(e.nativeEvent.timestamp);
+            <View style={styles.inputStyle}>
+              <AntDesign name="mail" size={24} color="black" />
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Email"
+                onChangeText={(textEmail) => {
+                  setEmailL(textEmail);
+                }}
+                value={emailL}
+              />
+            </View>
+            <View style={styles.inputStyle}>
+              <AntDesign name="phone" size={24} color="black" />
+              <TextInput
+                style={styles.TextInput}
+                placeholder={"Numero"}
+                keyboardType="numeric"
+                onChangeText={(textNumero) => {
+                  setNumeroL(textNumero);
+                }}
+                value={numeroL}
+              />
+            </View>
+            <View style={styles.inputStyle}>
+              <MaterialIcons name="gps-fixed" size={24} color="black" />
+              <TextInput
+                style={styles.TextInput}
+                placeholder={"Lieu"}
+                onChangeText={(textLieu) => {
+                  setLieuL(textLieu);
+                }}
+                value={lieuL}
+              />
+            </View>
+            <Pressable
+              onPress={() => {
+                showMode();
               }}
-            />
-          ) : null}
+              style={styles.itmCalnd}
+            >
+              <View style={styles.btnCalnd}>
+                <AntDesign name="calendar" size={24} color="black" />
+              </View>
+              <Text style={styles.txtCalnd}>
+                {dateTime.toLocaleDateString()}
+              </Text>
+            </Pressable>
+            {show ? (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={dateTime}
+                dateFormat="day month year"
+                mode={mode}
+                is24Hour={true}
+                onChange={(e) => {
+                  onChange(e.nativeEvent.timestamp);
+                }}
+              />
+            ) : null}
+          </View>
+        </View>
+
+        <View style={styles.viewBtn}>
+          <Pressable onPress={() => handle()} style={styles.BtnPrinc}>
+            <Text style={styles.BtnPrincTxt}>Enregistrer</Text>
+          </Pressable>
+          <Pressable
+            onPress={() =>
+              navigate("Accueil", {
+                label: label,
+              })
+            }
+            style={[
+              styles.BtnPrinc,
+              {
+                backgroundColor: "none",
+                borderColor: "#0372C1",
+                borderWidth: 1,
+              },
+            ]}
+          >
+            <Text style={[styles.BtnPrincTxt, { color: "black" }]}>
+              Supprimer le compte
+            </Text>
+          </Pressable>
+          <Text style={styles.txtRec}>Compte crée le JJ/MM/AA</Text>
         </View>
       </View>
-
-      <View style={styles.viewBtn}>
-        <Pressable onPress={() => handle()} style={styles.BtnPrinc}>
-          <Text style={styles.BtnPrincTxt}>Enregistrer</Text>
-        </Pressable>
-        <Pressable
-          onPress={() =>
-            navigate("Accueil", {
-              label: label,
-            })
-          }
-          style={[
-            styles.BtnPrinc,
-            { backgroundColor: "none", borderColor: "#0372C1", borderWidth: 1 },
-          ]}
-        >
-          <Text style={[styles.BtnPrincTxt, { color: "black" }]}>
-            Supprimer le compte
-          </Text>
-        </Pressable>
-        <Text style={styles.txtRec}>Compte crée le JJ/MM/AA</Text>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 

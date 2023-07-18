@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Alert,
+  Dimensions,
+} from "react-native";
 import React, {
   useCallback,
   useContext,
@@ -227,10 +234,8 @@ export default memo(Code);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#F3F3F3",
-    alignItems: "center",
-    paddingTop: 116,
+    height: Dimensions.get("window").height,
+    paddingTop: Dimensions.get("window").height * 0.15,
   },
   TxtMdp: {
     fontFamily: "Nunito-Medium",

@@ -11,7 +11,7 @@ import {
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
@@ -35,44 +35,42 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
-  console.log(Dimensions.get("window"));
+  console.log(Dimensions.get("window").height);
 
   return (
-    <View
-      behavior="height"
-      onLayout={onLayoutRootView}
-      style={styles.container}
-    >
-      <VerifItem text="Entrez votre numéro de compte" />
-      <View style={styles.ViewInputText}>
-        <View style={styles.ViewInputText.prefix}>
-          <Image source={require("../assets/icons/Group.png")} />
-          <Text style={styles.ViewInputText.text}>+225</Text>
-          <AntDesign name="down" size={20} color="black" />
+    <ScrollView>
+      <View onLayout={onLayoutRootView} style={styles.container}>
+        <VerifItem text="Entrez votre numéro de compte" />
+        <View style={styles.ViewInputText}>
+          <View style={styles.ViewInputText.prefix}>
+            <Image source={require("../assets/icons/Group.png")} />
+            <Text style={styles.ViewInputText.text}>+225</Text>
+            <AntDesign name="down" size={20} color="black" />
+          </View>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="0X XX XX XX XX"
+            keyboardType="numeric"
+            maxLength={10}
+            onSubmitEditing={() => navigate("verificationN21")}
+          />
         </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="0X XX XX XX XX"
-          keyboardType="numeric"
-          maxLength={10}
-          onSubmitEditing={() => navigate("verificationN21")}
-        />
-      </View>
-      <Pressable
-        onPress={() => {
-          navigate("login");
-        }}
-      >
-        <Text style={styles.textLogin}>Se créer un compte</Text>
-      </Pressable>
+        <Pressable
+          onPress={() => {
+            navigate("login");
+          }}
+        >
+          <Text style={styles.textLogin}>Se créer un compte</Text>
+        </Pressable>
 
-      <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 15 }}>
-        <BtnItem
-          text="Continuer"
-          navigation={() => navigate("verificationN21")}
-        />
+        <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 0 }}>
+          <BtnItem
+            text="Continuer"
+            navigation={() => navigate("verificationN21")}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    paddingTop: 116,
+    paddingTop: Dimensions.get("window").height * 0.15,
   },
   ViewInputText: {
     prefix: {
