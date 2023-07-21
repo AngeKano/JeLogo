@@ -8,3 +8,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+//eas build --platform android --profile androidapk
