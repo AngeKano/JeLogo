@@ -39,15 +39,6 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
           marginBottom: 40,
         }}
       >
-        <BtnItem
-          text="A un ami"
-          navigation={() =>
-            navigate("Princ", {
-              label: label,
-              img: img,
-            })
-          }
-        />
         <Pressable
           onPress={() =>
             navigate("Princ", {

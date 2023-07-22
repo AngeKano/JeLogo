@@ -139,9 +139,10 @@ const Code = ({ route, navigation }) => {
   const { Data_Null } = Data;
 
   return (
-    <View style={{ flex:1}}>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={Data_Null}
+        contentContainerStyle={{ paddingBottom: 20 }}
         renderItem={({ item }) => (
           <View onLayout={onLayoutRootView} style={styles.container}>
             {route.params.type == "secure" ? null : (
@@ -256,7 +257,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: Dimensions.get("window").height,
-    paddingTop: Dimensions.get("window").height * 0.15,
+    paddingTop: Dimensions.get("window").height * 0.1,
   },
   TxtMdp: {
     fontFamily: "Nunito-Medium",

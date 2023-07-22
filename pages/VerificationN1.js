@@ -35,6 +35,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
+  console.log(Dimensions.get("screen").height);
   console.log(Dimensions.get("window").height);
 
   return (
@@ -63,7 +64,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
           <Text style={styles.textLogin}>Se créer un compte</Text>
         </Pressable>
 
-        <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 0 }}>
+        <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <BtnItem
             text="Continuer"
             navigation={() => navigate("verificationN21")}
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    paddingTop: Dimensions.get("window").height * 0.15,
+    paddingTop: Dimensions.get("window").height * 0.1,
   },
   ViewInputText: {
     prefix: {

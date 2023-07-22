@@ -141,6 +141,7 @@ const ContactsScreen = ({ route, navigation }) => {
         <View style={{ height: "100%", width: "100%", paddingBottom: 210 }}>
           <FlashList
             data={filteredData}
+            contentContainerStyle={{ paddingBottom: 20 }}
             ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
             renderItem={({ item }) => (
               <Pressable

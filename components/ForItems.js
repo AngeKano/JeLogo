@@ -59,11 +59,7 @@ const ForItems = ({ data, navigate }) => {
 
   return (
     <>
-      <Modal
-        animationType="fade"
-        transparent
-        visible={modalVisible}
-      >
+      <Modal animationType="fade" transparent visible={modalVisible}>
         <View
           style={{
             flex: 1,
@@ -214,6 +210,7 @@ const ForItems = ({ data, navigate }) => {
 
       <FlatList
         data={data.option}
+        contentContainerStyle={{ paddingBottom: 210 }}
         renderItem={({ item }) =>
           Object.keys(item).length == 2 ? (
             renderItem(data, item, navigate)

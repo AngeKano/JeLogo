@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F3F3",
     alignItems: "center",
-    marginTop: Dimensions.get("window").height * 0.15,
+    marginTop: Dimensions.get("window").height * 0.1,
   },
   ViewInputText: {
     prefix: {

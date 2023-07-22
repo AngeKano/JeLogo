@@ -38,6 +38,7 @@ const VerificationN3 = ({ navigation: { replace } }) => {
     <View style={{ flex: 1 }}>
       <FlatList
         data={Data_Null}
+        contentContainerStyle={{ paddingBottom: 20 }}
         renderItem={({ item }) => (
           <View onLayout={onLayoutRootView} style={styles.container}>
             <View
@@ -127,7 +128,7 @@ export default VerificationN3;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Dimensions.get("window").height * 0.15,
+    paddingTop: Dimensions.get("window").height * 0.1,
     height: Dimensions.get("window").height,
   },
   TextInput: {
