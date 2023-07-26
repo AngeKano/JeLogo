@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Dimensions } from "react-native";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -40,9 +40,13 @@ const ShowCash = () => {
           </Text>
         </View>
       </Pressable>
-      <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <Text style={styles.sldTxt}>Solde disponible</Text>
-      </View>
+      {Dimensions.get("window").height < 600 ? (
+        <View style={{ flex: 1, justifyContent: "flex-end" }}></View>
+      ) : (
+        <View style={{ flex: 1, justifyContent: "flex-end" }}>
+          <Text style={styles.sldTxt}>Solde disponible</Text>
+        </View>
+      )}
     </>
   );
 };

@@ -39,7 +39,7 @@ const CustomDrawerContent = (props) => {
     return null;
   }
   // Sharing.isAvailableAsync() ? console.log("sqs") : console.log("first");
-  
+
   return (
     <DrawerContentScrollView {...props}>
       <Modal
@@ -86,6 +86,8 @@ const CustomDrawerContent = (props) => {
               <Text style={styles.TxtMail}>{email}</Text>
             </View>
           </Pressable>
+        </View>
+        <View style={styles.drawerItem}>
           <DrawerItem
             label="Accueil"
             labelStyle={{ fontFamily: "Nunito-Regular" }}

@@ -142,7 +142,11 @@ const Code = ({ route, navigation }) => {
     <View style={{ flex: 1 }}>
       <FlatList
         data={Data_Null}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={
+          Dimensions.get("window").height < 600
+            ? { paddingBottom: 100 }
+            : { paddingBottom: 20 }
+        }
         renderItem={({ item }) => (
           <View onLayout={onLayoutRootView} style={styles.container}>
             {route.params.type == "secure" ? null : (
