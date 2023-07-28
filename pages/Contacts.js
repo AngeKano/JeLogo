@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  Alert,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, Text, View, Pressable, StatusBar } from "react-native";
 import React, {
   useCallback,
   useContext,
@@ -15,10 +8,8 @@ import React, {
 } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import VerifItemCode from "../components/VerifItemCode";
-import { FlatList, TextInput } from "react-native-gesture-handler";
+import { TextInput } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
-import BtnItem from "../components/BtnItem";
 import { AntDesign } from "@expo/vector-icons";
 import * as Contacts from "expo-contacts";
 import { FlashList } from "@shopify/flash-list";
@@ -48,6 +39,7 @@ const ContactsScreen = ({ route, navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const handleSearch = (text) => {
+    // typeof text == "Number" ? console.log("first") : console.log("d")
     setSearchTerm(text);
     const newData = contacts.filter((item) => {
       const itemName = item.name.toLowerCase();
@@ -115,18 +107,6 @@ const ContactsScreen = ({ route, navigation }) => {
           onChangeText={handleSearch}
         />
       </View>
-      {/* <View style={{ marginVertical: 15 }}>
-        <Text
-          style={{
-            marginLeft: 15,
-            fontFamily: "Nunito-Regular",
-            color: "gray",
-          }}
-        >
-          Contacts récents
-        </Text>
-        <FlatList />
-      </View> */}
       <View style={{ marginVertical: 15 }}>
         <Text
           style={{
