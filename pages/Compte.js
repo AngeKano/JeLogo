@@ -157,24 +157,7 @@ const Compte = ({ navigation: { navigate } }) => {
           {/* <Text style={styles.txtName}>{nom}</Text> */}
         </Pressable>
 
-        {/* <View style={styles.itemsInfos}>
-        <View style={styles.itemIfon}>
-          <AntDesign name="mail" size={24} color="black" />
-          <Text style={styles.txtIfon}>{email}</Text>
-        </View>
-        <View style={styles.itemIfon}>
-          <AntDesign name="phone" size={24} color="black" />
-          <Text style={styles.txtIfon}>+225 {numero}</Text>
-        </View>
-        <View style={styles.itemIfon}>
-          <AntDesign name="calendar" size={24} color="black" />
-          <Text style={styles.txtIfon}>{date}</Text>
-        </View>
-        <View style={styles.itemIfon}>
-          <MaterialIcons name="gps-fixed" size={24} color="black" />
-          <Text style={styles.txtIfon}>{lieu}</Text>
-        </View>
-      </View> */}
+        
         <View style={styles.itemsInfos}>
           <View style={styles.listInputs}>
             <View style={styles.inputStyle}>
