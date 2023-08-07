@@ -61,7 +61,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
             navigate("login");
           }}
         >
-          <Text style={styles.textLogin}>Se créer un compte</Text>
+          <Text style={styles.textLogin}>Se créer uncompte</Text>
         </Pressable>
 
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
