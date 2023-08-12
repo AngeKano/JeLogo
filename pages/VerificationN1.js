@@ -4,9 +4,7 @@ import {
   View,
   Image,
   Pressable,
-  StatusBar,
   Dimensions,
-  KeyboardAvoidingView,
 } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
