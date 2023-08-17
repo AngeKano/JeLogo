@@ -44,7 +44,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
   return (
     <FlatList
       data={Data_Null}
-      contentContainerStyle={{marginBottom: 30}}
+      contentContainerStyle={{ marginBottom: 30 }}
       renderItem={({ item }) => (
         <View onLayout={onLayoutRootView} style={styles.container}>
           <View
@@ -71,34 +71,42 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               <>
                 <View style={{ flexDirection: "row", gap: 8 }}>
                   <Text style={{ fontFamily: "Nunito-Bold", fontSize: 21 }}>
-                    N° de carte:
+                    IBAN
                   </Text>
                   <TextInput
                     style={styles.TextInput}
-                    placeholder="XXX XXX XXX 1234"
+                    placeholder="XXX XXX XXXX 12"
                     keyboardType="numeric"
                   />
                 </View>
 
                 <View style={{ flexDirection: "row", gap: 8 }}>
                   <Text style={{ fontFamily: "Nunito-Bold", fontSize: 21 }}>
-                    Montant:
+                    Banque du bénéficiare
                   </Text>
                   <TextInput
                     style={styles.TextInput}
-                    placeholder="0XXXXX"
+                    placeholder="Banque d'Abidjan (BDA)"
                     keyboardType="numeric"
                   />
+                </View>
+
+                <View style={{ flexDirection: "row", gap: 8 }}>
                   <Text style={{ fontFamily: "Nunito-Bold", fontSize: 21 }}>
-                    XOF
+                    Nom du bénéficiare
                   </Text>
+                  <TextInput
+                    style={styles.TextInput}
+                    placeholder="LASTNAME NAME"
+                    keyboardType="numeric"
+                  />
                 </View>
               </>
             ) : (
               <View style={{ alignItems: "center", gap: 15 }}>
                 <TextInput
                   style={styles.TextInput}
-                  placeholder="Montant du dépôt"
+                  placeholder="Montant du transfert"
                   keyboardType="numeric"
                   onSubmitEditing={() =>
                     navigate("code", {
@@ -125,7 +133,11 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   </Text>
                   <TextInput
                     style={styles.TextInput}
-                    placeholder="Numéro de dépôt"
+                    placeholder={
+                      contactSelect.phoneNumbers == "undefined"
+                        ? "Numéro du transfert"
+                        : Object.values(contactSelect.phoneNumbers)[0].number
+                    }
                     keyboardType="numeric"
                     onSubmitEditing={() =>
                       navigate("code", {
@@ -134,62 +146,65 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                     }
                   />
                 </View>
+
+                <>
+                  <Pressable
+                    style={{
+                      paddingHorizontal: 10,
+                      flexDirection: "row",
+                      gap: 10,
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                    onPress={() => navigate("ContactsScreen")}
+                  >
+                    <View
+                      style={{
+                        padding: 10,
+                        flexDirection: "row",
+                        gap: 10,
+                        alignItems: "center",
+                      }}
+                    >
+                      <AntDesign name="contacts" size={24} color="black" />
+                      <Text
+                        style={{
+                          textAlign: "left",
+                          fontSize: 18,
+                          fontFamily: "Nunito-Medium",
+                        }}
+                      >
+                        Vos contacts
+                      </Text>
+                    </View>
+
+                    <AntDesign name="right" size={20} color="black" />
+                  </Pressable>
+                  <Text
+                    style={{
+                      marginVertical: 10,
+                      fontFamily: "Nunito-Regular",
+                      color: "gray",
+                      marginLeft: 10,
+                    }}
+                  >
+                    Contacts récents
+                  </Text>
+                  <Text
+                    style={{
+                      marginVertical: 10,
+                      fontFamily: "Nunito-Regular",
+                      color: "gray",
+                      marginLeft: 10,
+                      marginBottom: 5,
+                    }}
+                  >
+                    Contacts sélectionnés
+                  </Text>
+                </>
               </View>
             )}
           </View>
-          <Pressable
-            style={{
-              paddingHorizontal: 10,
-              flexDirection: "row",
-              gap: 10,
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-            onPress={() => navigate("ContactsScreen")}
-          >
-            <View
-              style={{
-                padding: 10,
-                flexDirection: "row",
-                gap: 10,
-                alignItems: "center",
-              }}
-            >
-              <AntDesign name="contacts" size={24} color="black" />
-              <Text
-                style={{
-                  textAlign: "left",
-                  fontSize: 18,
-                  fontFamily: "Nunito-Medium",
-                }}
-              >
-                Vos contacts
-              </Text>
-            </View>
-
-            <AntDesign name="right" size={20} color="black" />
-          </Pressable>
-          <Text
-            style={{
-              marginVertical: 10,
-              fontFamily: "Nunito-Regular",
-              color: "gray",
-              marginLeft: 10,
-            }}
-          >
-            Contacts récents
-          </Text>
-          <Text
-            style={{
-              marginVertical: 10,
-              fontFamily: "Nunito-Regular",
-              color: "gray",
-              marginLeft: 10,
-              marginBottom:5,
-            }}
-          >
-            Contacts sélectionnés
-          </Text>
 
           {typeof contactSelect.phoneNumbers == "undefined" ? null : (
             <View
@@ -199,7 +214,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 marginHorizontal: 5,
-                marginVertical: 15
+                marginVertical: 15,
               }}
             >
               <View
@@ -236,6 +251,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               </Pressable>
             </View>
           )}
+
           <View style={{ flex: 1, justifyContent: "flex-end" }}>
             <BtnItem
               text="Continuez"

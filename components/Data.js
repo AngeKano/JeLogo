@@ -470,7 +470,7 @@ const Data_Social_Media = [
 
 const Data_Iconographie = [
   {
-    label: "Dépôt",
+    label: "Transfert d’argent",
     txt: "Effectuer une transaction",
     img: require("../assets/icons/iconographie/depot.png"),
     width: 58,
