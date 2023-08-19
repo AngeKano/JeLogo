@@ -134,9 +134,10 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   <TextInput
                     style={styles.TextInput}
                     placeholder={
-                      contactSelect.phoneNumbers == "undefined"
+                      contactSelect.phoneNumbers == undefined
                         ? "Numéro du transfert"
-                        : Object.values(contactSelect.phoneNumbers)[0].number
+                        : // : console.log(contactSelect.phoneNumbers)
+                          Object.values(contactSelect.phoneNumbers)[0].number
                     }
                     keyboardType="numeric"
                     onSubmitEditing={() =>
@@ -147,7 +148,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   />
                 </View>
 
-                <>
+                <View style={{ alignItems: "left" }}>
                   <Pressable
                     style={{
                       paddingHorizontal: 10,
@@ -201,7 +202,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   >
                     Contacts sélectionnés
                   </Text>
-                </>
+                </View>
               </View>
             )}
           </View>
