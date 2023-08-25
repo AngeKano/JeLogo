@@ -77,6 +77,42 @@ const Data_Factures = [
       },
     ],
   },
+
+  {
+    nom: "Marchands",
+    text: require("../assets/icons/factureItems/marchand.png"),
+    backgroundColor: "#FFFFFF",
+    textColor: "Black",
+    option: [
+      {
+        Etape: "Identifiant du Marchand",
+      },
+    ],
+  },
+
+  {
+    nom: "Transport",
+    text: require("../assets/icons/factureItems/transport.png"),
+    backgroundColor: "#FFFFFF",
+    textColor: "Black",
+    option: [
+      {
+        Etape: "Identifiant du Marchand",
+      },
+    ],
+  },
+
+  {
+    nom: "Factures",
+    text: require("../assets/icons/factureItems/factures.png"),
+    backgroundColor: "#FFFFFF",
+    textColor: "Black",
+    option: [
+      {
+        Etape: "Identifiant du Marchand",
+      },
+    ],
+  },
 ];
 
 const Data_Transaction = [
@@ -112,9 +148,17 @@ const Data_Transaction = [
       backgroundColor: "#1DC8FF",
     },
   },
+  // {
+  //   nom: "VISA",
+  //   text: require("../assets/icons/visa.png"),
+  //   style: {
+  //     color: "#FF7900",
+  //     backgroundColor: "black",
+  //   },
+  // },
   {
-    nom: "VISA",
-    text: require("../assets/icons/visa.png"),
+    nom: "Banques",
+    text: require("../assets/icons/banque.png"),
     style: {
       color: "#FF7900",
       backgroundColor: "black",
@@ -498,7 +542,7 @@ const Data_Iconographie = [
     height: 67,
   },
   {
-    label: "Paiements des factures",
+    label: "Paiements",
     txt: "Paiements des factures et services",
     img: require("../assets/icons/iconographie/facture.png"),
     width: 46,
@@ -592,7 +636,7 @@ const Data_Parametre = [
         icon: "location-arrow",
       },
       {
-        Label: "Nous contacter",
+        Label: "Assistance & Réclamations",
         icon: "headphones",
       },
       {

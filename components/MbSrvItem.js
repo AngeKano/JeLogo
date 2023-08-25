@@ -7,7 +7,7 @@ const MbSrvItem = (props) => {
   return (
     <FlatList
       data={
-        props.label == "Paiements des factures"
+        props.label == "Paiements"
           ? Data_Factures
           : props.label == "Transfert et achat de Pass"
           ? Data_Pass

@@ -11,10 +11,8 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import BtnItem from "../components/BtnItem";
-import * as Contacts from "expo-contacts";
 import { AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
-import { FlashList } from "@shopify/flash-list";
 import { Entypo } from "@expo/vector-icons";
 import Data from "../components/Data";
 SplashScreen.preventAutoHideAsync();
@@ -133,12 +131,13 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   </Text>
                   <TextInput
                     style={styles.TextInput}
-                    placeholder={
+                    value={
                       contactSelect.phoneNumbers == undefined
-                        ? "Numéro du transfert"
+                        ? null
                         : // : console.log(contactSelect.phoneNumbers)
                           Object.values(contactSelect.phoneNumbers)[0].number
                     }
+                    placeholder="Numéro du transfert"
                     keyboardType="numeric"
                     onSubmitEditing={() =>
                       navigate("code", {
@@ -148,7 +147,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   />
                 </View>
 
-                <View style={{ alignItems: "left" }}>
+                <View style={{ alignSelf: "flex-start" }}>
                   <Pressable
                     style={{
                       paddingHorizontal: 10,
@@ -156,6 +155,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                       gap: 10,
                       alignItems: "center",
                       justifyContent: "space-between",
+                      width: "100%",
                     }}
                     onPress={() => navigate("ContactsScreen")}
                   >
