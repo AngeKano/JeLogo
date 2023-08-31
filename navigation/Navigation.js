@@ -5,6 +5,7 @@ import VerificationN1 from "../pages/VerificationN1";
 import VerificationN21 from "../pages/VerificationN21";
 import VerificationN22 from "../pages/VerificationN22";
 import VerificationN3 from "../pages/VerificationN3";
+import DrawerNav from "./DrawerNav";
 import MainScreen from "./MainScreen";
 import Login from "../pages/Login";
 import Code from "../pages/Code";

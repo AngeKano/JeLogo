@@ -92,7 +92,7 @@ const CustomDrawerContent = (props) => {
             label="Accueil"
             labelStyle={{ fontFamily: "Nunito-Regular" }}
             onPress={() => {
-              props.navigation.navigate("Princ");
+              props.navigation.navigate("DrawerNav");
             }}
             icon={() => <AntDesign name="home" size={20} color="black" />}
             style={{ marginTop: 90, paddingHorizontal: 40 }}

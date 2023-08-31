@@ -8,18 +8,17 @@ import CustomDrawerContent from "../components/DrawerCustom";
 import HeaderRight from "../components/HeaderRight";
 
 const Drawer = createDrawerNavigator();
-const Tab = createBottomTabNavigator();
 
 const MainScreen = ({ navigation: { navigate, replace } }) => {
   return (
-    <Tab.Navigator
-      // initialRouteName="Accueil"
-      // drawerContent={(props) => <CustomDrawerContent {...props} />}
+    <Drawer.Navigator
+      initialRouteName="AccScreens"
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerTitle: "",
       }}
     >
-      <Tab.Screen
+      <Drawer.Screen
         name="AccScreens"
         component={AccScreens}
         options={{
@@ -28,15 +27,15 @@ const MainScreen = ({ navigation: { navigate, replace } }) => {
           ),
         }}
       />
-      <Tab.Screen
+      <Drawer.Screen
         name="Historique"
         component={Historique}
         options={{
           headerRight: () => <HeaderRight navigate={navigate} />,
         }}
       />
-      <Tab.Screen name="compte" component={Compte} />
-    </Tab.Navigator>
+      <Drawer.Screen name="compte" component={Compte} />
+    </Drawer.Navigator>
   );
 };
 

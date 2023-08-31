@@ -13,6 +13,7 @@ import Abonement from "../pages/Abonement";
 import Historique from "../pages/Historique";
 import Parametre from "../pages/Parametre";
 import Notification from "../pages/Notification";
+import DrawerNav from "./DrawerNav";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +27,7 @@ const AccScreens = () => {
         headerTitle: "",
       }}
     >
-      <Stack.Screen name="Princ" component={Princ} />
+      <Stack.Screen name="DrawerNav" component={DrawerNav} />
       <Stack.Screen name="Accueil" component={Accueil} />
       <Stack.Screen name="Forfait" component={Forfait} />
       <Stack.Screen name="Abonement" component={Abonement} />
