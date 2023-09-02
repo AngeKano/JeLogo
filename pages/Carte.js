@@ -10,7 +10,7 @@ const Carte = () => {
       <Text
         style={{ fontFamily: "Nunito-Bold", fontSize: 22, marginVertical: 20 }}
       >
-        Bonjour {nom} 👋{" "}
+        Bonjour {nom} 👋
       </Text>
       <LinearGradient
         colors={["#4c669f", "#3b5998", "#192f6a"]}
