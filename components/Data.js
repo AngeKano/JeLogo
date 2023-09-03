@@ -1,4 +1,3 @@
-import { color } from "react-native-reanimated";
 
 const Data_Factures = [
   {
