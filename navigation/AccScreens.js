@@ -14,6 +14,7 @@ import Historique from "../pages/Historique";
 import Parametre from "../pages/Parametre";
 import Notification from "../pages/Notification";
 import DrawerNav from "./DrawerNav";
+import Page_select_Abn from "../pages/Page_select_Abn";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ const AccScreens = () => {
       <Stack.Screen name="Accueil" component={Accueil} />
       <Stack.Screen name="Forfait" component={Forfait} />
       <Stack.Screen name="Abonement" component={Abonement} />
+      <Stack.Screen name="Page_select_Abn" component={Page_select_Abn} />
       <Stack.Screen name="Historique" component={Historique} />
       <Stack.Screen name="Parametre" component={Parametre} />
       <Stack.Screen name="Notification" component={Notification} />

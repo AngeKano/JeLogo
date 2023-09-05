@@ -11,12 +11,12 @@ const Abonement = ({ route, navigation: { navigate } }) => {
 
   const showModal = () => {
     setValidate(false);
-    navigate("Princ");
-    // setModalVisible(true);
-    // setTimeout(() => {
-    //   setModalVisible(false);
-    //   navigate("Princ");
-    // }, 800);
+    navigate("DrawerNav");
+    setModalVisible(true);
+    setTimeout(() => {
+      setModalVisible(false);
+      navigate("DrawerNav");
+    }, 800);
   };
   return (
     <>
@@ -53,6 +53,7 @@ const Abonement = ({ route, navigation: { navigate } }) => {
           </View>
         </View>
       </Modal>
+
       <View>
         <View
           style={[

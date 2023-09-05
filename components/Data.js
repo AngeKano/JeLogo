@@ -1,81 +1,80 @@
-
 const Data_Factures = [
-  {
-    nom: "Canal +",
-    text: require("../assets/icons/factureItems/canal.png"),
-    backgroundColor: "black",
-    textColor: "white",
-    option: [
-      {
-        Label: "Reconduire mon abonnement actuel",
-        option: [
-          {
-            Etape: "Numéro de réabonnement CANAL +",
-          },
-        ],
-      },
-      {
-        Label: "Changer d’offre",
-        option: [
-          {
-            Etape: "Numéro de réabonnement CANAL +",
-          },
-        ],
-      },
-      {
-        Label: "Consulter / Regulariser mon solde impayé",
-        option: [
-          {
-            Etape: "Numéro de réabonnement CANAL +",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    nom: "CIE",
-    text: require("../assets/icons/factureItems/cie.png"),
-    backgroundColor: "#F1892A",
-    textColor: "white",
-    option: [
-      {
-        Etape: "Numéro identifiant CIE",
-      },
-    ],
-  },
-  {
-    nom: "SODECI",
-    text: require("../assets/icons/factureItems/sodeci.png"),
-    backgroundColor: "#00AC67",
-    textColor: "white",
-    option: [
-      {
-        Etape: "Numéro identifiant SODECI",
-      },
-    ],
-  },
-  {
-    nom: "Pont HKB",
-    text: require("../assets/icons/factureItems/hkb.png"),
-    backgroundColor: "#00AC67",
-    textColor: "white",
-    option: [
-      {
-        Etape: "Numéro de badge HKB",
-      },
-    ],
-  },
-  {
-    nom: "StarTimes",
-    text: require("../assets/icons/factureItems/startimes.png"),
-    backgroundColor: "#F1892A",
-    textColor: "white",
-    option: [
-      {
-        Etape: "Numéro d’abonné StarTimes",
-      },
-    ],
-  },
+  // {
+  //   nom: "Canal +",
+  //   text: require("../assets/icons/factureItems/canal.png"),
+  //   backgroundColor: "black",
+  //   textColor: "white",
+  //   option: [
+  //     {
+  //       Label: "Reconduire mon abonnement actuel",
+  //       option: [
+  //         {
+  //           Etape: "Numéro de réabonnement CANAL +",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       Label: "Changer d’offre",
+  //       option: [
+  //         {
+  //           Etape: "Numéro de réabonnement CANAL +",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       Label: "Consulter / Regulariser mon solde impayé",
+  //       option: [
+  //         {
+  //           Etape: "Numéro de réabonnement CANAL +",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   nom: "CIE",
+  //   text: require("../assets/icons/factureItems/cie.png"),
+  //   backgroundColor: "#F1892A",
+  //   textColor: "white",
+  //   option: [
+  //     {
+  //       Etape: "Numéro identifiant CIE",
+  //     },
+  //   ],
+  // },
+  // {
+  //   nom: "SODECI",
+  //   text: require("../assets/icons/factureItems/sodeci.png"),
+  //   backgroundColor: "#00AC67",
+  //   textColor: "white",
+  //   option: [
+  //     {
+  //       Etape: "Numéro identifiant SODECI",
+  //     },
+  //   ],
+  // },
+  // {
+  //   nom: "Pont HKB",
+  //   text: require("../assets/icons/factureItems/hkb.png"),
+  //   backgroundColor: "#00AC67",
+  //   textColor: "white",
+  //   option: [
+  //     {
+  //       Etape: "Numéro de badge HKB",
+  //     },
+  //   ],
+  // },
+  // {
+  //   nom: "StarTimes",
+  //   text: require("../assets/icons/factureItems/startimes.png"),
+  //   backgroundColor: "#F1892A",
+  //   textColor: "white",
+  //   option: [
+  //     {
+  //       Etape: "Numéro d’abonné StarTimes",
+  //     },
+  //   ],
+  // },
 
   {
     nom: "Marchands",
@@ -103,13 +102,95 @@ const Data_Factures = [
 
   {
     nom: "Factures",
-    text: require("../assets/icons/factureItems/factures.png"),
+    text: require("../assets/icons/factureItems/facture.png"),
     backgroundColor: "#FFFFFF",
     textColor: "Black",
     option: [
       {
-        Etape: "Identifiant du Marchand",
+        nom: "Canal +",
+        text: require("../assets/icons/factureItems/factures/canal.png"),
+        backgroundColor: "black",
+        textColor: "white",
+        option: [
+          {
+            Label: "Reconduire mon abonnement actuel",
+            option: [
+              {
+                Etape: "Numéro de réabonnement CANAL +",
+              },
+            ],
+          },
+          {
+            Label: "Changer d’offre",
+            option: [
+              {
+                Etape: "Numéro de réabonnement CANAL +",
+              },
+            ],
+          },
+          {
+            Label: "Consulter / Regulariser mon solde impayé",
+            option: [
+              {
+                Etape: "Numéro de réabonnement CANAL +",
+              },
+            ],
+          },
+        ],
       },
+      {
+        nom: "CIE",
+        text: require("../assets/icons/factureItems/factures/cie.png"),
+        backgroundColor: "#F1892A",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro identifiant CIE",
+          },
+        ],
+      },
+      {
+        nom: "SODECI",
+        text: require("../assets/icons/factureItems/factures/sodeci.png"),
+        backgroundColor: "#00AC67",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro identifiant SODECI",
+          },
+        ],
+      },
+      {
+        nom: "Pont HKB",
+        text: require("../assets/icons/factureItems/factures/hkb.png"),
+        backgroundColor: "#00AC67",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro de badge HKB",
+          },
+        ],
+      },
+      {
+        nom: "StarTimes",
+        text: require("../assets/icons/factureItems/factures/startimes.png"),
+        backgroundColor: "#F1892A",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro d’abonné StarTimes",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    nom: "Banques",
+    text: require("../assets/icons/factureItems/banque.png"),
+    backgroundColor: "#FFFFFF",
+    textColor: "Black",
+    option: [
+      
     ],
   },
 ];

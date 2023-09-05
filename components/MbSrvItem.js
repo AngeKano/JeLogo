@@ -25,7 +25,7 @@ const MbSrvItem = (props) => {
                   textColor: item.textColor,
                 })
               : item.option
-              ? props.navigate("Abonement", {
+              ? props.navigate("Page_select_Abn", {
                   option: item.option,
                   nom: item.nom,
                   backgroundColor: item.backgroundColor,
