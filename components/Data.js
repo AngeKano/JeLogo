@@ -95,7 +95,37 @@ const Data_Factures = [
     textColor: "Black",
     option: [
       {
-        Etape: "Identifiant du Marchand",
+        nom: "YANGO",
+        text: require("../assets/icons/factureItems/transport/yango.png"),
+        backgroundColor: "#FF0000",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro de la course YANGO",
+          },
+        ],
+      },
+      {
+        nom: "Heetch",
+        text: require("../assets/icons/factureItems/transport/heetch.png"),
+        backgroundColor: "#FF2773",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro de la course Heetch",
+          },
+        ],
+      },
+      {
+        nom: "Uber",
+        text: require("../assets/icons/factureItems/transport/uber.png"),
+        backgroundColor: "#010202",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro de la course Uber",
+          },
+        ],
       },
     ],
   },
@@ -190,7 +220,28 @@ const Data_Factures = [
     backgroundColor: "#FFFFFF",
     textColor: "Black",
     option: [
-      
+      {
+        nom: "Visa",
+        text: require("../assets/icons/factureItems/banque/visa.png"),
+        backgroundColor: "#1A1F71",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro de réabonnement Visa",
+          },
+        ],
+      },
+      {
+        nom: "CinetPay",
+        text: require("../assets/icons/factureItems/banque/cinetpay.png"),
+        backgroundColor: "#32B24A",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Numéro identifiant CinetPay",
+          },
+        ],
+      },
     ],
   },
 ];

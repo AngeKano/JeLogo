@@ -6,7 +6,18 @@ import { FlatList } from "react-native-gesture-handler";
 const Page_select_Abn = ({ route, navigation: { navigate } }) => {
   return (
     <View>
-      <Text>{route.params.nom}</Text>
+      <View
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingVertical: 15,
+          backgroundColor: "white",
+          marginBottom: 10
+        }}
+      >
+        <Text style={{fontFamily: 'Nunito-Bold', fontSize: 20}}>{route.params.nom}</Text>
+      </View>
       <FlatList
         data={route.params.option}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
