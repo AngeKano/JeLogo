@@ -214,36 +214,6 @@ const Data_Factures = [
       },
     ],
   },
-  {
-    nom: "Banques",
-    text: require("../assets/icons/factureItems/banque.png"),
-    backgroundColor: "#FFFFFF",
-    textColor: "Black",
-    option: [
-      {
-        nom: "Visa",
-        text: require("../assets/icons/factureItems/banque/visa.png"),
-        backgroundColor: "#1A1F71",
-        textColor: "white",
-        option: [
-          {
-            Etape: "Numéro de réabonnement Visa",
-          },
-        ],
-      },
-      {
-        nom: "CinetPay",
-        text: require("../assets/icons/factureItems/banque/cinetpay.png"),
-        backgroundColor: "#32B24A",
-        textColor: "white",
-        option: [
-          {
-            Etape: "Numéro identifiant CinetPay",
-          },
-        ],
-      },
-    ],
-  },
 ];
 
 const Data_Transaction = [
