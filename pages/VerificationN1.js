@@ -33,8 +33,6 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
-  console.log(Dimensions.get("screen").height);
-  console.log(Dimensions.get("window").height);
 
   return (
     <ScrollView>
@@ -59,7 +57,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
             navigate("login");
           }}
         >
-          <Text style={styles.textLogin}>Se créer uncompte</Text>
+          <Text style={styles.textLogin}>Se créer un compte</Text>
         </Pressable>
 
         <View style={{ flex: 1, justifyContent: "flex-end" }}>

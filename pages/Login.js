@@ -74,6 +74,9 @@ const Login = ({ navigation: { navigate } }) => {
             onSubmitEditing={() => navigate("verificationN3")}
           />
         </View>
+        <View>
+          
+        </View>
         <Pressable
           onPress={() => {
             navigate("verificationN1");
