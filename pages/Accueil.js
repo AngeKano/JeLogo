@@ -61,10 +61,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   textCont: {
-    fontSize: 30,
+    fontSize: 28,
     fontFamily: "Nunito-Bold",
     textAlign: "left",
-    marginVertical: 48,
+    marginTop: 25,
+    marginBottom: 20,
   },
   items: {
     flex: 1,

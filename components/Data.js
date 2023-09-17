@@ -260,10 +260,47 @@ const Data_Transaction = [
   {
     nom: "Banques",
     text: require("../assets/icons/banque.png"),
-    style: {
-      color: "#FF7900",
-      backgroundColor: "black",
-    },
+    Option_Bnq: [
+      {
+        nom: "Vers un compte JeLogo",
+        text: require("../assets/icons/factureItems/banque/JeLogo.png"),
+        backgroundColor: "#0372C1",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Nom du compte",
+            Placeholder: "Name Account",
+          },
+          {
+            Etape: "IBAN",
+            Placeholder: "CI008 01111 111xxx91058 27",
+          },
+          {
+            Etape: "Montant",
+            Placeholder: "15 000 XOF",
+          },
+        ],
+      },
+      {
+        nom: "Vers un compte Visa",
+        text: require("../assets/icons/factureItems/banque/visa.png"),
+        backgroundColor: "white",
+        option: [
+          {
+            Etape: "Nom du compte",
+            Placeholder: "Name Account",
+          },
+          {
+            Etape: "IBAN",
+            Placeholder: "CI008 01111 111xxx91058 27",
+          },
+          {
+            Etape: "Montant",
+            Placeholder: "15 000 XOF",
+          },
+        ],
+      },
+    ],
   },
 ];
 
@@ -616,7 +653,7 @@ const Data_Social_Media = [
 const Data_Iconographie = [
   {
     label: "Transfert d’argent",
-    txt: "Effectuer une transaction",
+    txt: "Envoyer de l'argent",
     img: require("../assets/icons/iconographie/depot.png"),
     width: 58,
     height: 46,
