@@ -1,3 +1,7 @@
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+
 const Data_Factures = [
   // {
   //   nom: "Canal +",
@@ -262,7 +266,7 @@ const Data_Transaction = [
     text: require("../assets/icons/banque.png"),
     Option_Bnq: [
       {
-        nom: "Vers un compte JeLogo",
+        nom: "Vers un compte JELOGO",
         text: require("../assets/icons/factureItems/banque/JeLogo.png"),
         backgroundColor: "#0372C1",
         textColor: "white",
@@ -807,6 +811,66 @@ const Data_Parametre = [
   },
 ];
 
+const Banque_Setting = [
+  {
+    Icon: <Ionicons name="lock-closed" size={24} color="black" />,
+    Label: "Verrouilller la carte",
+    Desicrpt: "Bloquez de facon temporaire",
+  },
+  {
+    Icon: (
+      <MaterialCommunityIcons
+        name="credit-card-check"
+        size={24}
+        color="black"
+      />
+    ),
+    Label: "Remplacez la carte",
+    Desicrpt: "Remplacez votre carte JELOGO",
+  },
+  {
+    Icon: <Feather name="codesandbox" size={24} color="black" />,
+    Label: "Voir mes commandes",
+    Desicrpt: "Suivez le status de vos commandes",
+  },
+  {
+    Icon: (
+      <MaterialCommunityIcons
+        name="form-textbox-password"
+        size={24}
+        color="black"
+      />
+    ),
+    Label: "Voir mes commandes",
+    Desicrpt: "Réinitialisez votre code de retrait",
+  },
+];
+const Compte_Setting = [
+  {
+    Icon: <Feather name="user" size={24} color="black" />,
+    Label: "Informations personnelles",
+    Lien: "compte",
+  },
+  {
+    Icon: (
+      <MaterialCommunityIcons
+        name="form-textbox-password"
+        size={24}
+        color="black"
+      />
+    ),
+    Label: "Modifier mon code secret",
+  },
+  {
+    Icon: <Feather name="file-text" size={24} color="black" />,
+    Label: "Documents",
+  },
+  {
+    Icon: <Feather name="aperture" size={24} color="black" />,
+    Label: "Plan tarifaire",
+  },
+];
+
 const keyboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default {
@@ -819,6 +883,8 @@ export default {
   Data_Operation,
   Data_Image,
   Data_Parametre,
+  Banque_Setting,
+  Compte_Setting,
   Data_Null,
   keyboard,
 };

@@ -2,6 +2,11 @@ import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { LinearGradient } from "expo-linear-gradient";
+import { FlatList } from "react-native-gesture-handler";
+import Data from "../components/Data";
+import { AntDesign } from "@expo/vector-icons";
+
+const { Banque_Setting } = Data;
 
 const Carte = () => {
   const { nom } = useContext(AuthContext);
@@ -99,7 +104,43 @@ const Carte = () => {
         </View>
       </LinearGradient>
 
-      <View></View>
+      <View style={{ marginHorizontal: 15, marginTop: 30 }}>
+        <FlatList
+          data={Banque_Setting}
+          ItemSeparatorComponent={() => <View style={{ height: 27 }} />}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 17,
+                }}
+              >
+                {item.Icon}
+                <View>
+                  <Text style={{ fontSize: 18, fontFamily: "Nunito-Bold" }}>
+                    {item.Label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontFamily: "Nunito-Light" }}>
+                    {item.Desicrpt}
+                  </Text>
+                </View>
+              </View>
+
+              <AntDesign name="right" size={18} color="gray" />
+            </View>
+          )}
+        />
+      </View>
     </View>
   );
 };

@@ -71,7 +71,7 @@ const CustomDrawerContent = (props) => {
         <View style={styles.drawerItem}>
           <Pressable
             onPress={() => {
-              props.navigation.navigate("compte");
+              props.navigation.navigate("NavCompte");
             }}
             style={styles.profil}
           >
@@ -103,7 +103,7 @@ const CustomDrawerContent = (props) => {
             label="Compte"
             labelStyle={{ fontFamily: "Nunito-Regular" }}
             onPress={() => {
-              props.navigation.navigate("compte");
+              props.navigation.navigate("NavCompte");
             }}
             icon={() => <AntDesign name="user" size={20} color="black" />}
             style={{ paddingHorizontal: 40 }}

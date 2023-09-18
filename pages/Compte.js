@@ -43,12 +43,16 @@ const Compte = ({ navigation: { navigate } }) => {
     numero,
     date,
     lieu,
+    imageCNI_RectoBD,
+    imageCNI_VersoBD,
     setNumero,
     setImageUser,
     setEmail,
     setNom,
     setLieu,
     setDate,
+    setImageCNI_RectoBD,
+    setImageCNI_VersoBD,
   } = useContext(AuthContext);
 
   const handle = () => {
@@ -59,6 +63,8 @@ const Compte = ({ navigation: { navigate } }) => {
     setDate(dateL);
     setImageUser(imageUserL);
     setModalVisible(true);
+    setImageCNI_RectoBD(imageCNI_Recto);
+    setImageCNI_VersoBD(imageCNI_Verso);
     setTimeout(() => {
       setModalVisible(false);
     }, 800);
@@ -70,6 +76,8 @@ const Compte = ({ navigation: { navigate } }) => {
   const [lieuL, setLieuL] = useState(lieu);
   const [dateL, setDateL] = useState(date);
   const [imageUserL, setImageUserL] = useState(imageUser);
+  const [imageCNI_Recto, setImageCNI_Recto] = useState(imageCNI_RectoBD);
+  const [imageCNI_Verso, setImageCNI_Verso] = useState(imageCNI_VersoBD);
 
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
@@ -86,6 +94,45 @@ const Compte = ({ navigation: { navigate } }) => {
   if (!fontsLoaded) {
     return null;
   }
+
+  const openCameraCNI_Recto = async () => {
+    const { status } = await ImagePicker.getCameraPermissionsAsync();
+    if (status !== "granted") {
+      alert("Sorry, we need camera permissions to make this work!");
+      return;
+    }
+    try {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        aspect: [4, 3],
+      });
+      if (!result.canceled) {
+        setImageCNI_Recto(result.assets[0].uri);
+      }
+    } catch (error) {
+      console.log("Error occurred while launching the camera: ", error);
+    }
+  };
+  const openCameraCNI_Verso = async () => {
+    const { status } = await ImagePicker.getCameraPermissionsAsync();
+    if (status !== "granted") {
+      alert("Sorry, we need camera permissions to make this work!");
+      return;
+    }
+    try {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        aspect: [4, 3],
+      });
+      if (!result.canceled) {
+        setImageCNI_Verso(result.assets[0].uri);
+      }
+    } catch (error) {
+      console.log("Error occurred while launching the camera: ", error);
+    }
+  };
 
   const handlePickUser = async () => {
     AvatarPermission.getCameraPermission();
@@ -157,7 +204,6 @@ const Compte = ({ navigation: { navigate } }) => {
           {/* <Text style={styles.txtName}>{nom}</Text> */}
         </Pressable>
 
-        
         <View style={styles.itemsInfos}>
           <View style={styles.listInputs}>
             <View style={styles.inputStyle}>
@@ -231,6 +277,55 @@ const Compte = ({ navigation: { navigate } }) => {
                 }}
               />
             ) : null}
+          </View>
+          <View style={{ marginTop: 15, gap: 10 }}>
+            <Text style={{ fontSize: 19, fontFamily: "Nunito-Regular" }}>
+              Documents et pieces personnelles
+            </Text>
+            <Pressable
+              style={{
+                width: "100%",
+                height: 200,
+                backgroundColor: "white",
+                borderRadius: 15,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => openCameraCNI_Recto()}
+            >
+              {imageCNI_Recto == null ? (
+                <Text style={{ fontFamily: "Nunito-Medium", color: "gray" }}>
+                  Photo CNI Recto
+                </Text>
+              ) : (
+                <Image
+                  source={{ uri: imageCNI_Recto }}
+                  style={{ width: "100%", height: 200, borderRadius: 15 }}
+                />
+              )}
+            </Pressable>
+            <Pressable
+              style={{
+                width: "100%",
+                height: 200,
+                backgroundColor: "white",
+                borderRadius: 15,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => openCameraCNI_Verso()}
+            >
+              {imageCNI_Verso == null ? (
+                <Text style={{ fontFamily: "Nunito-Medium", color: "gray" }}>
+                  Photo CNI Verso
+                </Text>
+              ) : (
+                <Image
+                  source={{ uri: imageCNI_Verso }}
+                  style={{ width: "100%", height: 200, borderRadius: 15 }}
+                />
+              )}
+            </Pressable>
           </View>
         </View>
 

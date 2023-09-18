@@ -40,7 +40,7 @@ const HeaderRight = ({ navigate, replace }) => {
       >
         <AntDesign name="bells" size={17} color="white" />
       </Pressable>
-      <Pressable onPress={() => navigate("compte")}>
+      <Pressable onPress={() => navigate("NavCompte")}>
         <Image
           source={typeof imageUser == "number" ? imageUser : { uri: imageUser }}
           style={{ width: 40, height: 40, borderRadius: 100 }}

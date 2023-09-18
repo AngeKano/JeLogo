@@ -19,6 +19,8 @@ export const AuthProvider = ({ children }) => {
   const [imageUser, setImageUser] = useState(
     require("../assets/user/userUnknow.png")
   );
+  const [imageCNI_RectoBD, setImageCNI_RectoBD] = useState(null);
+  const [imageCNI_VersoBD, setImageCNI_VersoBD] = useState(null);
   //
 
   const tabl = [];
@@ -75,6 +77,8 @@ export const AuthProvider = ({ children }) => {
         tablCode,
         validate,
         contactSelect,
+        imageCNI_RectoBD,
+        imageCNI_VersoBD,
         setContactSelect,
         setMontant,
         setCode,
@@ -85,6 +89,8 @@ export const AuthProvider = ({ children }) => {
         setDate,
         setLieu,
         setValidate,
+        setImageCNI_RectoBD,
+        setImageCNI_VersoBD,
       }}
     >
       {children}
