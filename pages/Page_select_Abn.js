@@ -24,12 +24,18 @@ const Page_select_Abn = ({ route, navigation: { navigate } }) => {
         renderItem={({ item }) => (
           <Pressable
             onPress={() =>
+              route.params.nom == "Factures" ?
               navigate("Abonement", {
                 option: item.option,
                 nom: item.nom,
                 backgroundColor: item.backgroundColor,
                 textColor: item.textColor,
-              })
+              }) :  navigate("Paiment_scan", {
+                option: item.option,
+                nom: item.nom,
+                backgroundColor: item.backgroundColor,
+                textColor: item.textColor,
+              }) 
             }
             style={{
               display: "flex",

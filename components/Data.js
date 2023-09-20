@@ -105,7 +105,7 @@ const Data_Factures = [
         textColor: "white",
         option: [
           {
-            Etape: "Numéro de la course YANGO",
+            Etape: "Scanner QR Code pour valider la course YANGO",
           },
         ],
       },
@@ -116,7 +116,7 @@ const Data_Factures = [
         textColor: "white",
         option: [
           {
-            Etape: "Numéro de la course Heetch",
+            Etape: "Scanner QR Code pour valider la course Heetch",
           },
         ],
       },
@@ -127,7 +127,7 @@ const Data_Factures = [
         textColor: "white",
         option: [
           {
-            Etape: "Numéro de la course Uber",
+            Etape: "Scanner QR Code pour valider la course Uber",
           },
         ],
       },
@@ -286,7 +286,7 @@ const Data_Transaction = [
         ],
       },
       {
-        nom: "Vers un compte Visa",
+        nom: "Vers un compte VISA",
         text: require("../assets/icons/factureItems/banque/visa.png"),
         backgroundColor: "white",
         option: [
@@ -815,7 +815,7 @@ const Banque_Setting = [
   {
     Icon: <Ionicons name="lock-closed" size={24} color="black" />,
     Label: "Verrouilller la carte",
-    Desicrpt: "Bloquez de facon temporaire",
+    Desicrpt: "Bloquez de façon temporaire",
   },
   {
     Icon: (
@@ -831,7 +831,7 @@ const Banque_Setting = [
   {
     Icon: <Feather name="codesandbox" size={24} color="black" />,
     Label: "Voir mes commandes",
-    Desicrpt: "Suivez le status de vos commandes",
+    Desicrpt: "Suivez le statut de vos commandes",
   },
   {
     Icon: (
@@ -841,7 +841,7 @@ const Banque_Setting = [
         color="black"
       />
     ),
-    Label: "Voir mes commandes",
+    Label: "Changer de code guichet",
     Desicrpt: "Réinitialisez votre code de retrait",
   },
 ];

@@ -17,6 +17,7 @@ import DrawerNav from "./DrawerNav";
 import Page_select_Abn from "../pages/Page_select_Abn";
 import Page_etape_bnq from "../pages/Page_etape_bnq";
 import Page_vir_bnq from "../pages/Page_vir_bnq";
+import Paiment_scan from "../pages/Paiment_scan";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ const AccScreens = () => {
       <Stack.Screen name="Accueil" component={Accueil} />
       <Stack.Screen name="Forfait" component={Forfait} />
       <Stack.Screen name="Abonement" component={Abonement} />
+      <Stack.Screen name="Paiment_scan" component={Paiment_scan} />
       <Stack.Screen name="Page_select_Abn" component={Page_select_Abn} />
       <Stack.Screen name="Page_etape_bnq" component={Page_etape_bnq} />
       <Stack.Screen name="Page_vir_bnq" component={Page_vir_bnq} />
