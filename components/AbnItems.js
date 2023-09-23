@@ -6,6 +6,7 @@ import {
   Pressable,
   Modal,
   TextInput,
+  Image,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState, memo, useContext } from "react";
@@ -46,31 +47,61 @@ const AbnItems = ({ data, navigate }) => {
   const renderItemFalse = (item) => {
     return (
       <View
-        style={{
-          alignItems: "center",
-          marginVertical: 25,
-          gap: 10,
-        }}
+        style={
+          item.valideScan
+            ? {
+                alignItems: "center",
+                marginVertical: 40,
+                gap: 30,
+              }
+            : {
+                alignItems: "center",
+                marginVertical: 25,
+                gap: 10,
+              }
+        }
       >
-        <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 17 }}>
+        {item.valideScan ? (
+          <Pressable
+            onPress={() => {
+              navigate("Scan");
+            }}
+          >
+            <Image
+              source={require("../assets/qrcodescan.png")}
+              style={{ width: 100, height: 100 }}
+            />
+          </Pressable>
+        ) : null}
+        <Text
+          style={{
+            fontFamily: "Nunito-SemiBold",
+            fontSize: 17,
+            textAlign: "center",
+            color: "gray",
+          }}
+        >
           {item.Etape}
         </Text>
-        <TextInput
-          style={[
-            styles.TextInput,
-            {
-              width: item.Etape == "Code secret" ? "13%" : "45%",
-            },
-          ]}
-          placeholder={
-            item.Etape == "Code secret" ? "* * * *" : "XXXXXXXXXXXXX"
-          }
-          keyboardType="numeric"
-          secureTextEntry={item.Etape == "Code secret" ? true : false}
-          maxLength={item.Etape == "Code secret" ? 4 : 14}
-          onSubmitEditing={() => navigate("code")}
-        />
-        {validate == false ? (
+        {item.valideScan ? null : (
+          <TextInput
+            style={[
+              styles.TextInput,
+              {
+                width: item.Etape == "Code secret" ? "13%" : "45%",
+              },
+            ]}
+            placeholder={
+              item.Etape == "Code secret" ? "* * * *" : "XXXXXXXXXXXXX"
+            }
+            keyboardType="numeric"
+            secureTextEntry={item.Etape == "Code secret" ? true : false}
+            maxLength={item.Etape == "Code secret" ? 4 : 14}
+            onSubmitEditing={() => navigate("code")}
+          />
+        )}
+
+        {(validate == false) & !item.valideScan ? (
           <View style={{ marginTop: 20 }}>
             <BtnItem
               navigation={() =>

@@ -40,40 +40,7 @@ const Compte1 = ({ navigation: { navigate } }) => {
   ///
 
   const [modalVisible, setModalVisible] = useState(false);
-  const {
-    imageUser,
-    email,
-    nom,
-    numero,
-    date,
-    lieu,
-    setNumero,
-    setImageUser,
-    setEmail,
-    setNom,
-    setLieu,
-    setDate,
-  } = useContext(AuthContext);
-
-  const handle = () => {
-    setNom(nomL);
-    setEmail(emailL);
-    setNumero(numeroL);
-    setLieu(lieuL);
-    setDate(dateL);
-    setImageUser(imageUserL);
-    setModalVisible(true);
-    setTimeout(() => {
-      setModalVisible(false);
-    }, 800);
-  };
-
-  const [nomL, setNomL] = useState(nom);
-  const [emailL, setEmailL] = useState(email);
-  const [numeroL, setNumeroL] = useState(numero);
-  const [lieuL, setLieuL] = useState(lieu);
-  const [dateL, setDateL] = useState(date);
-  const [imageUserL, setImageUserL] = useState(imageUser);
+  const { imageUser, email, nom, numero } = useContext(AuthContext);
 
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
@@ -91,18 +58,6 @@ const Compte1 = ({ navigation: { navigate } }) => {
     return null;
   }
 
-  const handlePickUser = async () => {
-    AvatarPermission.getCameraPermission();
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-    if (!result.canceled) {
-      setImageUserL(result.assets[0].uri);
-    }
-  };
   return (
     <View onPress={onLayoutRootView} style={styles.container}>
       <Modal animationType="fade" transparent visible={modalVisible}>
@@ -151,12 +106,12 @@ const Compte1 = ({ navigation: { navigate } }) => {
         <Pressable
           style={styles.princUser}
           onPress={() => {
-            handlePickUser();
+            navigate("compte");
           }}
         >
           <Image
             source={
-              typeof imageUserL == "number" ? imageUserL : { uri: imageUserL }
+              typeof imageUser == "number" ? imageUser : { uri: imageUser }
             }
             style={{ width: 90, height: 90, borderRadius: 100 }}
           />

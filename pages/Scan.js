@@ -35,7 +35,7 @@ export default function App({ navigation: { navigate } }) {
         onBarCodeScanned={scanData ? undefined : handleBarCodeScanned}
       />
       {
-        scanData && navigate("Princ")
+        scanData && navigate("DrawerNav")
       }
       <View style={styles.scan}></View>
       <Text style={styles.txt}>Scanner le QR Code de la carte</Text>

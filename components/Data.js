@@ -105,7 +105,9 @@ const Data_Factures = [
         textColor: "white",
         option: [
           {
-            Etape: "Scanner QR Code pour valider la course YANGO",
+            Etape: "Scanner QR Code YANGO",
+            valideScan: true,
+            null: null
           },
         ],
       },
@@ -116,7 +118,9 @@ const Data_Factures = [
         textColor: "white",
         option: [
           {
-            Etape: "Scanner QR Code pour valider la course Heetch",
+            Etape: "Scanner QR Code Heetch",
+            valideScan: true,
+            null: null
           },
         ],
       },
@@ -127,7 +131,9 @@ const Data_Factures = [
         textColor: "white",
         option: [
           {
-            Etape: "Scanner QR Code pour valider la course Uber",
+            Etape: "Scanner QR Code Uber",
+            valideScan: true,
+            null: null
           },
         ],
       },
