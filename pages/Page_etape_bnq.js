@@ -79,7 +79,7 @@ const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
                 >
                   {(route.params.nom == "Vers un compte JELOGO") |
                   (route.params.nom == "Vers un compte VISA")
-                    ? "Votre operation banquaire"
+                    ? "Votre opération bancaire"
                     : " Votre réabonnement au service"}{" "}
                   <Text style={{ fontWeight: "bold" }}>{route.params.nom}</Text>{" "}
                   a bien été effectué
