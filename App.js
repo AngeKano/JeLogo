@@ -9,4 +9,4 @@ export default function App() {
   );
 }
 
-//eas build --platform android --profile androidapk
+// eas build --platform android --profile androidapk

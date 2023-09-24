@@ -15,6 +15,7 @@ const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
     setModalVisible(true);
     setTimeout(() => {
       setModalVisible(false);
+      setValidate(!validate);
       navigate("DrawerNav");
     }, 800);
   };
@@ -76,7 +77,10 @@ const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
                 <Text
                   style={{ textAlign: "center", fontFamily: "Nunito-Medium" }}
                 >
-                  Votre réabonnement au service{" "}
+                  {(route.params.nom == "Vers un compte JELOGO") |
+                  (route.params.nom == "Vers un compte VISA")
+                    ? "Votre operation banquaire"
+                    : " Votre réabonnement au service"}{" "}
                   <Text style={{ fontWeight: "bold" }}>{route.params.nom}</Text>{" "}
                   a bien été effectué
                 </Text>

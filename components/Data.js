@@ -107,7 +107,7 @@ const Data_Factures = [
           {
             Etape: "Scanner QR Code YANGO",
             valideScan: true,
-            null: null
+            null: null,
           },
         ],
       },
@@ -120,7 +120,7 @@ const Data_Factures = [
           {
             Etape: "Scanner QR Code Heetch",
             valideScan: true,
-            null: null
+            null: null,
           },
         ],
       },
@@ -133,7 +133,7 @@ const Data_Factures = [
           {
             Etape: "Scanner QR Code Uber",
             valideScan: true,
-            null: null
+            null: null,
           },
         ],
       },
