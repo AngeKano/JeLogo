@@ -58,6 +58,7 @@ const VirItems = ({ data, navigate }) => {
         <TextInput
           style={[styles.TextInput]}
           placeholder={item.Placeholder}
+          placeholderTextColor={'gray'}
           keyboardType={item.Etape == "Nom du compte" ? "default" : "numeric"}
           secureTextEntry={item.Etape == "Code secret" ? true : false}
           maxLength={item.Etape == "Code secret" ? 4 : 14}

@@ -15,8 +15,16 @@ const DrawerNav = ({ navigation: { navigate, replace } }) => {
         headerShown: false,
       }}
     >
-      <Tabs.Screen name="Acceuil" component={Princ} />
-      <Tabs.Screen name="Carte" component={Carte} />
+      <Tabs.Screen
+        name="Acceuil"
+        component={Princ}
+        options={{ tabBarLabel: "Acceuil" }}
+      />
+      <Tabs.Screen
+        name="Carte"
+        component={Carte}
+        options={{ tabBarLabel: "Carte" }}
+      />
     </Tabs.Navigator>
   );
 };

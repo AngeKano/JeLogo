@@ -25,37 +25,9 @@ const Opr1 = ({ route, navigation: { navigate } }) => {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <Image
-        source={img}
-        style={{ width: 154, height: 154, marginVertical: 40 }}
-      />
-      <Text style={styles.text2}>Choisissez votre opertion</Text>
-      <View style={{ gap: 19 }}>
-        <Pressable
-          onPress={() =>
-            navigate("Opr2", {
-              label: label,
-              img: img,
-            })
-          }
-          style={styles.BtnPrinc}
-        >
-          <Text style={styles.BtnPrincTxt}>Depot</Text>
-        </Pressable>
-
-        <Pressable
-          style={[
-            styles.BtnPrinc,
-            {
-              backgroundColor: "none",
-              borderColor: "#0372C1",
-              borderWidth: 1,
-            },
-          ]}
-        >
-          <Text style={[styles.BtnPrincTxt, { color: "black" }]}>Retrait</Text>
-        </Pressable>
-      </View>
+      <Text>
+        sdsd
+      </Text>
     </View>
   );
 };

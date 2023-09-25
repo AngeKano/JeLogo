@@ -4,6 +4,10 @@ import React, { useContext, useState } from "react";
 import VirItems from "../components/VirItems";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
+import Data from "../components/Data";
+import { FlatList } from "react-native-gesture-handler";
+
+const { Data_Null } = Data;
 
 const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
   const { validate, setValidate } = useContext(AuthContext);
@@ -11,7 +15,7 @@ const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
 
   const showModal = () => {
     setValidate(false);
-    navigate("DrawerNav");
+    navigate("Notification");
     setModalVisible(true);
     setTimeout(() => {
       setModalVisible(false);
@@ -20,88 +24,95 @@ const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
     }, 800);
   };
   return (
-    <>
-      <Modal animationType="fade" transparent visible={modalVisible}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "rgba(0,0,0,.2)",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "white",
-              paddingVertical: 25,
-              paddingHorizontal: 30,
-              borderRadius: 25,
-              gap: 15,
-            }}
-          >
-            <AntDesign name="checkcircleo" size={55} color="#1ACA56" />
-            <Text
+    <FlatList
+      data={Data_Null}
+      style={{ paddingBottom: 100 }}
+      renderItem={({ item }) => (
+        <>
+          <Modal animationType="fade" transparent visible={modalVisible}>
+            <View
               style={{
-                fontFamily: "Nunito-Medium",
-                fontSize: 20,
-                textAlign: "center",
+                flex: 1,
+                backgroundColor: "rgba(0,0,0,.2)",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              Votre opération a bien été effectuée
-            </Text>
-          </View>
-        </View>
-      </Modal>
-
-      <View>
-        <View
-          style={[
-            styles.barner,
-            { backgroundColor: route.params.backgroundColor },
-          ]}
-        >
-          <Text style={[styles.text, { color: route.params.textColor }]}>
-            {route.params.nom}
-          </Text>
-        </View>
-        <View>
-          <VirItems data={route.params} navigate={navigate} />
-        </View>
-        {validate == true ? (
-          <>
-            <View style={styles.boxValidate}>
-              <AntDesign name="checkcircleo" size={25} color="#1ACA56" />
-              <View>
+              <View
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "white",
+                  paddingVertical: 25,
+                  paddingHorizontal: 30,
+                  borderRadius: 25,
+                  gap: 15,
+                }}
+              >
+                <AntDesign name="checkcircleo" size={55} color="#1ACA56" />
                 <Text
-                  style={{ textAlign: "center", fontFamily: "Nunito-Medium" }}
+                  style={{
+                    fontFamily: "Nunito-Medium",
+                    fontSize: 20,
+                    textAlign: "center",
+                  }}
                 >
-                  {(route.params.nom == "Vers un compte JELOGO") |
-                  (route.params.nom == "Vers un compte VISA")
-                    ? "Votre opération bancaire"
-                    : " Votre réabonnement au service"}{" "}
-                  <Text style={{ fontWeight: "bold" }}>{route.params.nom}</Text>{" "}
-                  a bien été effectué
+                  Votre opération a bien été effectuée
                 </Text>
               </View>
             </View>
-            <BtnItem text="Terminer" navigation={() => showModal()} />
-          </>
-        ) : (
-          <View style={{ marginTop: 20 }}>
-            <BtnItem
-              navigation={() =>
-                navigate("code", {
-                  type: "normal",
-                })
-              }
-              text="Confirmer"
-            />
+          </Modal>
+
+          <View>
+            <View
+              style={[
+                styles.barner,
+                { backgroundColor: route.params.backgroundColor },
+              ]}
+            >
+              <Text style={[styles.text, { color: route.params.textColor }]}>
+                {route.params.nom}
+              </Text>
+            </View>
+            <View>
+              <VirItems data={route.params} navigate={navigate} />
+            </View>
+            {validate == true ? (
+              showModal()
+            ) : (
+              // <>
+              //   <View style={styles.boxValidate}>
+              //     <AntDesign name="checkcircleo" size={25} color="#1ACA56" />
+              //     <View>
+              //       <Text
+              //         style={{ textAlign: "center", fontFamily: "Nunito-Medium" }}
+              //       >
+              //         {(route.params.nom == "Vers un compte JELOGO") |
+              //         (route.params.nom == "Vers un compte VISA")
+              //           ? "Votre opération bancaire"
+              //           : " Votre réabonnement au service"}{" "}
+              //         <Text style={{ fontWeight: "bold" }}>{route.params.nom}</Text>{" "}
+              //         a bien été effectué
+              //       </Text>
+              //     </View>
+              //   </View>
+              //   <BtnItem text="Terminer" navigation={() => showModal()} />
+              // </>
+              <View style={{ marginTop: 20 }}>
+                <BtnItem
+                  navigation={() =>
+                    navigate("code", {
+                      type: "normal",
+                    })
+                  }
+                  text="Confirmer"
+                />
+              </View>
+            )}
           </View>
-        )}
-      </View>
-    </>
+        </>
+      )}
+    />
   );
 };
 
