@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Historique from "../pages/Historique";
 import NavCompte from "./NavCompte";
 import AccScreens from "./AccScreens";
+import Scan from "../pages/Scan";
+
 import CustomDrawerContent from "../components/DrawerCustom";
 import HeaderRight from "../components/HeaderRight";
 
@@ -35,6 +37,11 @@ const MainScreen = ({ navigation: { navigate, replace } }) => {
         }}
       />
       <Drawer.Screen name="NavCompte" component={NavCompte} />
+      <Drawer.Screen
+        name="Scan"
+        component={Scan}
+        options={{ headerShown: false, }}
+      />
     </Drawer.Navigator>
   );
 };

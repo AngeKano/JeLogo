@@ -42,7 +42,6 @@ const AccScreens = () => {
       <Stack.Screen name="Historique" component={Historique} />
       <Stack.Screen name="Parametre" component={Parametre} />
       <Stack.Screen name="Notification" component={Notification} />
-      <Stack.Screen name="Scan" component={Scan} />
       <Stack.Screen name="Opr1" component={Opr1} />
       <Stack.Screen name="Opr2" component={Opr2} />
       <Stack.Screen name="Opr3" component={Opr3} />

@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
-import { BarCodeScanner } from "expo-barcode-scanner";
+import { Camera } from "expo-camera";
 
 export default function App({ navigation: { navigate } }) {
   const [hasPermission, setHasPermission] = React.useState(false);
@@ -9,7 +9,7 @@ export default function App({ navigation: { navigate } }) {
 
   useEffect(() => {
     (async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === "granted");
     })();
   }, []);
@@ -30,16 +30,14 @@ export default function App({ navigation: { navigate } }) {
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
+      <Camera
         style={StyleSheet.absoluteFillObject}
         onBarCodeScanned={scanData ? undefined : handleBarCodeScanned}
       />
-      {
-        scanData && navigate("DrawerNav")
-      }
       <View style={styles.scan}></View>
-      <Text style={styles.txt}>Scanner le QR Code de la carte</Text>
+      <Text style={styles.txt}>Scanner le QR Code</Text>
       <StatusBar style="auto" />
+      {scanData && navigate("DrawerNav")}
     </View>
   );
 }
