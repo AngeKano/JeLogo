@@ -4,7 +4,7 @@ import React from "react";
 const Condrat = () => {
   return (
     <View>
-      <Text>Condrat</Text>
+      <Text>Congrat</Text>
     </View>
   );
 };
