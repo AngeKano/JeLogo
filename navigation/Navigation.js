@@ -5,11 +5,13 @@ import VerificationN1 from "../pages/VerificationN1";
 import VerificationN21 from "../pages/VerificationN21";
 import VerificationN22 from "../pages/VerificationN22";
 import VerificationN3 from "../pages/VerificationN3";
-import DrawerNav from "./DrawerNav";
 import MainScreen from "./MainScreen";
 import Login from "../pages/Login";
 import Code from "../pages/Code";
 import ContactsScreen from "../pages/Contacts";
+import Identification from "../pages/Identification";
+import Identification1 from "../pages/Identification1";
+import Condrat from "../pages/Condrat";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -28,7 +30,10 @@ const Navigation = () => {
         <Stack.Screen name="verificationN21" component={VerificationN21} />
         <Stack.Screen name="verificationN22" component={VerificationN22} />
         <Stack.Screen name="verificationN3" component={VerificationN3} />
+        <Stack.Screen name="Identification" component={Identification} />
+        <Stack.Screen name="Identification1" component={Identification1} />
         <Stack.Screen name="mainScreen" component={MainScreen} />
+        <Stack.Screen name="Condrat" component={Condrat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

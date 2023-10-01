@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const { keyboard } = Data;
 
   const [nom, setNom] = useState("Inconnu.e");
+  const [prenom, setPrenom] = useState("");
   const [email, setEmail] = useState("Inconnu@example.net");
   const [numero, setNumero] = useState("0123456789");
   const [date, setDate] = useState("XX/XX/XXXX");
@@ -68,6 +69,7 @@ export const AuthProvider = ({ children }) => {
         imageUser,
         email,
         nom,
+        prenom,
         numero,
         code,
         date,
@@ -86,6 +88,7 @@ export const AuthProvider = ({ children }) => {
         setImageUser,
         setEmail,
         setNom,
+        setPrenom,
         setDate,
         setLieu,
         setValidate,

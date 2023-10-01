@@ -10,7 +10,7 @@ import Data from "../components/Data";
 
 SplashScreen.preventAutoHideAsync();
 
-const VerificationN3 = ({ navigation: { replace } }) => {
+const VerificationN3 = ({ route, navigation: { replace, navigate } }) => {
   const [pwd, setPwd] = useState([]);
   const { tablCode } = useContext(AuthContext);
 
@@ -111,8 +111,16 @@ const VerificationN3 = ({ navigation: { replace } }) => {
                 />
                 <View style={{ marginBottom: 15 }}>
                   <BtnItem
-                    text="Terminer"
-                    navigation={() => replace("mainScreen")}
+                    text={
+                      route.params.type == "Inscription"
+                        ? "Valider"
+                        : "Terminer"
+                    }
+                    navigation={() =>
+                      route.params.type == "Inscription"
+                        ? navigate("verificationN21", { type: "Inscription" })
+                        : replace("mainScreen")
+                    }
                   />
                 </View>
               </View>

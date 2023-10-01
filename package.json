@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
+    "@react-native-community/checkbox": "^0.5.16",
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-masked-view/masked-view": "0.2.8",
+    "@react-native-picker/picker": "^2.5.1",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/drawer": "^6.6.2",
     "@react-navigation/material-bottom-tabs": "^6.2.16",

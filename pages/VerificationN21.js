@@ -16,7 +16,7 @@ import React, {
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import VerifItem from "../components/VerifItem";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";
 import Data from "../components/Data";
@@ -26,7 +26,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 
 SplashScreen.preventAutoHideAsync();
 
-const VerificationN21 = ({ navigation: { navigate } }) => {
+const VerificationN21 = ({ route, navigation: { navigate } }) => {
   const [isBiometricSupported, setIsBiometricSupported] = useState(false);
   useEffect(() => {
     (async () => {
@@ -146,7 +146,13 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
                 Dimensions.get("window").height < 600 ? null : { flex: 2 },
               ]}
             >
-              <VerifItem text="Entrez votre code secret" />
+              <VerifItem
+                text={
+                  route.params.type == "Inscription"
+                    ? "Entrez votre nouveau code secret"
+                    : "Entrez votre code secret"
+                }
+              />
               <View style={styles.ViewPuce}>
                 <View>
                   <FlatList
@@ -212,8 +218,12 @@ const VerificationN21 = ({ navigation: { navigate } }) => {
                 />
                 <View style={{ marginBottom: 15 }}>
                   <BtnItem
-                    text="Validez"
-                    navigation={() => navigate("verificationN3")}
+                    text="Valider"
+                    navigation={() =>
+                      route.params.type == "Inscription"
+                        ? navigate("Identification")
+                        : navigate("verificationN3", (type = "normal"))
+                    }
                   />
                 </View>
               </View>

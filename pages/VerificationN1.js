@@ -63,7 +63,7 @@ const VerificationN1 = ({ navigation: { navigate } }) => {
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <BtnItem
             text="Continuer"
-            navigation={() => navigate("verificationN21")}
+            navigation={() => navigate("verificationN21", (type = "normal"))}
           />
         </View>
       </View>

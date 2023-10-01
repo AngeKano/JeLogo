@@ -262,7 +262,7 @@ const Compte = ({ navigation: { navigate } }) => {
                 <AntDesign name="calendar" size={24} color="black" />
               </View>
               <Text style={styles.txtCalnd}>
-                {dateTime.toLocaleDateString()}
+                {dateL}
               </Text>
             </Pressable>
             {show ? (

@@ -57,26 +57,7 @@ const Login = ({ navigation: { navigate } }) => {
             }}
           />
         </View>
-        <View style={[styles.ViewInputText, { marginTop: 20 }]}>
-          <View style={styles.ViewInputText.prefix}>
-            <Text style={styles.ViewInputText.text}>Code secret</Text>
-            <AntDesign name="Safety" size={20} color="black" />
-          </View>
-          <TextInput
-            style={styles.TextInputPwd}
-            placeholder="XXXX"
-            keyboardType="numeric"
-            maxLength={4}
-            secureTextEntry
-            onChange={(text) => {
-              setCode(text.nativeEvent.text);
-            }}
-            onSubmitEditing={() => navigate("verificationN3")}
-          />
-        </View>
-        <View>
-          
-        </View>
+
         <Pressable
           onPress={() => {
             navigate("verificationN1");
@@ -87,8 +68,10 @@ const Login = ({ navigation: { navigate } }) => {
 
         <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 15 }}>
           <BtnItem
-            text="Inscription"
-            navigation={() => navigate("verificationN3")}
+            text="Continuer"
+            navigation={() =>
+              navigate("verificationN3", { type: "Inscription" })
+            }
           />
         </View>
       </View>
@@ -134,7 +117,8 @@ const styles = StyleSheet.create({
   textLogin: {
     fontFamily: "Nunito-Regular",
     fontSize: 18,
-    marginVertical: 22,
+    marginTop: 30,
+    marginBottom: 22,
     color: "#0E9CFF",
   },
   TextInputPwd: {

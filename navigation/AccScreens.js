@@ -7,7 +7,6 @@ import Opr2 from "../pages/Opr2";
 import Opr3 from "../pages/Opr3";
 import Opr4 from "../pages/Opr4";
 import Opr5 from "../pages/Opr5";
-import Scan from "../pages/Scan";
 import Forfait from "../pages/Forfait";
 import Abonement from "../pages/Abonement";
 import Historique from "../pages/Historique";
@@ -18,6 +17,7 @@ import Page_select_Abn from "../pages/Page_select_Abn";
 import Page_etape_bnq from "../pages/Page_etape_bnq";
 import Page_vir_bnq from "../pages/Page_vir_bnq";
 import Paiment_scan from "../pages/Paiment_scan";
+import Identification from "../pages/Identification";
 
 const Stack = createNativeStackNavigator();
 
