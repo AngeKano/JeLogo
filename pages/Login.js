@@ -40,7 +40,7 @@ const Login = ({ navigation: { navigate } }) => {
   return (
     <ScrollView>
       <View onLayout={onLayoutRootView} style={styles.container}>
-        <VerifItem text="Entrez vos coordonnées" />
+        <VerifItem text="Entrez votre numéro de téléphone" />
         <View style={styles.ViewInputText}>
           <View style={styles.ViewInputText.prefix}>
             <Image source={require("../assets/icons/Group.png")} />
