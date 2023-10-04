@@ -40,12 +40,7 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
         }}
       >
         <Pressable
-          onPress={() =>
-            navigate("Princ", {
-              label: label,
-              img: img,
-            })
-          }
+          onPress={() => navigate("mainScreen")}
           style={[
             styles.BtnPrinc,
             { backgroundColor: "none", borderColor: "#0372C1", borderWidth: 1 },

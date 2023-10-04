@@ -7,6 +7,7 @@ import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
 import { AuthContext } from "../context/AuthContext";
 import Data from "../components/Data";
+import CustVerifItems from "../components/CustVerifItems";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -16,6 +17,7 @@ const VerificationN3 = ({ route, navigation: { replace, navigate } }) => {
 
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
+    "Nunito-SemiBold": require("../assets/fonts/Nunito-SemiBold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
     "Nunito-Medium": require("../assets/fonts/Nunito-Medium.ttf"),
     "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
@@ -47,7 +49,15 @@ const VerificationN3 = ({ route, navigation: { replace, navigate } }) => {
                 Dimensions.get("window").height < 600 ? null : { flex: 2 },
               ]}
             >
-              <VerifItem text="Code de validation reçu par SMS" />
+              {route.params.type == "Inscription" ? (
+                <CustVerifItems
+                  text="Vérification du numéro de téléphone"
+                  text1="Entrez le code de validation reçu par sms"
+                />
+              ) : (
+                <VerifItem text="Code de validation reçu par SMS" />
+              )}
+
               <View style={styles.ViewPuce}>
                 <View>
                   <FlatList

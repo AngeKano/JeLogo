@@ -3,9 +3,6 @@ import React from "react";
 import { Entypo } from "@expo/vector-icons";
 
 const TabCustom = ({ state, descriptors, navigation }) => {
-  console.log(state);
-  console.log(descriptors);
-  console.log(navigation);
   return (
     <View
       style={{
@@ -83,31 +80,6 @@ const TabCustom = ({ state, descriptors, navigation }) => {
           </Pressable>
         );
       })}
-      {/* {state.routes.map((item) => {
-        // const isFocused = state.index === index;
-        const onPress = () => {
-          navigation.emit({
-            type: "tabPress",
-            target: item.key,
-            canPreventDefault: true,
-          });
-        };
-        return (
-          <Pressable
-            style={{ flex: 1, alignItems: "center" }}
-            onPress={() => {
-              onPress;
-            }}
-          >
-            {item.name == "Acceuil" ? (
-              <Entypo name="home" size={24} color="black" />
-            ) : (
-              <Entypo name="credit-card" size={24} color="black" />
-            )}
-            <Text style={{ fontFamily: "Nunito-Regular" }}>{item.name}</Text>
-          </Pressable>
-        );
-      })} */}
     </View>
   );
 };

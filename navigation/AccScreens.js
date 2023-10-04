@@ -18,6 +18,7 @@ import Page_etape_bnq from "../pages/Page_etape_bnq";
 import Page_vir_bnq from "../pages/Page_vir_bnq";
 import Paiment_scan from "../pages/Paiment_scan";
 import Identification from "../pages/Identification";
+import MainScreen from "./MainScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,7 @@ const AccScreens = () => {
       <Stack.Screen name="Opr3" component={Opr3} />
       <Stack.Screen name="Opr4" component={Opr4} />
       <Stack.Screen name="Opr5" component={Opr5} />
+      <Stack.Screen name="mainScreen" component={MainScreen} />
     </Stack.Navigator>
   );
 };

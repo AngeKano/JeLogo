@@ -16,8 +16,12 @@ const Princ = ({ navigation: { navigate } }) => {
     "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
   });
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+    try {
+      if (fontsLoaded) {
+        await SplashScreen.hideAsync();
+      }
+    } catch {
+      console.log("Error Fonts");
     }
   }, [fontsLoaded]);
 

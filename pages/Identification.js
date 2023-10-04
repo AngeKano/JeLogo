@@ -15,6 +15,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useFonts } from "expo-font";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import BtnItem from "../components/BtnItem";
+import CustVerifItems from "../components/CustVerifItems";
 
 const Identification = ({ navigation: { navigate } }) => {
   ////
@@ -87,7 +88,7 @@ const Identification = ({ navigation: { navigate } }) => {
   return (
     <ScrollView>
       <View onLayout={onLayoutRootView} style={styles.container}>
-        <VerifItem text="Information personnelles" />
+        <CustVerifItems text="Information personnelles" />
         <View style={{ marginVertical: 30, gap: 20 }}>
           <View style={{ flexDirection: "row", gap: 15 }}>
             <Pressable
@@ -232,7 +233,7 @@ const Identification = ({ navigation: { navigate } }) => {
           <BtnItem
             text="Continuer"
             navigation={() => {
-              handle(), navigate("Identification1");
+              handle(), navigate("Condrat");
             }}
           />
         </View>

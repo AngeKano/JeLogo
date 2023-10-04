@@ -3,8 +3,9 @@ import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
+import CustVerifItems from "../components/CustVerifItems";
 
-const Condrat = ({ navigation: { navigate } }) => {
+const Condrat = ({ navigation: { replace } }) => {
   ////
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
@@ -29,7 +30,7 @@ const Condrat = ({ navigation: { navigate } }) => {
   ////////
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <VerifItem text="Felicitation, Votre Inscription est terminer" />
+      <CustVerifItems text="Félicitations, votre inscription est terminée" />
       <Image
         source={require("../assets/congrat.png")}
         style={{
@@ -42,7 +43,7 @@ const Condrat = ({ navigation: { navigate } }) => {
         <BtnItem
           text="Terminer"
           navigation={() => {
-            navigate("mainScreen");
+            replace("mainScreen");
           }}
         />
       </View>

@@ -12,6 +12,7 @@ import ContactsScreen from "../pages/Contacts";
 import Identification from "../pages/Identification";
 import Identification1 from "../pages/Identification1";
 import Condrat from "../pages/Condrat";
+import ConfimCode from "../pages/ConfimCode";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -26,6 +27,7 @@ const Navigation = () => {
         <Stack.Screen name="verificationN1" component={VerificationN1} />
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="code" component={Code} />
+        <Stack.Screen name="confimCode" component={ConfimCode} />
         <Stack.Screen name="ContactsScreen" component={ContactsScreen} />
         <Stack.Screen name="verificationN21" component={VerificationN21} />
         <Stack.Screen name="verificationN22" component={VerificationN22} />

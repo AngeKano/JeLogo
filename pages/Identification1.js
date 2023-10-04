@@ -16,8 +16,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Entypo } from "@expo/vector-icons";
 import BtnItem from "../components/BtnItem";
+import ConfimCode from "./ConfimCode";
+import CustVerifItems from "../components/CustVerifItems";
 
-const Identification1 = ({ navigation: { navigate } }) => {
+const Identification1 = ({ navigation: { replace } }) => {
   ///
   const {
     imageCNI_RectoBD,
@@ -132,7 +134,7 @@ const Identification1 = ({ navigation: { navigate } }) => {
   return (
     <ScrollView>
       <View onLayout={onLayoutRootView} style={styles.container}>
-        <VerifItem text="Piece d’identification" />
+        <CustVerifItems text="Piece d’identification" />
         <View style={{ marginVertical: 22, gap: 17, marginHorizontal: 10 }}>
           <View style={{ flexDirection: "column", alignSelf: "flex-start" }}>
             <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 17 }}>
@@ -193,7 +195,7 @@ const Identification1 = ({ navigation: { navigate } }) => {
                     <Text
                       style={{ fontFamily: "Nunito-Medium", color: "gray" }}
                     >
-                      Photo CNI Recto
+                      Pièce Recto
                     </Text>
                   </View>
                 ) : (
@@ -220,7 +222,7 @@ const Identification1 = ({ navigation: { navigate } }) => {
                     <Text
                       style={{ fontFamily: "Nunito-Medium", color: "gray" }}
                     >
-                      Photo CNI Recto
+                      Pièce Verso
                     </Text>
                   </View>
                 ) : (
@@ -276,7 +278,7 @@ const Identification1 = ({ navigation: { navigate } }) => {
           <BtnItem
             text="Continuer"
             navigation={() => {
-              handle(), navigate("Condrat");
+              handle(), replace("Identification");
             }}
           />
         </View>

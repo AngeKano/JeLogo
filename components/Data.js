@@ -259,38 +259,11 @@ const Data_Transaction = [
       backgroundColor: "#1DC8FF",
     },
   },
-  // {
-  //   nom: "VISA",
-  //   text: require("../assets/icons/visa.png"),
-  //   style: {
-  //     color: "#FF7900",
-  //     backgroundColor: "black",
-  //   },
-  // },
+  
   {
     nom: "Banques",
     text: require("../assets/icons/banque.png"),
     Option_Bnq: [
-      {
-        nom: "Vers un compte JELOGO",
-        text: require("../assets/icons/factureItems/banque/JeLogo.png"),
-        backgroundColor: "#0372C1",
-        textColor: "white",
-        option: [
-          {
-            Etape: "Nom du compte",
-            Placeholder: "Name Account",
-          },
-          {
-            Etape: "IBAN",
-            Placeholder: "CI008 01111 111xxx91058 27",
-          },
-          {
-            Etape: "Montant",
-            Placeholder: "15 000 XOF",
-          },
-        ],
-      },
       {
         nom: "Vers un compte VISA",
         text: require("../assets/icons/factureItems/banque/visa.png"),
@@ -311,6 +284,15 @@ const Data_Transaction = [
         ],
       },
     ],
+  },
+
+  {
+    nom: "JELOGO",
+    text: require("../assets/icons/Jelogo.png"),
+    style: {
+      color: "white",
+      backgroundColor: "black",
+    },
   },
 ];
 

@@ -5,7 +5,7 @@ import Carte from "../pages/Carte";
 import TabCustom from "../components/TabCustom";
 const Tabs = createBottomTabNavigator();
 
-const DrawerNav = ({ navigation: { navigate, replace } }) => {
+const DrawerNav = () => {
   return (
     <Tabs.Navigator
       tabBar={(props) => <TabCustom {...props} />}
@@ -16,11 +16,13 @@ const DrawerNav = ({ navigation: { navigate, replace } }) => {
       }}
     >
       <Tabs.Screen
+        key={1}
         name="Acceuil"
         component={Princ}
         options={{ tabBarLabel: "Acceuil" }}
       />
       <Tabs.Screen
+        key={2}
         name="Carte"
         component={Carte}
         options={{ tabBarLabel: "Carte" }}

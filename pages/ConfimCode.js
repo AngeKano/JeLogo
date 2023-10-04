@@ -29,7 +29,7 @@ import CustVerifItems from "../components/CustVerifItems";
 
 SplashScreen.preventAutoHideAsync();
 
-const VerificationN21 = ({ route, navigation: { navigate } }) => {
+const ConfimCode = ({ navigation: { navigate } }) => {
   const [isBiometricSupported, setIsBiometricSupported] = useState(false);
   useEffect(() => {
     (async () => {
@@ -64,7 +64,7 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
         text: "OK",
         onPress: () => {
           /*
-          console.log("Ok Pressed");*/
+            console.log("Ok Pressed");*/
         },
       },
     ]);
@@ -112,7 +112,7 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
     // console.log({ biometricAuth });
   };
 
-  const { tabl, tablVerif } = useContext(AuthContext);
+  const { tablVerif } = useContext(AuthContext);
   const [pwd, setPwd] = useState([]);
 
   const [fontsLoaded] = useFonts({
@@ -150,22 +150,19 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
                 Dimensions.get("window").height < 600 ? null : { flex: 2 },
               ]}
             >
-              {route.params.type == "Inscription" ? (
-                <>
-                  <CustVerifItems
-                    text={"Créer votre code secret"}
-                    text1={null}
-                  />
-                  <AntDesign
-                    name="lock"
-                    size={50}
-                    color="black"
-                    style={{ marginVertical: 10 }}
-                  />
-                </>
-              ) : (
-                <VerifItem text={"Entrez votre code secret"} />
-              )}
+              <>
+                <CustVerifItems
+                  text={"Veuillez Confirmer votre code"}
+                  text1={null}
+                />
+                <AntDesign
+                  name="lock"
+                  size={50}
+                  color="black"
+                  style={{ marginVertical: 10 }}
+                />
+              </>
+
               <View style={styles.ViewPuce}>
                 <View>
                   <FlatList
@@ -187,9 +184,6 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
                   />
                 </View>
               </View>
-              {route.params.type == "Inscription" ? null : (
-                <Text style={styles.TxtMdp}>Mot de passe oublié</Text>
-              )}
             </View>
 
             <View
@@ -203,7 +197,7 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
             >
               <View style={{ gap: 10 }}>
                 <FlatList
-                  data={route.params.type == "Inscription" ? tablVerif : tabl}
+                  data={tablVerif}
                   numColumns={4}
                   renderItem={({ item }) => (
                     <Pressable
@@ -234,11 +228,7 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
                 <View style={{ marginBottom: 15 }}>
                   <BtnItem
                     text="Valider"
-                    navigation={() =>
-                      route.params.type == "Inscription"
-                        ? navigate("confimCode")
-                        : navigate("verificationN3", (type = "normal"))
-                    }
+                    navigation={() => navigate("Identification1")}
                   />
                 </View>
               </View>
@@ -250,7 +240,7 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
   );
 };
 
-export default memo(VerificationN21);
+export default memo(ConfimCode);
 
 const styles = StyleSheet.create({
   container: {

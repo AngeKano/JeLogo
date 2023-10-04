@@ -15,11 +15,18 @@ import { AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
 import { Entypo } from "@expo/vector-icons";
 import Data from "../components/Data";
+import { Ionicons } from "@expo/vector-icons";
 SplashScreen.preventAutoHideAsync();
 
 const Opr2 = ({ route, navigation: { navigate } }) => {
   const { contactSelect, setContactSelect } = useContext(AuthContext);
+  const [check, setCheck] = useState(false);
+  const [value, setValue] = useState(0);
+  const [valueAf, setValueAf] = useState(0);
 
+  const handleCheck = () => {
+    setCheck(!check);
+  };
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -42,7 +49,6 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
   return (
     <FlatList
       data={Data_Null}
-      contentContainerStyle={{ marginBottom: 30 }}
       renderItem={({ item }) => (
         <View onLayout={onLayoutRootView} style={styles.container}>
           <View
@@ -102,7 +108,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               </>
             ) : (
               <View style={{ alignItems: "center", gap: 15 }}>
-                <TextInput
+                {/* <TextInput
                   style={styles.TextInput}
                   placeholder="Montant du transfert"
                   keyboardType="numeric"
@@ -111,7 +117,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                       type: "normal",
                     })
                   }
-                />
+                /> */}
                 <View
                   style={{
                     flexDirection: "row",
@@ -215,7 +221,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 marginHorizontal: 5,
-                marginVertical: 15,
+                marginBottom: 30,
               }}
             >
               <View
@@ -253,6 +259,89 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
             </View>
           )}
 
+          <View style={{ alignItems: "center", marginHorizontal: 20 }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontFamily: "Nunito-SemiBold",
+                marginBottom: 15,
+              }}
+            >
+              Entrez le montant
+            </Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <Ionicons name="cash" size={24} color="black" />
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Montant du transfert"
+                keyboardType="numeric"
+                onChangeText={(value) => {
+                  setValue(parseInt(value));
+                  console.log(typeof parseInt(value));
+                  setValueAf(parseInt(value) + parseInt(value) * 0.01);
+                }}
+              />
+            </View>
+          </View>
+          <View style={{ marginHorizontal: 25, marginVertical: 25 }}>
+            <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 18 }}>
+              {value} FCFA
+            </Text>
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 10,
+              alignItems: "center",
+              justifyContent: "flex-end",
+              marginHorizontal: 25,
+              marginVertical: 20,
+            }}
+          >
+            <Pressable
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 15,
+              }}
+              onPress={() => {
+                handleCheck();
+              }}
+            >
+              <View
+                style={[
+                  {
+                    width: 20,
+                    height: 20,
+                    borderRadius: 75,
+                  },
+                  check
+                    ? { backgroundColor: "#0066B5" }
+                    : { borderColor: "black", borderWidth: 1 },
+                ]}
+              ></View>
+
+              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 18 }}>
+                Je paie les frais 1%
+              </Text>
+            </Pressable>
+          </View>
+
+          <View style={{ marginHorizontal: 25, marginBottom: 50 }}>
+            <Text style={{ fontFamily: "Nunito-Bold", fontSize: 18 }}>
+              {check ? valueAf : value} FCFA
+            </Text>
+          </View>
+
           <View style={{ flex: 1, justifyContent: "flex-end" }}>
             <BtnItem
               text="Continuez"
@@ -275,7 +364,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
 export default Opr2;
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, paddingBottom: 50 },
   TextInput: {
     height: "auto",
     borderBottomWidth: 1,

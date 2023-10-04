@@ -44,6 +44,22 @@ export const AuthProvider = ({ children }) => {
     <FontAwesome5 name="fingerprint" size={22} color="black" />
   );
 
+  const tablVerif = [];
+  while (tablVerif.length != 10) {
+    let random = Math.floor(Math.random() * keyboard.length);
+    let bol = true;
+    for (let a = 0; a < tabl.length; a++) {
+      if (tablVerif[a] == random) {
+        bol = false;
+      }
+    }
+    if (bol) {
+      tablVerif.push(random);
+    }
+  }
+  tablVerif.push(<AntDesign name="delete" size={22} color="black" />);
+  tablVerif.splice(8, 0, null);
+
   //
   const tablCode = [
     0,
@@ -76,6 +92,7 @@ export const AuthProvider = ({ children }) => {
         lieu,
         montant,
         tabl,
+        tablVerif,
         tablCode,
         validate,
         contactSelect,
