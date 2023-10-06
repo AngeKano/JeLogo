@@ -1,7 +1,6 @@
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
+import { View, StyleSheet, Dimensions, Image } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
-import VerifItem from "../components/VerifItem";
 import BtnItem from "../components/BtnItem";
 import CustVerifItems from "../components/CustVerifItems";
 

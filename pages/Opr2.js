@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -68,7 +61,11 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               {label}
             </Text>
           </View>
-          <Text style={styles.txtPwd}>Transférez votre argent</Text>
+          {route.params.operation == "Recharger mon solde" ? (
+            <Text style={styles.txtPwd}>Recharger mon compte</Text>
+          ) : (
+            <Text style={styles.txtPwd}>Transférez votre argent</Text>
+          )}
 
           <View style={{ gap: 23, marginVertical: 30 }}>
             {label == "VISA" ? (
@@ -108,16 +105,6 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               </>
             ) : (
               <View style={{ alignItems: "center", gap: 15 }}>
-                {/* <TextInput
-                  style={styles.TextInput}
-                  placeholder="Montant du transfert"
-                  keyboardType="numeric"
-                  onSubmitEditing={() =>
-                    navigate("code", {
-                      type: "normal",
-                    })
-                  }
-                /> */}
                 <View
                   style={{
                     flexDirection: "row",
@@ -295,52 +282,56 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               {value} FCFA
             </Text>
           </View>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 10,
-              alignItems: "center",
-              justifyContent: "flex-end",
-              marginHorizontal: 25,
-              marginVertical: 20,
-            }}
-          >
-            <Pressable
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 15,
-              }}
-              onPress={() => {
-                handleCheck();
-              }}
-            >
+          {route.params.operation == "Recharger mon solde" ? null : (
+            <>
               <View
-                style={[
-                  {
-                    width: 20,
-                    height: 20,
-                    borderRadius: 75,
-                  },
-                  check
-                    ? { backgroundColor: "#0066B5" }
-                    : { borderColor: "black", borderWidth: 1 },
-                ]}
-              ></View>
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: 10,
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                  marginHorizontal: 25,
+                  marginVertical: 20,
+                }}
+              >
+                <Pressable
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: 15,
+                  }}
+                  onPress={() => {
+                    handleCheck();
+                  }}
+                >
+                  <View
+                    style={[
+                      {
+                        width: 20,
+                        height: 20,
+                        borderRadius: 75,
+                      },
+                      check
+                        ? { backgroundColor: "#0066B5" }
+                        : { borderColor: "black", borderWidth: 1 },
+                    ]}
+                  ></View>
 
-              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 18 }}>
-                Je paie les frais 1%
-              </Text>
-            </Pressable>
-          </View>
+                  <Text style={{ fontFamily: "Nunito-Regular", fontSize: 18 }}>
+                    Je paie les frais 1%
+                  </Text>
+                </Pressable>
+              </View>
 
-          <View style={{ marginHorizontal: 25, marginBottom: 50 }}>
-            <Text style={{ fontFamily: "Nunito-Bold", fontSize: 18 }}>
-              {check ? valueAf : value} FCFA
-            </Text>
-          </View>
+              <View style={{ marginHorizontal: 25, marginBottom: 50 }}>
+                <Text style={{ fontFamily: "Nunito-Bold", fontSize: 18 }}>
+                  {check ? valueAf : value} FCFA
+                </Text>
+              </View>
+            </>
+          )}
 
           <View style={{ flex: 1, justifyContent: "flex-end" }}>
             <BtnItem
@@ -351,6 +342,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                   nav: navigate,
                   label: label,
                   img: img,
+                  operation: route.params.operation,
                 })
               }
             />

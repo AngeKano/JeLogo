@@ -2,10 +2,9 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import BtnItem from "../components/BtnItem";
 SplashScreen.preventAutoHideAsync();
 
-const Opr4 = ({ route, navigation: { navigate } }) => {
+const Opr4 = ({ route, navigation }) => {
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Light": require("../assets/fonts/Nunito-Light.ttf"),
@@ -22,15 +21,21 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
     return null;
   }
 
-  const { label, img } = route.params;
+  const { label, img, operation } = route.params;
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <Text style={styles.text}>{label}</Text>
       <Image source={img} style={{ width: 154, height: 154 }} />
-      <Text style={styles.txtPwd}>
-        <Text style={styles.txtBld}>Félicitations !</Text> votre transfert a
-        bien été éffectué
-      </Text>
+      {operation == "Recharger mon solde" ? (
+        <Text style={styles.txtPwd}>
+          Votre demande de réchargement a bien été éffectué
+        </Text>
+      ) : (
+        <Text style={styles.txtPwd}>
+          <Text style={styles.txtBld}>Félicitations !</Text> votre transfert a
+          bien été éffectué
+        </Text>
+      )}
       <View
         style={{
           flex: 1,
@@ -40,7 +45,7 @@ const Opr4 = ({ route, navigation: { navigate } }) => {
         }}
       >
         <Pressable
-          onPress={() => navigate("mainScreen")}
+          onPress={() => navigation.popToTop()}
           style={[
             styles.BtnPrinc,
             { backgroundColor: "none", borderColor: "#0372C1", borderWidth: 1 },

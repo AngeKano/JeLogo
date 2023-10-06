@@ -1,15 +1,10 @@
 import { StyleSheet, Text, View, Pressable, Image, Modal } from "react-native";
 import React, { useCallback, useContext, useState } from "react";
-import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { AntDesign } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import AvatarPermission from "../utilies/AvatarPermission";
-import * as ImagePicker from "expo-image-picker";
 import { AuthContext } from "../context/AuthContext";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { FlashList } from "@shopify/flash-list";
 import Data from "../components/Data";
 import { Feather } from "@expo/vector-icons";
 
@@ -115,7 +110,6 @@ const Compte1 = ({ navigation: { navigate } }) => {
             }
             style={{ width: 90, height: 90, borderRadius: 100 }}
           />
-          {/* <Text style={styles.txtName}>{nom}</Text> */}
         </Pressable>
         <View>
           <Text style={{ fontSize: 25, fontFamily: "Nunito-Bold" }}>{nom}</Text>

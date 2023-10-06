@@ -17,7 +17,6 @@ import { AntDesign } from "@expo/vector-icons";
 
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import VerifItem from "../components/VerifItem";
 import { FlatList } from "react-native-gesture-handler";
 import { AuthContext } from "../context/AuthContext";
 import BtnItem from "../components/BtnItem";

@@ -9,7 +9,6 @@ import {
 import React, { useCallback, useContext, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 
-import VerifItem from "../components/VerifItem";
 import { AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
 import { useFonts } from "expo-font";

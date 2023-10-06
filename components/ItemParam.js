@@ -13,24 +13,6 @@ const renderItem = (item, nav) => {
     </View>
   );
 };
-const renderItemParam = (item) => {
-  return (
-    <Pressable
-      onPress={() => {
-        item.Label == "Lire Qr code" ? null : null;
-      }}
-      style={styles.item}
-    >
-      <View style={styles.icon}>
-        <FontAwesome5 name={item.icon} size={20} color="black" />
-        <Text style={{ fontFamily: "Nunito-Bold", fontSize: 17 }}>
-          {item.Label}
-        </Text>
-      </View>
-      <AntDesign name="right" size={16} color="black" />
-    </Pressable>
-  );
-};
 
 const ItemParam = (props) => {
   return (

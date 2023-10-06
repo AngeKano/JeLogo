@@ -14,7 +14,6 @@ import * as SplashScreen from "expo-splash-screen";
 import { AntDesign } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { AuthContext } from "../context/AuthContext";
-import * as Sharing from "expo-sharing";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,7 +37,6 @@ const CustomDrawerContent = (props) => {
   if (!fontsLoaded) {
     return null;
   }
-  // Sharing.isAvailableAsync() ? console.log("sqs") : console.log("first");
 
   return (
     <DrawerContentScrollView {...props}>

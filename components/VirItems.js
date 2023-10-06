@@ -8,9 +8,7 @@ import {
   TextInput,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import React, { useState, memo, useContext } from "react";
-import BtnItem from "./BtnItem";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState, memo } from "react";
 
 const renderItem = (data, item, navigate) => {
   return (
@@ -42,7 +40,6 @@ const renderItem = (data, item, navigate) => {
 };
 
 const VirItems = ({ data, navigate }) => {
-  const { validate } = useContext(AuthContext);
   const renderItemFalse = (item) => {
     return (
       <View
@@ -58,73 +55,18 @@ const VirItems = ({ data, navigate }) => {
         <TextInput
           style={[styles.TextInput]}
           placeholder={item.Placeholder}
-          placeholderTextColor={'gray'}
+          placeholderTextColor={"gray"}
           keyboardType={item.Etape == "Nom du compte" ? "default" : "numeric"}
           secureTextEntry={item.Etape == "Code secret" ? true : false}
           maxLength={item.Etape == "Code secret" ? 4 : 14}
           onSubmitEditing={() => navigate("code")}
         />
-        {/* {validate == false ? (
-          <View style={{ marginTop: 20 }}>
-            <BtnItem
-              navigation={() =>
-                navigate("code", {
-                  type: "normal",
-                })
-              }
-              text="Confirmer"
-            />
-          </View>
-        ) : null} */}
       </View>
     );
   };
 
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const showModal = () => {
-    setModalVisible(true);
-    setTimeout(() => {
-      setModalVisible(false);
-      navigate("Princ");
-    }, 800);
-  };
   return (
     <>
-      <Modal animationType="fade" transparent visible={modalVisible}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "rgba(0,0,0,.2)",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "white",
-              paddingVertical: 25,
-              paddingHorizontal: 30,
-              borderRadius: 25,
-              gap: 15,
-            }}
-          >
-            <AntDesign name="checkcircleo" size={55} color="#1ACA56" />
-            <Text
-              style={{
-                fontFamily: "Nunito-Medium",
-                fontSize: 20,
-                textAlign: "center",
-              }}
-            >
-              Votre opération a bien été effectuée
-            </Text>
-          </View>
-        </View>
-      </Modal>
-
       <FlatList
         data={data.option}
         style={{ marginVertical: 27 }}

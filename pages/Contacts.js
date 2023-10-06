@@ -16,7 +16,7 @@ import { FlashList } from "@shopify/flash-list";
 
 SplashScreen.preventAutoHideAsync();
 
-const ContactsScreen = ({ route, navigation }) => {
+const ContactsScreen = ({ navigation }) => {
   const { contactSelect, setContactSelect } = useContext(AuthContext);
   const [contacts, setContacts] = useState([]);
 
@@ -39,7 +39,6 @@ const ContactsScreen = ({ route, navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const handleSearch = (text) => {
-    // typeof text == "Number" ? console.log("first") : console.log("d")
     setSearchTerm(text);
     const newData = contacts.filter((item) => {
       const itemName = item.name.toLowerCase();

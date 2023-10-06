@@ -7,8 +7,7 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import React, { useCallback, useContext, useRef, useState } from "react";
-import VerifItem from "../components/VerifItem";
+import React, { useCallback, useContext, useState } from "react";
 import { useFonts } from "expo-font";
 import { AuthContext } from "../context/AuthContext";
 import { Picker } from "@react-native-picker/picker";
@@ -16,7 +15,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Entypo } from "@expo/vector-icons";
 import BtnItem from "../components/BtnItem";
-import ConfimCode from "./ConfimCode";
 import CustVerifItems from "../components/CustVerifItems";
 
 const Identification1 = ({ navigation: { replace } }) => {

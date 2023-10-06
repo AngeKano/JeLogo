@@ -106,6 +106,7 @@ const Code = ({ route, navigation }) => {
         ? route.params.nav("Opr4", {
             label: route.params.label,
             img: route.params.img,
+            operation: route.params.operation,
           })
         : (setValidate(true), navigation.navigate("mainScreen"));
     }
@@ -240,6 +241,7 @@ const Code = ({ route, navigation }) => {
                         ? route.params.nav("Opr4", {
                             label: route.params.label,
                             img: route.params.img,
+                            operation: route.params.operation,
                           })
                         : (setValidate(true),
                           navigation.navigate("mainScreen"));

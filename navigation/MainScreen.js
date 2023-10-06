@@ -1,6 +1,5 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Historique from "../pages/Historique";
 import NavCompte from "./NavCompte";
 import AccScreens from "./AccScreens";

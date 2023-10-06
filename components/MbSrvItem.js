@@ -31,7 +31,7 @@ const MbSrvItem = (props) => {
                   backgroundColor: item.backgroundColor,
                   textColor: item.textColor,
                 })
-              :item.Option_Bnq
+              : item.Option_Bnq
               ? props.navigate("Page_vir_bnq", {
                   option: item.Option_Bnq,
                   nom: item.nom,
@@ -41,7 +41,8 @@ const MbSrvItem = (props) => {
               : props.navigate("Opr2", {
                   label: item.nom,
                   img: item.text,
-                  style: item.style
+                  style: item.style,
+                  operation: props.label,
                 });
           }}
         >

@@ -40,6 +40,7 @@ const Compte = ({ navigation: { navigate } }) => {
     imageUser,
     email,
     nom,
+    prenom,
     numero,
     date,
     lieu,
@@ -49,6 +50,7 @@ const Compte = ({ navigation: { navigate } }) => {
     setImageUser,
     setEmail,
     setNom,
+    setPrenom,
     setLieu,
     setDate,
     setImageCNI_RectoBD,
@@ -57,6 +59,7 @@ const Compte = ({ navigation: { navigate } }) => {
 
   const handle = () => {
     setNom(nomL);
+    setPrenom(prenomL);
     setEmail(emailL);
     setNumero(numeroL);
     setLieu(lieuL);
@@ -71,6 +74,7 @@ const Compte = ({ navigation: { navigate } }) => {
   };
 
   const [nomL, setNomL] = useState(nom);
+  const [prenomL, setPrenomL] = useState(prenom);
   const [emailL, setEmailL] = useState(email);
   const [numeroL, setNumeroL] = useState(numero);
   const [lieuL, setLieuL] = useState(lieu);
@@ -216,6 +220,19 @@ const Compte = ({ navigation: { navigate } }) => {
                   setNomL(textNom);
                 }}
                 value={nomL}
+                maxLength={15}
+              />
+            </View>
+            <View style={styles.inputStyle}>
+              <AntDesign name="user" size={24} color="black" />
+              <TextInput
+                style={styles.TextInput}
+                placeholder="Prenom"
+                keyboardType="default"
+                onChangeText={(textNom) => {
+                  setPrenomL(textNom);
+                }}
+                value={prenomL}
               />
             </View>
             <View style={styles.inputStyle}>
@@ -261,9 +278,7 @@ const Compte = ({ navigation: { navigate } }) => {
               <View style={styles.btnCalnd}>
                 <AntDesign name="calendar" size={24} color="black" />
               </View>
-              <Text style={styles.txtCalnd}>
-                {dateL}
-              </Text>
+              <Text style={styles.txtCalnd}>{dateL}</Text>
             </Pressable>
             {show ? (
               <DateTimePicker

@@ -10,7 +10,7 @@ import Data from "../components/Data";
 
 SplashScreen.preventAutoHideAsync();
 
-const Historique = ({ navigation: { navigate } }) => {
+const Historique = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("../assets/fonts/Nunito-Bold.ttf"),
     "Nunito-SemiBold": require("../assets/fonts/Nunito-SemiBold.ttf"),

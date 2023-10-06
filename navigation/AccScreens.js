@@ -1,12 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Princ from "../pages/Princ";
 import Accueil from "../pages/Accueil";
-import Opr1 from "../pages/Opr1";
 import Opr2 from "../pages/Opr2";
-import Opr3 from "../pages/Opr3";
 import Opr4 from "../pages/Opr4";
-import Opr5 from "../pages/Opr5";
 import Forfait from "../pages/Forfait";
 import Abonement from "../pages/Abonement";
 import Historique from "../pages/Historique";
@@ -17,9 +13,6 @@ import Page_select_Abn from "../pages/Page_select_Abn";
 import Page_etape_bnq from "../pages/Page_etape_bnq";
 import Page_vir_bnq from "../pages/Page_vir_bnq";
 import Paiment_scan from "../pages/Paiment_scan";
-import Identification from "../pages/Identification";
-import MainScreen from "./MainScreen";
-
 const Stack = createNativeStackNavigator();
 
 const AccScreens = () => {
@@ -43,12 +36,8 @@ const AccScreens = () => {
       <Stack.Screen name="Historique" component={Historique} />
       <Stack.Screen name="Parametre" component={Parametre} />
       <Stack.Screen name="Notification" component={Notification} />
-      <Stack.Screen name="Opr1" component={Opr1} />
       <Stack.Screen name="Opr2" component={Opr2} />
-      <Stack.Screen name="Opr3" component={Opr3} />
       <Stack.Screen name="Opr4" component={Opr4} />
-      <Stack.Screen name="Opr5" component={Opr5} />
-      <Stack.Screen name="mainScreen" component={MainScreen} />
     </Stack.Navigator>
   );
 };
