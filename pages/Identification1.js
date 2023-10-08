@@ -153,10 +153,6 @@ const Identification1 = ({ navigation: { replace } }) => {
                 value="Permis de conduire"
               />
               <Picker.Item
-                label="Permis de conduire"
-                value="Permis de conduire"
-              />
-              <Picker.Item
                 label="Attestation d'identité"
                 value="Attestation d'identité"
               />

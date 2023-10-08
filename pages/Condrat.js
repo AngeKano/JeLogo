@@ -1,10 +1,13 @@
 import { View, StyleSheet, Dimensions, Image } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, memo } from "react";
 import { useFonts } from "expo-font";
 import BtnItem from "../components/BtnItem";
 import CustVerifItems from "../components/CustVerifItems";
+import Data from "../components/Data";
+import { FlatList } from "react-native-gesture-handler";
 
 const Condrat = ({ navigation: { replace } }) => {
+  const { Data_Null } = Data;
   ////
   const [fontsLoaded] = useFonts({
     "Nunito-Black": require("../assets/fonts/Nunito-Black.ttf"),
@@ -28,29 +31,34 @@ const Condrat = ({ navigation: { replace } }) => {
   }
   ////////
   return (
-    <View onLayout={onLayoutRootView} style={styles.container}>
-      <CustVerifItems text="Félicitations, votre inscription est terminée" />
-      <Image
-        source={require("../assets/congrat.png")}
-        style={{
-          width: Dimensions.get("window").width,
-          height: Dimensions.get("window").height * 0.45,
-          borderRadius: 100,
-        }}
-      />
-      <View style={{ marginTop: Dimensions.get("window").height * 0.1 }}>
-        <BtnItem
-          text="Terminer"
-          navigation={() => {
-            replace("mainScreen");
-          }}
-        />
-      </View>
-    </View>
+    <FlatList
+      data={Data_Null}
+      renderItem={() => (
+        <View onLayout={onLayoutRootView} style={styles.container}>
+          <CustVerifItems text="Félicitations, votre inscription est terminée" />
+          <Image
+            source={require("../assets/congrat.png")}
+            style={{
+              width: Dimensions.get("window").width,
+              height: Dimensions.get("window").height * 0.45,
+              borderRadius: 100,
+            }}
+          />
+          <View style={{ marginTop: Dimensions.get("window").height * 0.1 }}>
+            <BtnItem
+              text="Terminer"
+              navigation={() => {
+                replace("mainScreen");
+              }}
+            />
+          </View>
+        </View>
+      )}
+    />
   );
 };
 
-export default Condrat;
+export default memo(Condrat);
 
 const styles = StyleSheet.create({
   container: {

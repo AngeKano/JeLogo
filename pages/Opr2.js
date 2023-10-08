@@ -130,7 +130,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
                         : // : console.log(contactSelect.phoneNumbers)
                           Object.values(contactSelect.phoneNumbers)[0].number
                     }
-                    placeholder="Numéro du transfert"
+                    placeholder="Numéro du compte"
                     keyboardType="numeric"
                     onSubmitEditing={() =>
                       navigate("code", {
@@ -267,11 +267,11 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
               <Ionicons name="cash" size={24} color="black" />
               <TextInput
                 style={styles.TextInput}
-                placeholder="Montant du transfert"
+                placeholder="Montant"
                 keyboardType="numeric"
                 onChangeText={(value) => {
                   setValue(parseInt(value));
-                  console.log(typeof parseInt(value));
+                  console.log(value.length == 0 ? "ok" : "sdsds");
                   setValueAf(parseInt(value) + parseInt(value) * 0.01);
                 }}
               />
@@ -279,7 +279,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
           </View>
           <View style={{ marginHorizontal: 25, marginVertical: 25 }}>
             <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: 18 }}>
-              {value} FCFA
+              {value > 0 ? value : 0} FCFA
             </Text>
           </View>
           {route.params.operation == "Recharger mon solde" ? null : (
@@ -327,7 +327,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
 
               <View style={{ marginHorizontal: 25, marginBottom: 50 }}>
                 <Text style={{ fontFamily: "Nunito-Bold", fontSize: 18 }}>
-                  {check ? valueAf : value} FCFA
+                  {check ? valueAf : value > 0 ? value : 0} FCFA
                 </Text>
               </View>
             </>
@@ -364,6 +364,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     alignItems: "center",
     justifyContent: "center",
+    paddingRight: 15,
   },
   txtPwd: {
     fontFamily: "Nunito-Medium",

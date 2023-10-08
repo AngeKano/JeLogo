@@ -9,6 +9,8 @@ import AvatarPermission from "../utilies/AvatarPermission";
 import * as ImagePicker from "expo-image-picker";
 import { AuthContext } from "../context/AuthContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Entypo } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -199,14 +201,45 @@ const Compte = ({ navigation: { navigate } }) => {
             }
             style={{ width: 125, height: 125, borderRadius: 100 }}
           />
-          <AntDesign
-            name="pluscircleo"
-            size={24}
-            color="black"
-            style={styles.plus}
-          />
-          {/* <Text style={styles.txtName}>{nom}</Text> */}
         </Pressable>
+
+        <View
+          style={{
+            display: "flex",
+            gap: 15,
+            flexDirection: "row",
+            marginVertical: 25,
+          }}
+        >
+          <View
+            style={{
+              padding: 11,
+              borderRadius: 7,
+              backgroundColor: "white",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Entypo name="camera" size={40} color="gray" />
+            <Text style={{ fontSize: 15, fontFamily: "Nunito-SemiBold" }}>
+              Prendre un selfie
+            </Text>
+          </View>
+          <View
+            style={{
+              padding: 10,
+              borderRadius: 7,
+              backgroundColor: "white",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Fontisto name="photograph" size={40} color="gray" />
+            <Text style={{ fontSize: 15, fontFamily: "Nunito-SemiBold" }}>
+              Image de la galerie
+            </Text>
+          </View>
+        </View>
 
         <View style={styles.itemsInfos}>
           <View style={styles.listInputs}>
@@ -309,9 +342,12 @@ const Compte = ({ navigation: { navigate } }) => {
               onPress={() => openCameraCNI_Recto()}
             >
               {imageCNI_Recto == null ? (
-                <Text style={{ fontFamily: "Nunito-Medium", color: "gray" }}>
-                  Photo CNI Recto
-                </Text>
+                <View style={{ alignItems: "center", gap: 10 }}>
+                  <MaterialIcons name="add-a-photo" size={50} color="gray" />
+                  <Text style={{ fontFamily: "Nunito-Medium", color: "gray" }}>
+                    Pièce Recto
+                  </Text>
+                </View>
               ) : (
                 <Image
                   source={{ uri: imageCNI_Recto }}
@@ -331,9 +367,12 @@ const Compte = ({ navigation: { navigate } }) => {
               onPress={() => openCameraCNI_Verso()}
             >
               {imageCNI_Verso == null ? (
-                <Text style={{ fontFamily: "Nunito-Medium", color: "gray" }}>
-                  Photo CNI Verso
-                </Text>
+                <View style={{ alignItems: "center", gap: 10 }}>
+                  <MaterialIcons name="add-a-photo" size={50} color="gray" />
+                  <Text style={{ fontFamily: "Nunito-Medium", color: "gray" }}>
+                    Pièce Verso
+                  </Text>
+                </View>
               ) : (
                 <Image
                   source={{ uri: imageCNI_Verso }}

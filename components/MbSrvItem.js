@@ -3,7 +3,12 @@ import React, { memo } from "react";
 import Data from "./Data";
 
 const MbSrvItem = (props) => {
-  const { Data_Factures, Data_Pass, Data_Transaction } = Data;
+  const {
+    Data_Factures,
+    Data_Pass,
+    Data_Transaction,
+    Data_Transaction_Recharge,
+  } = Data;
   return (
     <FlatList
       data={
@@ -11,6 +16,8 @@ const MbSrvItem = (props) => {
           ? Data_Factures
           : props.label == "Transfert et achat de Pass"
           ? Data_Pass
+          : props.label == "Recharger mon solde"
+          ? Data_Transaction_Recharge
           : Data_Transaction
       }
       numColumns={2}

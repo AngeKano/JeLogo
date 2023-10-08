@@ -3,7 +3,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
 const Data_Factures = [
-
   {
     nom: "Marchands",
     text: require("../assets/icons/factureItems/marchand.png"),
@@ -183,7 +182,97 @@ const Data_Transaction = [
       backgroundColor: "#1DC8FF",
     },
   },
-  
+
+  {
+    nom: "Banques",
+    text: require("../assets/icons/banque.png"),
+    Option_Bnq: [
+      {
+        nom: "Vers un compte VISA",
+        text: require("../assets/icons/factureItems/banque/visa.png"),
+        backgroundColor: "white",
+        textColor: "black",
+        option: [
+          {
+            Etape: "Nom du compte",
+            Placeholder: "Name Account",
+          },
+          {
+            Etape: "IBAN",
+            Placeholder: "CI008 01111 111xxx91058 27",
+          },
+          {
+            Etape: "Montant",
+            Placeholder: "15 000 XOF",
+          },
+        ],
+      },
+      {
+        nom: "Vers un compte JELOGO",
+        text: require("../assets/icons/factureItems/banque/JeLogo.png"),
+        backgroundColor: "#0066B5",
+        textColor: "white",
+        option: [
+          {
+            Etape: "Nom du compte",
+            Placeholder: "Name Account",
+          },
+          {
+            Etape: "IBAN",
+            Placeholder: "CI008 01111 111xxx91058 27",
+          },
+          {
+            Etape: "Montant",
+            Placeholder: "15 000 XOF",
+          },
+        ],
+      },
+    ],
+  },
+
+  // {
+  //   nom: "JELOGO",
+  //   text: require("../assets/icons/Jelogo.png"),
+  //   style: {
+  //     color: "white",
+  //     backgroundColor: "black",
+  //   },
+  // },
+];
+const Data_Transaction_Recharge = [
+  {
+    nom: "Orange Money",
+    text: require("../assets/icons/Mobileservices.png"),
+    style: {
+      color: "#FF7900",
+      backgroundColor: "black",
+    },
+  },
+  {
+    nom: "Moov Money",
+    text: require("../assets/icons/Group12.png"),
+    style: {
+      color: "white",
+      backgroundColor: "#0066B5",
+    },
+  },
+  {
+    nom: "MTN Money",
+    text: require("../assets/icons/Group13.png"),
+    style: {
+      color: "black",
+      backgroundColor: "#FFC403",
+    },
+  },
+  {
+    nom: "Wave",
+    text: require("../assets/icons/Group14.png"),
+    style: {
+      color: "white",
+      backgroundColor: "#1DC8FF",
+    },
+  },
+
   {
     nom: "Banques",
     text: require("../assets/icons/banque.png"),
@@ -208,15 +297,6 @@ const Data_Transaction = [
         ],
       },
     ],
-  },
-
-  {
-    nom: "JELOGO",
-    text: require("../assets/icons/Jelogo.png"),
-    style: {
-      color: "white",
-      backgroundColor: "black",
-    },
   },
 ];
 
@@ -788,6 +868,7 @@ const keyboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default {
   Data_Factures,
   Data_Transaction,
+  Data_Transaction_Recharge,
   Data_Pass,
   Data_Social_Media,
   Data_Iconographie,

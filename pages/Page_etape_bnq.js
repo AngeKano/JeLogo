@@ -80,24 +80,6 @@ const Page_etape_bnq = ({ route, navigation: { navigate } }) => {
             {validate == true ? (
               showModal()
             ) : (
-              // <>
-              //   <View style={styles.boxValidate}>
-              //     <AntDesign name="checkcircleo" size={25} color="#1ACA56" />
-              //     <View>
-              //       <Text
-              //         style={{ textAlign: "center", fontFamily: "Nunito-Medium" }}
-              //       >
-              //         {(route.params.nom == "Vers un compte JELOGO") |
-              //         (route.params.nom == "Vers un compte VISA")
-              //           ? "Votre opération bancaire"
-              //           : " Votre réabonnement au service"}{" "}
-              //         <Text style={{ fontWeight: "bold" }}>{route.params.nom}</Text>{" "}
-              //         a bien été effectué
-              //       </Text>
-              //     </View>
-              //   </View>
-              //   <BtnItem text="Terminer" navigation={() => showModal()} />
-              // </>
               <View style={{ marginTop: 20 }}>
                 <BtnItem
                   navigation={() =>

@@ -153,7 +153,7 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
               {route.params.type == "Inscription" ? (
                 <>
                   <CustVerifItems
-                    text={"Créer votre code secret"}
+                    text={"Créez votre code secret"}
                     text1={null}
                   />
                   <AntDesign

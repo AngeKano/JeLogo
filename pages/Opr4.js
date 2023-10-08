@@ -33,7 +33,7 @@ const Opr4 = ({ route, navigation }) => {
       ) : (
         <Text style={styles.txtPwd}>
           <Text style={styles.txtBld}>Félicitations !</Text> votre transfert a
-          bien été éffectué
+          bien été effectuée
         </Text>
       )}
       <View

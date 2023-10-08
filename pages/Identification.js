@@ -87,7 +87,7 @@ const Identification = ({ navigation: { navigate } }) => {
   return (
     <ScrollView>
       <View onLayout={onLayoutRootView} style={styles.container}>
-        <CustVerifItems text="Information personnelles" />
+        <CustVerifItems text="Informations personnelles" />
         <View style={{ marginVertical: 30, gap: 20 }}>
           <View style={{ flexDirection: "row", gap: 15 }}>
             <Pressable
