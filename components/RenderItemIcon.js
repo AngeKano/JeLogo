@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const RenderItemIcon = ({ item, navigate }) => {
+  const { setScanned } = useContext(AuthContext);
   return (
     <Pressable
       onPress={() => {
         item.label == "Historique"
           ? navigate.navigate("Historique")
           : item.label == "Retrait"
-          ? navigate.navigate("Scan")
+          ? (setScanned(false), navigate.navigate("Scan"))
           : navigate.navigate("Accueil", {
               label: item.label,
               txt: item.txt,

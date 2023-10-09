@@ -1,43 +1,50 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
-import { Camera } from "expo-camera";
+import React, { useContext, useEffect, useState } from "react";
+import { BarCodeScanner } from "expo-barcode-scanner";
+import { AuthContext } from "../context/AuthContext";
 
 export default function App({ navigation: { navigate } }) {
-  const [hasPermission, setHasPermission] = React.useState(false);
-  const [scanData, setScanData] = React.useState();
+  const [hasPermission, setHasPermission] = useState(null);
+  const { scanned, setScanned } = useContext(AuthContext);
 
   useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
+    const getBarCodeScannerPermissions = async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === "granted");
-    })();
+    };
+
+    getBarCodeScannerPermissions();
   }, []);
 
-  if (!hasPermission) {
+  if (hasPermission === null) {
     return (
       <View style={styles.container}>
-        <Text>Please grant camera permissions to app.</Text>
+        <Text>Requesting for camera permission</Text>
       </View>
     );
   }
-
+  if (hasPermission === false) {
+    return (
+      <View style={styles.container}>
+        <Text>No access to camera</Text>
+      </View>
+    );
+  }
   const handleBarCodeScanned = ({ type, data }) => {
-    setScanData(data);
-    console.log(`Data: ${data}`);
-    console.log(`Type: ${type}`);
+    navigate("DrawerNav");
   };
 
   return (
     <View style={styles.container}>
-      <Camera
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : navigate("DrawerNav")}
         style={StyleSheet.absoluteFillObject}
-        onBarCodeScanned={scanData ? undefined : handleBarCodeScanned}
       />
       <View style={styles.scan}></View>
       <Text style={styles.txt}>Scanner le QR Code</Text>
       <StatusBar style="auto" />
-      {scanData && navigate("DrawerNav")}
+      {/* {scanned && (setScanned(false), navigate("DrawerNav"))} */}
     </View>
   );
 }

@@ -78,6 +78,7 @@ export const AuthProvider = ({ children }) => {
 
   const [validate, setValidate] = useState(false);
   const [contactSelect, setContactSelect] = useState([]);
+  const [scanned, setScanned] = useState(false);
 
   return (
     <AuthContext.Provider
@@ -98,6 +99,7 @@ export const AuthProvider = ({ children }) => {
         contactSelect,
         imageCNI_RectoBD,
         imageCNI_VersoBD,
+        scanned,
         setContactSelect,
         setMontant,
         setCode,
@@ -111,6 +113,7 @@ export const AuthProvider = ({ children }) => {
         setValidate,
         setImageCNI_RectoBD,
         setImageCNI_VersoBD,
+        setScanned,
       }}
     >
       {children}
