@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from "react-native";
 import React, { createContext, useState } from "react";
 import Data from "../components/Data";
 import { AntDesign } from "@expo/vector-icons";

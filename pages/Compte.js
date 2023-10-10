@@ -203,7 +203,7 @@ const Compte = ({ navigation: { navigate } }) => {
           />
         </Pressable>
 
-        <View
+        {/* <View
           style={{
             display: "flex",
             gap: 15,
@@ -239,7 +239,7 @@ const Compte = ({ navigation: { navigate } }) => {
               Image de la galerie
             </Text>
           </View>
-        </View>
+        </View> */}
 
         <View style={styles.itemsInfos}>
           <View style={styles.listInputs}>
