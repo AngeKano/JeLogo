@@ -17,6 +17,10 @@ export default function App({ navigation: { navigate } }) {
     getBarCodeScannerPermissions();
   }, []);
 
+  const handleBarCodeScanned = ({ type, data }) => {
+    navigate("DrawerNav");
+  };
+
   if (hasPermission === null) {
     return (
       <View style={styles.container}>
@@ -31,9 +35,6 @@ export default function App({ navigation: { navigate } }) {
       </View>
     );
   }
-  const handleBarCodeScanned = ({ type, data }) => {
-    navigate("DrawerNav");
-  };
 
   return (
     <View style={styles.container}>
@@ -44,7 +45,7 @@ export default function App({ navigation: { navigate } }) {
       <View style={styles.scan}></View>
       <Text style={styles.txt}>Scanner le QR Code</Text>
       <StatusBar style="auto" />
-      {/* {scanned && (setScanned(false), navigate("DrawerNav"))} */}
+      {scanned && (setScanned(false), navigate("DrawerNav"))}
     </View>
   );
 }
