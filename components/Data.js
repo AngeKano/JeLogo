@@ -278,9 +278,28 @@ const Data_Transaction_Recharge = [
     text: require("../assets/icons/banque.png"),
     Option_Bnq: [
       {
-        nom: "Vers un compte VISA",
+        nom: "Dépuis un compte VISA",
         text: require("../assets/icons/factureItems/banque/visa.png"),
         backgroundColor: "white",
+        option: [
+          {
+            Etape: "Nom du compte",
+            Placeholder: "Name Account",
+          },
+          {
+            Etape: "IBAN",
+            Placeholder: "CI008 01111 111xxx91058 27",
+          },
+          {
+            Etape: "Montant",
+            Placeholder: "15 000 XOF",
+          },
+        ],
+      },
+      {
+        nom: "Dépuis un compte JELOGO",
+        text: require("../assets/icons/factureItems/banque/JeLogo.png"),
+        backgroundColor: "#0066B5",
         option: [
           {
             Etape: "Nom du compte",

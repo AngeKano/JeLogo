@@ -189,19 +189,14 @@ const Compte = ({ navigation: { navigate } }) => {
           </View>
         </Modal>
 
-        <Pressable
-          style={styles.princUser}
-          onPress={() => {
-            handlePickUser();
-          }}
-        >
+        <View style={styles.princUser}>
           <Image
             source={
               typeof imageUserL == "number" ? imageUserL : { uri: imageUserL }
             }
             style={{ width: 125, height: 125, borderRadius: 100 }}
           />
-        </Pressable>
+        </View>
 
         {/* <View
           style={{
@@ -330,7 +325,7 @@ const Compte = ({ navigation: { navigate } }) => {
             <Text style={{ fontSize: 19, fontFamily: "Nunito-Regular" }}>
               Documents et pieces personnelles
             </Text>
-            <Pressable
+            <View
               style={{
                 width: "100%",
                 height: 200,
@@ -339,7 +334,6 @@ const Compte = ({ navigation: { navigate } }) => {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              onPress={() => openCameraCNI_Recto()}
             >
               {imageCNI_Recto == null ? (
                 <View style={{ alignItems: "center", gap: 10 }}>
@@ -354,8 +348,8 @@ const Compte = ({ navigation: { navigate } }) => {
                   style={{ width: "100%", height: 200, borderRadius: 15 }}
                 />
               )}
-            </Pressable>
-            <Pressable
+            </View>
+            <View
               style={{
                 width: "100%",
                 height: 200,
@@ -364,7 +358,6 @@ const Compte = ({ navigation: { navigate } }) => {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              onPress={() => openCameraCNI_Verso()}
             >
               {imageCNI_Verso == null ? (
                 <View style={{ alignItems: "center", gap: 10 }}>
@@ -379,7 +372,7 @@ const Compte = ({ navigation: { navigate } }) => {
                   style={{ width: "100%", height: 200, borderRadius: 15 }}
                 />
               )}
-            </Pressable>
+            </View>
           </View>
         </View>
 
