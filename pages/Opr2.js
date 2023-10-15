@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
+import { FlatList, TextInput } from "react-native-gesture-handler";
 import BtnItem from "../components/BtnItem";
 import { AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";

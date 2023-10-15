@@ -106,10 +106,6 @@ const VerificationN21 = ({ route, navigation: { navigate } }) => {
       // TwoButtonAlert();
       navigate("verificationN3");
     }
-    // console.log({ isBiometricAvailable });
-    // console.log({ supportedBiometrics });
-    // console.log({ savedBiometrics });
-    // console.log({ biometricAuth });
   };
 
   const { tabl, tablVerif } = useContext(AuthContext);
