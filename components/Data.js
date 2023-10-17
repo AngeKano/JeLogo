@@ -278,7 +278,7 @@ const Data_Transaction_Recharge = [
     text: require("../assets/icons/banque.png"),
     Option_Bnq: [
       {
-        nom: "Dépuis un compte VISA",
+        nom: "depuis un compte VISA",
         text: require("../assets/icons/factureItems/banque/visa.png"),
         backgroundColor: "white",
         option: [
@@ -297,7 +297,7 @@ const Data_Transaction_Recharge = [
         ],
       },
       {
-        nom: "Dépuis un compte JELOGO",
+        nom: "depuis un compte JELOGO",
         text: require("../assets/icons/factureItems/banque/JeLogo.png"),
         backgroundColor: "#0066B5",
         option: [
