@@ -182,7 +182,6 @@ const Data_Transaction = [
       backgroundColor: "#1DC8FF",
     },
   },
-
   {
     nom: "Banques",
     text: require("../assets/icons/banque.png"),
@@ -229,15 +228,14 @@ const Data_Transaction = [
       },
     ],
   },
-
-  // {
-  //   nom: "JELOGO",
-  //   text: require("../assets/icons/Jelogo.png"),
-  //   style: {
-  //     color: "white",
-  //     backgroundColor: "black",
-  //   },
-  // },
+  {
+    nom: "JELOGO",
+    text: require("../assets/icons/Jelogo.png"),
+    style: {
+      color: "white",
+      backgroundColor: "black",
+    },
+  },
 ];
 const Data_Transaction_Recharge = [
   {
