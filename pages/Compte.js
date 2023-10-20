@@ -382,8 +382,8 @@ const Compte = ({ navigation: { navigate } }) => {
           </Pressable>
           <Pressable
             onPress={() =>
-              navigate("Accueil", {
-                label: label,
+              navigate("code", {
+                type: "delete",
               })
             }
             style={[

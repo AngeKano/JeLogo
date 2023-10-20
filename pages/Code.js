@@ -150,7 +150,7 @@ const Code = ({ route, navigation }) => {
         }
         renderItem={({ item }) => (
           <View onLayout={onLayoutRootView} style={styles.container}>
-            {route.params.type == "secure" ? null : (
+            {route.params.type == "secure" || route.params.type == "delete"  ? null : (
               <Pressable
                 onPress={() => {
                   navigation.goBack();
