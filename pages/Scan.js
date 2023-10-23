@@ -39,13 +39,13 @@ export default function App({ navigation: { navigate } }) {
   return (
     <View style={styles.container}>
       <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : navigate("DrawerNav")}
+        onBarCodeScanned={scanned ? navigate("DrawerNav") : undefined }
         style={StyleSheet.absoluteFillObject}
       />
       <View style={styles.scan}></View>
       <Text style={styles.txt}>Scanner le QR Code Again</Text>
       <StatusBar style="auto" />
-      {scanned && (setScanned(false), navigate("DrawerNav"))}
+      {scanned && (setScanned(false))}
     </View>
   );
 }
