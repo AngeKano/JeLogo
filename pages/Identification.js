@@ -59,7 +59,7 @@ const Identification = ({ navigation: { navigate } }) => {
     setNom(nomL);
     setPrenom(prenomL);
     setEmail(emailL);
-    setDate(dateL);
+    setDate(dateTime.toLocaleDateString());
   };
   ////
   ////

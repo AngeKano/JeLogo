@@ -9,8 +9,6 @@ import AvatarPermission from "../utilies/AvatarPermission";
 import * as ImagePicker from "expo-image-picker";
 import { AuthContext } from "../context/AuthContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Entypo } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -198,43 +196,7 @@ const Compte = ({ navigation: { navigate } }) => {
           />
         </View>
 
-        {/* <View
-          style={{
-            display: "flex",
-            gap: 15,
-            flexDirection: "row",
-            marginVertical: 25,
-          }}
-        >
-          <View
-            style={{
-              padding: 11,
-              borderRadius: 7,
-              backgroundColor: "white",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Entypo name="camera" size={40} color="gray" />
-            <Text style={{ fontSize: 15, fontFamily: "Nunito-SemiBold" }}>
-              Prendre un selfie
-            </Text>
-          </View>
-          <View
-            style={{
-              padding: 10,
-              borderRadius: 7,
-              backgroundColor: "white",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Fontisto name="photograph" size={40} color="gray" />
-            <Text style={{ fontSize: 15, fontFamily: "Nunito-SemiBold" }}>
-              Image de la galerie
-            </Text>
-          </View>
-        </View> */}
+            
 
         <View style={styles.itemsInfos}>
           <View style={styles.listInputs}>
@@ -377,7 +339,15 @@ const Compte = ({ navigation: { navigate } }) => {
         </View>
 
         <View style={styles.viewBtn}>
-          <Pressable onPress={() => handle()} style={styles.BtnPrinc}>
+          <Pressable
+            onPress={() => handle()}
+            style={[
+              styles.BtnPrinc,
+              imageCNI_Verso == null
+                ? { backgroundColor: "#0372C1" }
+                : { backgroundColor: "#D8D8D8" },
+            ]}
+          >
             <Text style={styles.BtnPrincTxt}>Enregistrer</Text>
           </Pressable>
           <Pressable
@@ -510,7 +480,6 @@ const styles = StyleSheet.create({
   },
   BtnPrinc: {
     padding: 10,
-    backgroundColor: "#0372C1",
     alignItems: "center",
     borderRadius: 10,
     minWidth: 200,

@@ -150,7 +150,7 @@ const Code = ({ route, navigation }) => {
         }
         renderItem={({ item }) => (
           <View onLayout={onLayoutRootView} style={styles.container}>
-            {route.params.type == "secure" || route.params.type == "delete"  ? null : (
+            {route.params.type == "secure"  ? null : (
               <Pressable
                 onPress={() => {
                   navigation.goBack();
@@ -167,7 +167,11 @@ const Code = ({ route, navigation }) => {
                 Dimensions.get("window").height < 600 ? null : { flex: 2 },
               ]}
             >
+              {route.params.type == "delete" ? 
+              
+              <VerifItemCode text="Entrez votre code secret pour supprimer le compte" type="secure" />:
               <VerifItemCode text="Entrez votre code secret" type="secure" />
+            }
 
               <View style={styles.ViewPuce}>
                 <View>

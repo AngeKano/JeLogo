@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { AuthContext } from "../context/AuthContext";
 
-export default function App({ navigation: { navigate } }) {
+export default function App({ navigation: { replace } }) {
   const [hasPermission, setHasPermission] = useState(null);
   const { scanned, setScanned } = useContext(AuthContext);
 
@@ -15,10 +15,11 @@ export default function App({ navigation: { navigate } }) {
     };
 
     getBarCodeScannerPermissions();
-  }, []);
+    setScanned(false);
+  }, [handleBarCodeScanned]);
 
   const handleBarCodeScanned = ({ type, data }) => {
-    navigate("DrawerNav");
+    replace("DrawerNav");
   };
 
   if (hasPermission === null) {
@@ -39,13 +40,15 @@ export default function App({ navigation: { navigate } }) {
   return (
     <View style={styles.container}>
       <BarCodeScanner
-        onBarCodeScanned={scanned ? navigate("DrawerNav") : undefined }
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
       <View style={styles.scan}></View>
       <Text style={styles.txt}>Scanner le QR Code Again</Text>
       <StatusBar style="auto" />
-      {scanned && (setScanned(false))}
+      {scanned && (
+        <Button title={"Terminer"} onPress={() => setScanned(false)} />
+      )}
     </View>
   );
 }
