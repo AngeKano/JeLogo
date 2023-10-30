@@ -44,7 +44,7 @@ export default function App({ navigation: { replace } }) {
         style={StyleSheet.absoluteFillObject}
       />
       <View style={styles.scan}></View>
-      <Text style={styles.txt}>Scanner le QR Code Again</Text>
+      <Text style={styles.txt}>Scanner le QR Code</Text>
       <StatusBar style="auto" />
       {scanned && (
         <Button title={"Terminer"} onPress={() => setScanned(false)} />
