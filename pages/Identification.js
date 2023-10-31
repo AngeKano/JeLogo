@@ -212,7 +212,7 @@ const Identification = ({ navigation: { navigate } }) => {
             <MaterialIcons name="gps-fixed" size={24} color="black" />
             <TextInput
               style={styles.TextInput}
-              placeholder={"Lieu"}
+              placeholder={"Commune, Ville"}
               onChangeText={(textLieu) => {
                 setLieuL(textLieu);
               }}
