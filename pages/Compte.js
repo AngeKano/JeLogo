@@ -196,13 +196,11 @@ const Compte = ({ navigation: { navigate } }) => {
           />
         </View>
 
-            
-
         <View style={styles.itemsInfos}>
           <View style={styles.listInputs}>
             <View style={styles.inputStyle}>
               <AntDesign name="user" size={24} color="black" />
-              <TextInput
+              <View
                 style={styles.TextInput}
                 placeholder="Nom"
                 keyboardType="default"
@@ -211,11 +209,13 @@ const Compte = ({ navigation: { navigate } }) => {
                 }}
                 value={nomL}
                 maxLength={15}
-              />
+              >
+                <Text style={styles.TextView}>{nomL}</Text>
+              </View>
             </View>
             <View style={styles.inputStyle}>
               <AntDesign name="user" size={24} color="black" />
-              <TextInput
+              <View
                 style={styles.TextInput}
                 placeholder="Prenom"
                 keyboardType="default"
@@ -223,22 +223,26 @@ const Compte = ({ navigation: { navigate } }) => {
                   setPrenomL(textNom);
                 }}
                 value={prenomL}
-              />
+              >
+                <Text style={styles.TextView}>{prenomL}</Text>
+              </View>
             </View>
             <View style={styles.inputStyle}>
               <AntDesign name="mail" size={24} color="black" />
-              <TextInput
+              <View
                 style={styles.TextInput}
                 placeholder="Email"
                 onChangeText={(textEmail) => {
                   setEmailL(textEmail);
                 }}
                 value={emailL}
-              />
+              >
+                <Text style={styles.TextView}>{emailL}</Text>
+              </View>
             </View>
             <View style={styles.inputStyle}>
               <AntDesign name="phone" size={24} color="black" />
-              <TextInput
+              <View
                 style={styles.TextInput}
                 placeholder={"Numero"}
                 keyboardType="numeric"
@@ -246,20 +250,24 @@ const Compte = ({ navigation: { navigate } }) => {
                   setNumeroL(textNumero);
                 }}
                 value={numeroL}
-              />
+              >
+                <Text style={styles.TextView}>{numeroL}</Text>
+              </View>
             </View>
             <View style={styles.inputStyle}>
               <MaterialIcons name="gps-fixed" size={24} color="black" />
-              <TextInput
+              <View
                 style={styles.TextInput}
                 placeholder={"Lieu"}
                 onChangeText={(textLieu) => {
                   setLieuL(textLieu);
                 }}
                 value={lieuL}
-              />
+              >
+                <Text style={styles.TextView}>{lieuL}</Text>
+              </View>
             </View>
-            <Pressable
+            <View
               onPress={() => {
                 showMode();
               }}
@@ -269,7 +277,7 @@ const Compte = ({ navigation: { navigate } }) => {
                 <AntDesign name="calendar" size={24} color="black" />
               </View>
               <Text style={styles.txtCalnd}>{dateL}</Text>
-            </Pressable>
+            </View>
             {show ? (
               <DateTimePicker
                 testID="dateTimePicker"
@@ -401,6 +409,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: "Nunito-Regular",
     width: "80%",
+  },
+  TextView: {
+    fontSize: 17,
+    fontFamily: "Nunito-Regular",
   },
   modalView: {
     gap: 40,

@@ -320,10 +320,10 @@ const Data_Transaction_Recharge = [
 const Data_Pass = [
   {
     pass: true,
-    nom: "Orange Money",
+    nom: "Orange",
     backgroundColor: "black",
     textColor: "#FF7900",
-    text: require("../assets/icons/Mobileservices.png"),
+    text: require("../assets/icons/orange.png"),
     option: [
       {
         Label: "Pass Mix",
@@ -428,10 +428,10 @@ const Data_Pass = [
   },
   {
     pass: true,
-    nom: "Moov Money",
+    nom: "Moov Africa",
     backgroundColor: "#0066B5",
     textColor: "white",
-    text: require("../assets/icons/Group12.png"),
+    text: require("../assets/icons/moov.png"),
     option: [
       {
         Label: "Forfait Internet",
@@ -537,7 +537,7 @@ const Data_Pass = [
   },
   {
     pass: true,
-    nom: "MTN Money",
+    nom: "MTN",
     backgroundColor: "#FFC403",
     textColor: "black",
     text: require("../assets/icons/Group13.png"),

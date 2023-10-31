@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useCallback, useContext, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
@@ -22,6 +23,7 @@ const Identification = ({ navigation: { navigate } }) => {
   const [prenomL, setPrenomL] = useState(prenom);
   const [emailL, setEmailL] = useState(email);
   const [dateL, setDateL] = useState(date);
+  const [lieuL, setLieuL] = useState(date);
 
   ////
   ///
@@ -51,14 +53,24 @@ const Identification = ({ navigation: { navigate } }) => {
   ///
 
   //////
-  const { email, nom, prenom, date, setEmail, setNom, setPrenom, setDate } =
-    useContext(AuthContext);
+  const {
+    email,
+    nom,
+    prenom,
+    date,
+    setEmail,
+    setNom,
+    setPrenom,
+    setDate,
+    setLieu,
+  } = useContext(AuthContext);
   /////
   ////
   const handle = () => {
     setNom(nomL);
     setPrenom(prenomL);
     setEmail(emailL);
+    setLieu(lieuL);
     setDate(dateTime.toLocaleDateString());
   };
   ////
@@ -193,6 +205,16 @@ const Identification = ({ navigation: { navigate } }) => {
               placeholder="Email"
               onChangeText={(textEmail) => {
                 setEmailL(textEmail);
+              }}
+            />
+          </View>
+          <View style={styles.inputStyle}>
+            <MaterialIcons name="gps-fixed" size={24} color="black" />
+            <TextInput
+              style={styles.TextInput}
+              placeholder={"Lieu"}
+              onChangeText={(textLieu) => {
+                setLieuL(textLieu);
               }}
             />
           </View>
