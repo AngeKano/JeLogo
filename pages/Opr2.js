@@ -62,7 +62,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
             </Text>
           </View>
           {route.params.operation == "Recharger mon solde" ? (
-            <Text style={styles.txtPwd}>Recharger mon compte</Text>
+            <Text style={styles.txtPwd}>Compte à débiter</Text>
           ) : (
             <Text style={styles.txtPwd}>Transférez votre argent</Text>
           )}
@@ -283,54 +283,7 @@ const Opr2 = ({ route, navigation: { navigate } }) => {
             </Text>
           </View>
           {route.params.operation == "Recharger mon solde" ? 
-          <>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 10,
-              alignItems: "center",
-              justifyContent: "flex-end",
-              marginHorizontal: 25,
-              marginVertical: 20,
-            }}
-          >
-            <Pressable
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 15,
-              }}
-              onPress={() => {
-                handleCheck();
-              }}
-            >
-              <View
-                style={[
-                  {
-                    width: 20,
-                    height: 20,
-                    borderRadius: 75,
-                  },
-                  check
-                    ? { backgroundColor: "#0066B5" }
-                    : { borderColor: "black", borderWidth: 1 },
-                ]}
-              ></View>
-
-              <Text style={{ fontFamily: "Nunito-Regular", fontSize: 18 }}>
-                Je paie les frais 1%
-              </Text>
-            </Pressable>
-          </View>
-
-          <View style={{ marginHorizontal: 25, marginBottom: 50 }}>
-            <Text style={{ fontFamily: "Nunito-Bold", fontSize: 18 }}>
-              {check ? valueAf : value > 0 ? value : 0} FCFA
-            </Text>
-          </View>
-        </>
+         null
           : (
             <>
               <View
